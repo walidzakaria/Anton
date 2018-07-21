@@ -112,7 +112,7 @@ Public Class frmSplash
         If dttttt >= Today Then
             vali = True
         End If
-        'vali = True
+        vali = True
         Return vali
         'If vali = True Then
         '    Me.Timer1.Enabled = False

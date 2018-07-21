@@ -8,7 +8,7 @@ Public Class frmVerify
         Application.Exit()
     End Sub
 
-    Private Sub ActivateApp()
+    Public Sub ActivateApp()
         Dim ActivationCode As String = frmSplash.GenerateHash("AddANewUserToThisProgram" & Today.ToString("MMdd") & "!!!", 2).Replace("=", "").ToUpper
         Dim DeactivationCode As String = frmSplash.GenerateHash("RemoveOldUserFromThisProgram" & Today.ToString("MMdd") & "!!!", 2).Replace("=", "").ToUpper
         'Dim NewOrRemove As Integer

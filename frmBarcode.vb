@@ -278,7 +278,7 @@ Public Class frmBarcode
     End Sub
 
 
-    Private Sub PrintLables(ByVal SelectedReport As Int16)
+    Private Sub PrintLables(ByVal SelectedReport As String, ByVal extraCopy As Boolean)
         If iDgv.RowCount = 0 Then
             MessageBox.Show("·«  ÊÃœ »Ì«‰«  ·Ì „ ÿ»«⁄ Â«!", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ElseIf cbPrinters.Text = "" Then
@@ -302,26 +302,33 @@ Public Class frmBarcode
             Dim co As Integer
             Dim mainCount As Integer = 0
             Dim Price As Single = 0
+            Dim numberOfLabels As Integer = 0
+
             For x As Integer = 0 To iDgv.RowCount - 1
                 sr = iDgv.Rows(x).Cells(0).Value
                 itm = iDgv.Rows(x).Cells(1).Value
                 co = iDgv.Rows(x).Cells(2).Value
+                If extraCopy Then
+                    co *= 2
+                End If
                 Price = iDgv.Rows(x).Cells(3).Value
 
-                If co Mod 2 <> 0 Then
-                    co += 1
+                If GV.dualBarcode Then
+                    If co Mod 2 <> 0 Then
+                        co += 1
+                    End If
+                    co = co / 2
                 End If
-                co = co / 2
 
-                For y As Integer = 0 To co - 1
+
+                For y As Integer = 1 To co
                     theQuery += "SELECT '" & sr & "' AS PrKey, N'" & itm & "' AS Item, " & Price & " AS Price UNION ALL "
-                    mainCount += 1
-
-                    If mainCount = 9 Then
+                    numberOfLabels += 1
+                    If numberOfLabels = 9 Then
                         theQuery = theQuery.Substring(0, theQuery.LastIndexOf(" UNION ALL "))
                         createBarcode(theQuery, SelectedReport)
-                        mainCount = 0
                         theQuery = ""
+                        numberOfLabels = 0
                     End If
                 Next
 
@@ -335,41 +342,34 @@ Public Class frmBarcode
 
     End Sub
 
-    Private Sub createBarcode(ByVal Query As String, ByVal SelectedReport As Int16)
+    Private Sub createBarcode(ByVal Query As String, ByVal reportTemplate As String)
         Dim ds As New ReportsDS
         Dim da As New SqlDataAdapter(Query, myConn)
         da.Fill(ds.Tables("tblBarcode"))
 
-        If SelectedReport = 1 Then
-            Dim rep As New XtraBarcodes1
-            rep.DataSource = ds
-            rep.DataAdapter = da
-            rep.DataMember = "tblBarcode"
 
-            Dim tool As ReportPrintTool = New ReportPrintTool(rep)
-            rep.CreateDocument()
-            Try
-                rep.Print(cbPrinters.Text)
-            Catch ex As Exception
+        Dim rep As New XtraBarcodeLabels
+        Try
+            rep.LoadLayout(reportTemplate)
+        Catch ex As Exception
 
-            End Try
-        Else
-            Dim rep As New XtraBarcodes2
-            rep.DataSource = ds
-            rep.DataAdapter = da
-            rep.DataMember = "tblBarcode"
+        End Try
+        rep.DataSource = ds
+        rep.DataAdapter = da
+        rep.DataMember = "tblBarcode"
 
-            Dim tool As ReportPrintTool = New ReportPrintTool(rep)
-            rep.CreateDocument()
-            Try
-                rep.Print(cbPrinters.Text)
-            Catch ex As Exception
+        Dim tool As ReportPrintTool = New ReportPrintTool(rep)
+        rep.CreateDocument()
+        Try
+            rep.Print(cbPrinters.Text)
+        Catch ex As Exception
 
-            End Try
-        End If
+        End Try
+
 
 
     End Sub
+
     Private Sub btnPrintBadge_Click(sender As Object, e As EventArgs) Handles btnPrintBadge.Click
         If iDgv.RowCount = 0 Then
             MessageBox.Show("·«  ÊÃœ »Ì«‰«  ·Ì „ ÿ»«⁄ Â«!", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -498,10 +498,69 @@ Public Class frmBarcode
     End Sub
 
     Private Sub btnPrintLabels1_Click(sender As Object, e As EventArgs) Handles btnPrintLabels1.Click
-        PrintLables(1)
+        PrintLables("BarcodeLabels.repx", False)
     End Sub
 
     Private Sub btnPrintLabels2_Click(sender As Object, e As EventArgs) Handles btnPrintLabels2.Click
-        PrintLables(2)
+        PrintLables("BarcodeLabels.repx", False)
+    End Sub
+
+    Private Sub KryptonLabel36_DoubleClick(sender As Object, e As EventArgs) Handles KryptonLabel36.DoubleClick
+        Dim query As String = "select tblItems.Serial, tblItems.Name as item, (tin.qnty - coalesce(tout.qnty, 0)) as qnty, tblItems.Price" _
+                              & " from tblItems" _
+                              & "         inner Join" _
+                              & " (" _
+                              & " select tblin2.Item, sum(tblin2.Qnty) as qnty" _
+                              & " from tblIn2" _
+                              & " group by tblin2.Item" _
+                              & " ) tin" _
+                              & " on tblitems.PrKey = tin.Item" _
+                              & " left outer join" _
+                              & " (" _
+                              & " select tblout2.Item, sum(tblout2.Qnty) as qnty" _
+                              & " from tblOut2" _
+                              & " group by tblout2.Item" _
+                              & " ) tout" _
+                              & " on tblItems.PrKey = tout.Item"
+
+        Using cmd = New SqlCommand(query, myConn)
+
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
+            End If
+            Using dr As SqlDataReader = cmd.ExecuteReader
+                Try
+                    Dim dt As New DataTable
+                    dt.Load(dr)
+                    'Dim theUSDPrice As Double = 0
+
+
+                    iDgv.Rows.Clear()
+                    For x As Integer = 0 To dt.Rows.Count - 1
+
+                        'theUSDPrice = dt.Rows(x)(10)
+                        'theUSDPrice = theUSDPrice * USDExchange
+                        'theUSDPrice = Math.Round(theUSDPrice, 0, MidpointRounding.AwayFromZero)
+                        'If theUSDPrice < 1 Then
+                        'theUSDPrice = 1
+                        'End If
+                        'iDgv.Rows.Add(dt.Rows(x)(4), dt.Rows(x)(5), dt.Rows(x)(6), theUSDPrice)
+                        iDgv.Rows.Add(dt.Rows(x)(0), dt.Rows(x)(1), dt.Rows(x)(2), dt.Rows(x)(3))
+                    Next
+
+                Catch ex As Exception
+
+                End Try
+
+            End Using
+
+            myConn.Close()
+        End Using
+
+
+    End Sub
+
+    Private Sub KryptonLabel36_Paint(sender As Object, e As PaintEventArgs) Handles KryptonLabel36.Paint
+
     End Sub
 End Class

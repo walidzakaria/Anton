@@ -79,7 +79,7 @@ Partial Class frmLogin
         Me.Cancel.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.Cancel.Appearance.Options.UseFont = True
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Image = CType(resources.GetObject("Cancel.Image"), System.Drawing.Image)
+        Me.Cancel.ImageOptions.Image = CType(resources.GetObject("Cancel.ImageOptions.Image"), System.Drawing.Image)
         Me.Cancel.Location = New System.Drawing.Point(43, 206)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(126, 40)
@@ -91,7 +91,7 @@ Partial Class frmLogin
         Me.OK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OK.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.OK.Appearance.Options.UseFont = True
-        Me.OK.Image = CType(resources.GetObject("OK.Image"), System.Drawing.Image)
+        Me.OK.ImageOptions.Image = CType(resources.GetObject("OK.ImageOptions.Image"), System.Drawing.Image)
         Me.OK.Location = New System.Drawing.Point(175, 206)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(126, 40)

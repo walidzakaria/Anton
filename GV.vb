@@ -13,10 +13,11 @@ Public Class GV
 
     'Public Shared myConn As String = "Data Source=SERVER2-PC\MASTER;Initial Catalog=MasterPro;Persist Security Info=True;User ID=walid;Password=wwzzaa"
     Public Shared MarketName As String = "Anton Shopping Center"
-    Public Shared appDemo As Boolean = True
-    Public Shared deadLine As Date = #5/7/2018#
-    Public Shared Invoices As Integer = 30000
+    Public Shared appDemo As Boolean = False
+    Public Shared deadLine As Date = #5/7/2024#
+    Public Shared Invoices As Long = 30000000
     Public Shared CheckQnty As Boolean = True
+    Public Shared dualBarcode As Boolean = True
 
     ''''to reset db
     ''    --dbcc checkident ('tblOut1', reseed)
