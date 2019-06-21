@@ -212,6 +212,8 @@ Public Class frmMain
                 iDgv.Columns(2).ReadOnly = False
                 iDgv.Columns(3).ReadOnly = False
 
+                dailySearch.Text = "»ÕÀ «·Õ—ﬂ… »«·„’—Ì"
+                btnCurrency.Visible = True
             Case "User"
                 iDgv.Columns(2).ReadOnly = True
                 iDgv.Columns(3).ReadOnly = True
@@ -243,9 +245,16 @@ Public Class frmMain
                 '    totalMonitor.Visible = False
                 'dailyMonitor.Visible = False
                 btnPassKey.Visible = True
+                Try
+                    iDgv.Columns(2).ReadOnly = True
+                    iDgv.Columns(3).ReadOnly = True
+                Catch ex As Exception
 
-                iDgv.Columns(2).ReadOnly = True
-                iDgv.Columns(3).ReadOnly = True
+                End Try
+                
+
+                dailySearch.Text = " ﬁ—Ì— «·»Ì⁄"
+                btnCurrency.Visible = False
         End Select
     End Sub
 
@@ -5388,7 +5397,7 @@ Restart:
         If siItem.Text = "" Then
             itm = ""
         Else
-            itm = " AND (tblItems.Name LIKE N'%" & siItem.Text & "%')"
+            itm = " AND (tblItems.Name LIKE N'" & siItem.Text & "%')"
         End If
 
         Dim qnty1, qnty2 As Double
@@ -5423,11 +5432,11 @@ Restart:
             Exit Sub
         End If
 
-        Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, tblItems.Price, tblItems.[Minimum], TIn.QIn AS T_In, COALESCE(TOut.QOut, 0) AS T_Out, TIn.QIn - COALESCE(TOut.QOut, 0) AS Net, (CASE WHEN ( TIn.QIn - COALESCE(TOut.QOut, 0)) < tblItems.[Minimum] THEN 1 ELSE 0 END) as [Needed]" _
+        Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, TIn.PIn AS Price, tblItems.[Minimum], TIn.QIn AS T_In, COALESCE(TOut.QOut, 0) AS T_Out, TIn.QIn - COALESCE(TOut.QOut, 0) AS Net, (CASE WHEN ( TIn.QIn - COALESCE(TOut.QOut, 0)) < tblItems.[Minimum] THEN 1 ELSE 0 END) as [Needed]" _
                               & " FROM tblItems" _
                               & " INNER Join" _
                               & " (" _
-                              & " SELECT tblIn2.Item, SUM(tblIn2.Qnty) AS QIn" _
+                              & " SELECT tblIn2.Item, SUM(tblIn2.Qnty) AS QIn, AVG(tblIN2.UnitPrice) AS PIn" _
                               & " FROM tblIn2 INNER JOIN tblIn1" _
                               & " ON tblIn2.Serial = tblIn1.PrKey" _
                               & " WHERE tblIn1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "'" _
@@ -5592,42 +5601,59 @@ Restart:
         Dim Debit As Integer = 0
         Debit = rgPayment.SelectedIndex
 
-
-
-        Dim Que As String = "(" _
-                            & " SELECT tblIn1.[Date], CONVERT(NVARCHAR(5), tblIn1.[Time], 108) AS [Time], tblIn1.Serial AS Indication, N'‘—«¡' AS [Type], tblDebit.Amount, tblLogin.UserName AS [User]" _
-                            & " FROM tblIn1 INNER JOIN tblDebit" _
-                            & " ON tblDebit.Serial = tblIn1.PrKey AND tblDebit.[Date] = tblIn1.[Date] AND tblIn1.[Time] = tblDebit.[Time]" _
-                            & " INNER JOIN tblLogin ON tblLogin.Sr = tblIn1.[User]" _
-                            & " WHERE (tblIn1.[Date] + tblIn1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " UNION ALL" _
-                            & " SELECT tblDebit.[Date], CONVERT(NVARCHAR(5), tblDebit.[Time], 108) AS [Time], tblIn1.Serial AS Indication, N'”œ«œ' AS [Type], tblDebit.Amount, tblLogin.UserName AS [User]" _
-                            & " FROM tblDebit RIGHT OUTER JOIN tblIn1 ON tblDebit.Serial = tblIn1.PrKey" _
-                            & " INNER JOIN tblLogin ON tblLogin.Sr = tblDebit.[User]" _
-                            & " WHERE (tblDebit.[Date] != tblIn1.[Date] OR tblDebit.[Time] != tblIn1.[Time])" _
-                            & " AND (tblDebit.[Date] + tblDebit.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " UNION ALL" _
-                            & " SELECT tblOut1.[Date], CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time], CONVERT(NVARCHAR(20), tblOut1.Serial) AS Indication, N'»Ì⁄' AS [Type], tblOut1.RealValue AS Amount, tblLogin.UserName AS [User]" _
-                            & " FROM tblOut1 INNER JOIN tblLogin ON tblLogin.Sr = tblOut1.[User]" _
-                            & " WHERE (tblOut1.Debit = " & Debit & ") AND (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " UNION ALL" _
-                            & " SELECT tblCash.[Date] AS [Date], CONVERT(NVARCHAR(5), tblCash.[Time], 108) AS [Time], tblCash.Indication, tblCash.[Type], tblCash.Qnty AS Amount, tblLogin.UserName AS [User]" _
-                            & " FROM tblCash INNER JOIN tblLogin ON tblCash.[User] = tblLogin.Sr" _
-                            & " WHERE (tblCash.[Date] + tblCash.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " ) ORDER BY [Date], [Time]"
-
-
-
+        Dim query As String
         Dim ds As New ReportsDS
-        Dim da As New SqlDataAdapter(Que, myConn)
-        da.Fill(ds.Tables("tblDaily"))
+        If GlobalVariables.authority = "Cashier" Then
+            query = "SELECT Sa.Invoice, Sa.cDate, Sa.Sales, Us.UserName, Se.Seller" _
+                & " FROM tblSales Sa" _
+                & " INNER JOIN tblLogin Us ON Sa.Username = Us.Sr" _
+                & " LEFT OUTER JOIN tblSellers Se ON Sa.Seller = Se.ID" _
+                & " WHERE Sa.cDate BETWEEN '" & timFrom & "' AND '" & timTill & "'"
 
-        Dim rep As New crDaily
-        rep.SetDataSource(ds.Tables("tblDaily"))
-        rep.SetParameterValue("ParDates", ":«·› —…")
-        rep.SetParameterValue("ParoDateFrom", dailyDateFrom.Value.ToString("yyyy/MM/dd") & " " & tmFrom.Value.ToString("HH:mm"))
-        rep.SetParameterValue("ParoDateTill", dailyDateTill.Value.ToString("yyyy/MM/dd") & " " & tmTill.Value.ToString("HH:mm"))
-        CrystalReportViewer6.ReportSource = rep
+        Else
+            query = "(" _
+                & " SELECT tblIn1.[Date], CONVERT(NVARCHAR(5), tblIn1.[Time], 108) AS [Time], tblIn1.Serial AS Indication, N'‘—«¡' AS [Type], tblDebit.Amount, tblLogin.UserName AS [User]" _
+                & " FROM tblIn1 INNER JOIN tblDebit" _
+                & " ON tblDebit.Serial = tblIn1.PrKey AND tblDebit.[Date] = tblIn1.[Date] AND tblIn1.[Time] = tblDebit.[Time]" _
+                & " INNER JOIN tblLogin ON tblLogin.Sr = tblIn1.[User]" _
+                & " WHERE (tblIn1.[Date] + tblIn1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " UNION ALL" _
+                & " SELECT tblDebit.[Date], CONVERT(NVARCHAR(5), tblDebit.[Time], 108) AS [Time], tblIn1.Serial AS Indication, N'”œ«œ' AS [Type], tblDebit.Amount, tblLogin.UserName AS [User]" _
+                & " FROM tblDebit RIGHT OUTER JOIN tblIn1 ON tblDebit.Serial = tblIn1.PrKey" _
+                & " INNER JOIN tblLogin ON tblLogin.Sr = tblDebit.[User]" _
+                & " WHERE (tblDebit.[Date] != tblIn1.[Date] OR tblDebit.[Time] != tblIn1.[Time])" _
+                & " AND (tblDebit.[Date] + tblDebit.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " UNION ALL" _
+                & " SELECT tblOut1.[Date], CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time], CONVERT(NVARCHAR(20), tblOut1.Serial) AS Indication, N'»Ì⁄' AS [Type], tblOut1.RealValue AS Amount, tblLogin.UserName AS [User]" _
+                & " FROM tblOut1 INNER JOIN tblLogin ON tblLogin.Sr = tblOut1.[User]" _
+                & " WHERE (tblOut1.Debit = " & Debit & ") AND (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " UNION ALL" _
+                & " SELECT tblCash.[Date] AS [Date], CONVERT(NVARCHAR(5), tblCash.[Time], 108) AS [Time], tblCash.Indication, tblCash.[Type], tblCash.Qnty AS Amount, tblLogin.UserName AS [User]" _
+                & " FROM tblCash INNER JOIN tblLogin ON tblCash.[User] = tblLogin.Sr" _
+                & " WHERE (tblCash.[Date] + tblCash.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " ) ORDER BY [Date], [Time]"
+        End If
+        Dim da As New SqlDataAdapter(query, myConn)
+
+        If GlobalVariables.authority = "Cashier" Then
+            da.Fill(ds.Tables("tblSales"))
+            Dim rep As New crSales
+            rep.SetDataSource(ds.Tables("tblSales"))
+            rep.SetParameterValue("ParDates", ":«·› —…")
+            rep.SetParameterValue("ParoDateFrom", dailyDateFrom.Value.ToString("yyyy/MM/dd") & " " & tmFrom.Value.ToString("HH:mm"))
+            rep.SetParameterValue("ParoDateTill", dailyDateTill.Value.ToString("yyyy/MM/dd") & " " & tmTill.Value.ToString("HH:mm"))
+            CrystalReportViewer6.ReportSource = rep
+        Else
+            da.Fill(ds.Tables("tblDaily"))
+            Dim rep As New crDaily
+            rep.SetDataSource(ds.Tables("tblDaily"))
+            rep.SetParameterValue("ParDates", ":«·› —…")
+            rep.SetParameterValue("ParoDateFrom", dailyDateFrom.Value.ToString("yyyy/MM/dd") & " " & tmFrom.Value.ToString("HH:mm"))
+            rep.SetParameterValue("ParoDateTill", dailyDateTill.Value.ToString("yyyy/MM/dd") & " " & tmTill.Value.ToString("HH:mm"))
+            CrystalReportViewer6.ReportSource = rep
+        End If
+
+        
         Cursor = Cursors.Default
         CrystalReportViewer6.Refresh()
         CrystalReportViewer6.Zoom(1)
@@ -6261,39 +6287,41 @@ retry:
         Dim Debit As Integer = 0
         Debit = rgPayment.SelectedIndex
 
+        Dim query As String
+        Dim PaymentType As Integer
+        PaymentType = rgPayment.SelectedIndex
 
-        Dim Que As String = "(" _
-                            & " SELECT tblIn1.[Date], tblIn1.[Time], tblIn1.Serial AS Indication, N'‘—«¡' AS [Type], tblDebit.Amount AS EGP, 0 AS USD, 0 AS EUR, 0 AS GBP, 0 AS RUB, 0 AS CHF, 0 AS CNY, 0 AS VisaUSD, 0 AS VisaEGP, tblLogin.UserName AS [User]" _
-                            & " FROM tblIn1 INNER JOIN tblDebit" _
-                            & " ON tblDebit.Serial = tblIn1.PrKey AND tblDebit.[Date] = tblIn1.[Date] AND tblIn1.[Time] = tblDebit.[Time]" _
-                            & " INNER JOIN tblLogin ON tblLogin.Sr = tblIn1.[User]" _
-                            & " WHERE (tblIn1.[Date] + tblIn1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " UNION ALL" _
-                            & " SELECT tblDebit.[Date], tblDebit.[Time], tblIn1.Serial AS Indication, N'”œ«œ' AS [Type], tblDebit.Amount AS EGP , 0 AS USD, 0 AS EUR, 0 AS GBP, 0 AS RUB, 0 AS CHF, 0 AS CNY, 0 AS VisaUSD, 0 AS VisaEGP, tblLogin.UserName AS [User]" _
-                            & " FROM tblDebit RIGHT OUTER JOIN tblIn1 ON tblDebit.Serial = tblIn1.PrKey" _
-                            & " INNER JOIN tblLogin ON tblLogin.Sr = tblDebit.[User]" _
-                            & " WHERE (tblDebit.[Date] != tblIn1.[Date] OR tblDebit.[Time] != tblIn1.[Time])" _
-                            & " AND (tblDebit.[Date] + tblDebit.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " UNION ALL" _
-                            & " SELECT tblOut1.[Date], tblOut1.[Time], CONVERT(NVARCHAR(20), tblOut1.Serial) AS Indication, N'»Ì⁄' AS [Type]," _
-                            & " (CASE WHEN tblOut1.Visa1 = 0 THEN (CASE WHEN tblOut1.Currency = 'EGP' THEN tblOut1.RealValue ELSE tblOut1.pEGP END) ELSE 0 END) AS EGP," _
-                            & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 0 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS USD," _
-                            & " (CASE WHEN tblOut1.Currency = 'EUR' THEN tblOut1.pEUR - tblOut1.NetTotal ELSE 0 END) AS EUR," _
-                            & " (CASE WHEN tblOut1.Currency = 'GBP' THEN tblOut1.pGBP - tblOut1.NetTotal ELSE 0 END) AS GBP," _
-                            & " (CASE WHEN tblOut1.Currency = 'RUB' THEN tblOut1.pRUB - tblOut1.NetTotal ELSE 0 END) AS RUB," _
-                            & " (CASE WHEN tblOut1.Currency = 'CHF' THEN tblOut1.pCHF - tblOut1.NetTotal ELSE 0 END) AS CHF," _
-                            & " (CASE WHEN tblOut1.Currency = 'CNY' THEN tblOut1.pCNY - tblOut1.NetTotal ELSE 0 END) AS CNY," _
-                            & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 1 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS VisaUSD," _
-                            & " (CASE WHEN tblOut1.Visa1 = 1 THEN (CASE WHEN tblOut1.Currency = 'EGP' THEN tblOut1.RealValue ELSE tblOut1.pEGP END) ELSE 0 END) AS VisaEGP," _
-                            & " tblLogin.UserName AS [User]" _
-                            & " FROM tblOut1 INNER JOIN tblLogin ON tblOut1.[User] = tblLogin.Sr" _
-                            & " WHERE (tblOut1.Debit = " & Debit & ") AND (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " UNION ALL" _
-                            & " SELECT tblCash.[Date] AS [Date], tblCash.[Time], tblCash.Indication, tblCash.[Type], tblCash.Qnty AS EGP, 0 AS USD, 0 AS EUR, 0 AS GBP, 0 AS RUB, 0 AS CHF, 0 AS CNY, 0 AS VisaUSD, 0 AS VisaEGP, tblLogin.UserName AS [User]" _
-                            & " FROM tblCash INNER JOIN tblLogin ON tblCash.[User] = tblLogin.Sr" _
-                            & " WHERE (tblCash.[Date] + tblCash.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " ) ORDER BY [Date], [Time]"
-
+        query = "(" _
+                & " SELECT tblIn1.[Date], tblIn1.[Time], tblIn1.Serial AS Indication, N'‘—«¡' AS [Type], 0 AS EGP, tblDebit.Amount AS USD, 0 AS EUR, 0 AS GBP, 0 AS RUB, 0 AS CHF, 0 AS CNY, 0 AS VisaUSD, 0 AS VisaEGP, tblLogin.UserName AS [User]" _
+                & " FROM tblIn1 INNER JOIN tblDebit" _
+                & " ON tblDebit.Serial = tblIn1.PrKey AND tblDebit.[Date] = tblIn1.[Date] AND tblIn1.[Time] = tblDebit.[Time]" _
+                & " INNER JOIN tblLogin ON tblLogin.Sr = tblIn1.[User]" _
+                & " WHERE (tblIn1.[Date] + tblIn1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " UNION ALL" _
+                & " SELECT tblDebit.[Date], tblDebit.[Time], tblIn1.Serial AS Indication, N'”œ«œ' AS [Type], 0 AS EGP , tblDebit.Amount AS USD, 0 AS EUR, 0 AS GBP, 0 AS RUB, 0 AS CHF, 0 AS CNY, 0 AS VisaUSD, 0 AS VisaEGP, tblLogin.UserName AS [User]" _
+                & " FROM tblDebit RIGHT OUTER JOIN tblIn1 ON tblDebit.Serial = tblIn1.PrKey" _
+                & " INNER JOIN tblLogin ON tblLogin.Sr = tblDebit.[User]" _
+                & " WHERE (tblDebit.[Date] != tblIn1.[Date] OR tblDebit.[Time] != tblIn1.[Time])" _
+                & " AND (tblDebit.[Date] + tblDebit.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " UNION ALL" _
+                & " SELECT tblOut1.[Date], tblOut1.[Time], CONVERT(NVARCHAR(20), tblOut1.Serial) AS Indication, N'»Ì⁄' AS [Type]," _
+                & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 0 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS USD," _
+                & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 1 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS VisaUSD," _
+                & " (CASE WHEN tblOut1.Currency = 'EGP' THEN (CASE WHEN tblOut1.Visa1 = 0 THEN tblOut1.pEGP - tblOut1.NetTotal ELSE 0 END) ELSE tblOut1.pEGP END) AS EGP," _
+                & " (CASE WHEN tblOut1.Currency = 'EGP' THEN (CASE WHEN tblOut1.Visa1 = 1 THEN tblOut1.pEGP - tblOut1.NetTotal ELSE 0 END) ELSE 0 END) AS VisaEGP," _
+                & " (CASE WHEN tblOut1.Currency = 'EUR' THEN tblOut1.pEUR - tblOut1.NetTotal ELSE 0 END) AS EUR," _
+                & " (CASE WHEN tblOut1.Currency = 'GBP' THEN tblOut1.pGBP - tblOut1.NetTotal ELSE 0 END) AS GBP," _
+                & " (CASE WHEN tblOut1.Currency = 'RUB' THEN tblOut1.pRUB - tblOut1.NetTotal ELSE 0 END) AS RUB," _
+                & " (CASE WHEN tblOut1.Currency = 'CHF' THEN tblOut1.pCHF - tblOut1.NetTotal ELSE 0 END) AS CHF," _
+                & " (CASE WHEN tblOut1.Currency = 'CNY' THEN tblOut1.pCNY - tblOut1.NetTotal ELSE 0 END) AS CNY," _
+                & " tblLogin.UserName AS [User]" _
+                & " FROM tblOut1 INNER JOIN tblLogin ON tblOut1.[User] = tblLogin.Sr" _
+                & " WHERE (tblOut1.Debit = " & PaymentType & ") AND (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " UNION ALL" _
+                & " SELECT tblCash.[Date] AS [Date], tblCash.[Time], tblCash.Indication, tblCash.[Type], tblCash.Qnty AS EGP, 0 AS USD, 0 AS EUR, 0 AS GBP, 0 AS RUB, 0 AS CHF, 0 AS CNY, 0 AS VisaUSD, 0 AS VisaEGP, tblLogin.UserName AS [User]" _
+                & " FROM tblCash INNER JOIN tblLogin ON tblCash.[User] = tblLogin.Sr" _
+                & " WHERE (tblCash.[Date] + tblCash.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " ) ORDER BY [Date], [Time]"
 
 
         If myConn.State = ConnectionState.Closed Then
@@ -6301,7 +6329,7 @@ retry:
         End If
 
         Dim ds As New ReportsDS
-        Dim da As New SqlDataAdapter(Que, frmMain.myConn)
+        Dim da As New SqlDataAdapter(query, frmMain.myConn)
         da.Fill(ds.Tables("XtraNewDaily"))
 
         Dim Report As New XtraNewDaily
@@ -6357,5 +6385,9 @@ retry:
         '    iDgv.Rows(iDgv.CurrentCell.RowIndex).Cells(4).Value = result
         'End If
         inTotalize()
+    End Sub
+
+    Private Sub btnSellers_Click(sender As Object, e As EventArgs) Handles btnSellers.Click
+        frmSellers.ShowDialog()
     End Sub
 End Class

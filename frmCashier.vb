@@ -16,9 +16,50 @@ Public Class frmCashier
     ' Dim ValidQnty As Boolean = False
     Dim itemPackage As Boolean = False
     Dim tValueAmount As Double
+    Dim currentSeller As String = ""
     Public Shared cEUR, cUSD, cGBP, cRUB, cCHF, cCNY As Double
 
-
+    Private Sub RecallSeller(ByVal sellerCode As String)
+        Dim query As String = "SELECT * FROM tblSellers WHERE Code = N'" & sellerCode & "';"
+        Using cmd = New SqlCommand(query, myConn)
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
+            End If
+            Using dr As SqlDataReader = cmd.ExecuteReader
+                If dr.Read() Then
+                    lblSeller.Text = "«·»«∆⁄: " & dr(1)
+                    currentSeller = dr(0)
+                Else
+                    lblSeller.Text = "«·»«∆⁄: ·« ÌÊÃœ"
+                    currentSeller = ""
+                End If
+            End Using
+            myConn.Close()
+        End Using
+    End Sub
+    Private Sub ClearData()
+        'clear
+        oQnty.Text = "1"
+        oItemSerial.Text = Nothing
+        oItemName.Text = Nothing
+        tbCurrency.Text = ""
+        tbEgyptian.Text = ""
+        oUnitPrice.Text = ""
+        oSubTotal.Text = ""
+        oDgv.Rows.Clear()
+        oItemSerial.Focus()
+        oQnty.SelectAll()
+        oCustomer.EditValue = Nothing
+        lblCurrency.Text = "EGP"
+        ceVisaCurrency.Checked = False
+        txtVAT.Text = ""
+        txtTax1.Text = ""
+        txtTax2.Text = ""
+        currentSeller = ""
+        lblSeller.Text = "«·»«∆⁄: ·« ÌÊÃœ"
+        ceDebit.Checked = False
+        getCurrency()
+    End Sub
     Private Sub fillCustomers()
         Using cmd = New SqlCommand("SELECT * FROM tblCustomers ORDER BY Customer;", myConn)
             If myConn.State = ConnectionState.Closed Then
@@ -55,7 +96,7 @@ Public Class frmCashier
             LabelControl14.Visible = True
             LabelControl17.Visible = True
             LabelControl18.Visible = True
-
+            btnReport.Visible = True
             oCustomer.Visible = True
             txtVAT.Visible = True
             txtTax1.Visible = True
@@ -69,6 +110,7 @@ Public Class frmCashier
         Else
             'btnSettings.Visible = False
             SimpleButton8.Visible = False
+
             'btnReturn.Visible = False
             'btnCost.Visible = False
             'Try
@@ -76,10 +118,11 @@ Public Class frmCashier
             'Catch ex As Exception
 
             'End Try
-            LabelControl1.Visible = False
+            btnReport.Visible = False
+            'LabelControl1.Visible = False
             LabelControl2.Visible = False
             LabelControl3.Visible = False
-            oCustomer.Visible = False
+            'oCustomer.Visible = False
             LabelControl14.Visible = False
             LabelControl17.Visible = False
             LabelControl18.Visible = False
@@ -136,7 +179,9 @@ Public Class frmCashier
     End Function
     Private Sub saveMemory(ByVal number As Integer)
         Dim str As String = ""
-        str = oCustomer.EditValue & ";" & tbCurrency.Text & ";" & lblCurrency.Text & ";" & ceVisaCurrency.Checked & ";" & tValueAmount & ";" & txtVAT.Text & ";" & txtTax1.Text & ";" & txtTax2.Text & ";" & ceDebit.Checked.ToString & "$"
+
+        str = oCustomer.EditValue & ";" & tbCurrency.Text & ";" & lblCurrency.Text & ";" & ceVisaCurrency.Checked & ";" & tValueAmount & ";" & txtVAT.Text & ";" & txtTax1.Text & ";" & txtTax2.Text & ";" & ceDebit.Checked.ToString _
+            & ";" & lblSeller.Text & ";" & currentSeller & "$"
 
         For x As Integer = 0 To oDgv.RowCount - 1
             str += oDgv.Rows(x).Cells(0).Value & ";" & oDgv.Rows(x).Cells(1).Value & ";" & oDgv.Rows(x).Cells(2).Value & ";" & _
@@ -211,6 +256,8 @@ Public Class frmCashier
                 txtTax1.Text = record(6)
                 txtTax2.Text = record(7)
                 ceDebit.Checked = CBool(record(8))
+                lblSeller.Text = record(9)
+                currentSeller = record(10)
             ElseIf memory(x) <> "" Then
                 oDgv.Rows.Add(record(0), record(1), record(2), record(3), record(4), record(5), record(6), record(7), record(8), record(9), record(10), record(11))
             End If
@@ -335,10 +382,15 @@ Restart:
                 Cust = oCustomer.EditValue
             End If
 
-            Dim Query As String = "INSERT INTO tblOut1 ([Date], [Time], Customer, LaborOverhaul, Transfers, SubTotal, Discount, SaleTax, NetTotal, [User], pEGP, pEUR, pUSD, pGBP, pRUB, pCHF, pCNY, RealValue, Currency, Visa1, Visa2, VAT, Tax1, Tax2, Debit) " _
+            Dim seller As String = "NULL"
+            If currentSeller <> "" Then
+                seller = currentSeller
+            End If
+
+            Dim Query As String = "INSERT INTO tblOut1 ([Date], [Time], Customer, LaborOverhaul, Transfers, SubTotal, Discount, SaleTax, NetTotal, [User], pEGP, pEUR, pUSD, pGBP, pRUB, pCHF, pCNY, RealValue, Currency, Visa1, Visa2, VAT, Tax1, Tax2, Debit, Seller) " _
                                   & "VALUES ('" & oDate & "', '" & oTime & "', " & Cust & ", '" & "0" & "', '" & "0" & "', '" & tbTotal.Text & "', '" & Val(tbCurrency.Text) & "', '" & "0" & "', '" & tbRest.Text & "', '" & GlobalVariables.ID & "', " _
                                   & pEGP & " , " & pEUR & ", " & pUSD & ", " & pGBP & ", " & pRUB & ", " & pCHF & ", " & pCNY & ", " & tValueAmount & ", '" & lblCurrency.Text & "', " & CInt(ceVisaEGP.Checked) & ", " & CInt(ceVisaCurrency.Checked) & ", " & Val(txtVAT.Text) _
-                                  & ", " & Val(txtTax1.Text) & ", " & Val(txtTax2.Text) & ", " & CInt(ceDebit.Checked) & ")"
+                                  & ", " & Val(txtTax1.Text) & ", " & Val(txtTax2.Text) & ", " & CInt(ceDebit.Checked) & ", " & seller & ")"
 
             Using cmd = New SqlCommand(Query, myConn)
                 If myConn.State = ConnectionState.Closed Then
@@ -346,7 +398,7 @@ Restart:
                 End If
                 cmd.ExecuteNonQuery()
 
-                cmd.CommandText = "SELECT @@IDENTITY;"
+                cmd.CommandText = "SELECT MAX(Serial) FROM tblOut1;"
                 Using dt As SqlDataReader = cmd.ExecuteReader
                     If dt.Read() Then
                         OSerial.Text = dt(0).ToString
@@ -377,25 +429,7 @@ Restart:
                 Call Sync.Sync()
             End If
 
-            'clear
-            oQnty.Text = "1"
-            oItemSerial.Text = Nothing
-            oItemName.Text = Nothing
-            tbCurrency.Text = ""
-            tbEgyptian.Text = ""
-            oUnitPrice.Text = ""
-            oSubTotal.Text = ""
-            oDgv.Rows.Clear()
-            oItemSerial.Focus()
-            oQnty.SelectAll()
-            oCustomer.EditValue = Nothing
-            lblCurrency.Text = "USD"
-            ceVisaCurrency.Checked = False
-            txtVAT.Text = ""
-            txtTax1.Text = ""
-            txtTax2.Text = ""
-            ceDebit.Checked = False
-            getCurrency()
+            ClearData()
             Call Notification("Invoice Added")
 
             If SaveAndPrint = True Then
@@ -499,63 +533,56 @@ Restart:
             Qnty = oDgv.Rows(x).Cells(0).Value
             Discount = oDgv.Rows(x).Cells(5).Value
 
-            Select Case Curr
-                Case "EGP"
-                    Price = Math.Round(Price, 0, MidpointRounding.AwayFromZero)
-                Case "EUR"
-                    Price = Math.Round((Price * cEUR), 0, MidpointRounding.AwayFromZero)
-                    Discount = Discount * cEUR
-                Case "USD"
-                    Price = Math.Round((Price * cUSD), 0, MidpointRounding.AwayFromZero)
-                    Discount = Discount * cUSD
-                Case "GBP"
-                    Price = Math.Round((Price * cGBP), 0, MidpointRounding.AwayFromZero)
-                    Discount = Discount * cGBP
-                Case "RUB"
-                    Price = Math.Round((Price * cRUB), 0, MidpointRounding.AwayFromZero)
-                    Discount = Discount * cRUB
-                Case "CHF"
-                    Price = Math.Round((Price * cCHF), 0, MidpointRounding.AwayFromZero)
-                    Discount = Discount * cCHF
-                Case "CNY"
-                    Price = Math.Round((Price * cCNY), 0, MidpointRounding.AwayFromZero)
-                    Discount = Discount * cCNY
-            End Select
-            If Price < 1 Then
-                Price = 1
-            End If
+            'Select Case Curr
+            '    Case "EGP"
+            '        Price = Math.Round(Price, 0, MidpointRounding.AwayFromZero)
+            '    Case "EUR"
+            '        Price = Math.Round((Price * cEUR), 0, MidpointRounding.AwayFromZero)
+            '        Discount = Discount * cEUR
+            '    Case "USD"
+            '        Price = Math.Round((Price * cUSD), 0, MidpointRounding.AwayFromZero)
+            '        Discount = Discount * cUSD
+            '    Case "GBP"
+            '        Price = Math.Round((Price * cGBP), 0, MidpointRounding.AwayFromZero)
+            '        Discount = Discount * cGBP
+            '    Case "RUB"
+            '        Price = Math.Round((Price * cRUB), 0, MidpointRounding.AwayFromZero)
+            '        Discount = Discount * cRUB
+            '    Case "CHF"
+            '        Price = Math.Round((Price * cCHF), 0, MidpointRounding.AwayFromZero)
+            '        Discount = Discount * cCHF
+            '    Case "CNY"
+            '        Price = Math.Round((Price * cCNY), 0, MidpointRounding.AwayFromZero)
+            '        Discount = Discount * cCNY
+            'End Select
+            'If Price < 1 Then
+            '    Price = 1
+            'End If
             tSales += (Price * Qnty) - Discount
         Next
-
-
-        If Curr = "EGP" Then
-            tValueAmount = tSales
-            tbTotal.Text = tSales
-        Else
-            tValueAmount = tSales
-
-            Select Case Curr
-                Case "EUR"
-                    tValueAmount = tSales / cEUR
-                Case "USD"
-                    tValueAmount = tSales / cUSD
-                Case "GBP"
-                    tValueAmount = tSales / cGBP
-                Case "RUB"
-                    tValueAmount = tSales / cRUB
-                Case "CHF"
-                    tValueAmount = tSales / cCHF
-                Case "CNY"
-                    tValueAmount = tSales / cCNY
-            End Select
-
-            tValueAmount = Math.Round(tValueAmount, 0, MidpointRounding.AwayFromZero)
-            tSales = Math.Round(tSales, 2, MidpointRounding.AwayFromZero)
-            If tSales < 1 Then
-                tSales = 1
-            End If
-            tbTotal.Text = tSales
+        tValueAmount = tSales
+        Select Case Curr
+            Case "EGP"
+                tSales = Math.Round(tSales, 0, MidpointRounding.AwayFromZero)
+            Case "EUR"
+                tSales = Math.Round((tSales * cEUR), 0, MidpointRounding.AwayFromZero)
+            Case "USD"
+                tSales = Math.Round((tSales * cUSD), 0, MidpointRounding.AwayFromZero)
+            Case "GBP"
+                tSales = Math.Round((tSales * cGBP), 0, MidpointRounding.AwayFromZero)
+            Case "RUB"
+                tSales = Math.Round((tSales * cRUB), 0, MidpointRounding.AwayFromZero)
+            Case "CHF"
+                tSales = Math.Round((tSales * cCHF), 0, MidpointRounding.AwayFromZero)
+            Case "CNY"
+                tSales = Math.Round((tSales * cCNY), 0, MidpointRounding.AwayFromZero)
+        End Select
+        If tSales < 1 And tSales > 0 Then
+            tSales = 1
         End If
+
+        tbTotal.Text = tSales
+        
         getRest()
 
     End Sub
@@ -1030,7 +1057,7 @@ Restart:
                     prQnty = oDgv.Rows(x).Cells(0).Value
                     dsc *= (wholeQnty + prQnty)
                     dsc = Math.Round(dsc, 2, MidpointRounding.AwayFromZero)
-                    oDgv.Rows(x).SetValues((wholeQnty + prQnty), type, oItemSerial.Text.ToUpper, result(2).ToUpper, Math.Round(Val(oUnitPrice.Text), 2, MidpointRounding.AwayFromZero), dsc, Math.Round((Val(oUnitPrice.Text) * (wholeQnty + prQnty) - dsc), 2, MidpointRounding.AwayFromZero), PrKey)
+                    oDgv.Rows(x).SetValues((wholeQnty + prQnty), type, oItemSerial.Text.ToUpper, result(2).ToUpper, Math.Round(Val(result(3)), 2, MidpointRounding.AwayFromZero), dsc, Math.Round((Val(result(3)) * (wholeQnty + prQnty) - dsc), 2, MidpointRounding.AwayFromZero), PrKey)
 
 
 
@@ -1057,7 +1084,7 @@ Restart:
             'Add the row to the datagrid
             dsc *= (wholeQnty + prQnty)
             dsc = Math.Round(dsc, 2, MidpointRounding.AwayFromZero)
-            oDgv.Rows.Add((wholeQnty + prQnty), type, oItemSerial.Text.ToUpper, result(2).ToUpper, Math.Round(Val(oUnitPrice.Text), 2, MidpointRounding.AwayFromZero), dsc, Math.Round((Val(oUnitPrice.Text) * (wholeQnty + prQnty) - dsc), 2, MidpointRounding.AwayFromZero), PrKey)
+            oDgv.Rows.Add((wholeQnty + prQnty), type, oItemSerial.Text.ToUpper, result(2).ToUpper, Math.Round(Val(result(3)), 2, MidpointRounding.AwayFromZero), dsc, Math.Round((Val(result(3)) * (wholeQnty + prQnty) - dsc), 2, MidpointRounding.AwayFromZero), PrKey)
 
 
             Call Notification("New item added!")
@@ -1169,7 +1196,7 @@ Restart:
             oItemName.Text = Nothing
             oUnitPrice.Text = ""
             oSubTotal.Text = ""
-            lblCurrency.Text = "USD"
+            lblCurrency.Text = "EGP"
             ceVisaCurrency.Checked = False
             oItemSerial.Focus()
             Call OutTotalize()
@@ -1222,7 +1249,7 @@ Restart:
         oSearch.Text = ""
         tValueAmount = 0
         ceVisaCurrency.Checked = False
-        lblCurrency.Text = "USD"
+        lblCurrency.Text = "EGP"
         LabelControl15.Visible = False
         LabelControl16.Visible = False
         oTime.Visible = False
@@ -1254,6 +1281,7 @@ Restart:
 
                 Query1 = "SELECT *, (pEUR + pUSD + pGBP + pRUB + pCHF + pCNY) AS OtherCurrency FROM tblOut1 WHERE Serial = " & Val(oSearch.Text)
                 Dim cust As Integer = Nothing
+                Dim seller As String = ""
 
                 Using cmd = New SqlCommand(Query1, myConn)
                     Using dr As SqlDataReader = cmd.ExecuteReader
@@ -1272,89 +1300,77 @@ Restart:
                             txtTax1.Text = dr(24)
                             txtTax2.Text = dr(25)
                             ceDebit.Checked = dr(26)
-                            tbCurrency.Text = dr(27)
+                            If Not IsDBNull(dr(27)) Then
+                                seller = dr(27)
+                            End If
+                            tbCurrency.Text = dr(28)
                         End If
                     End Using
                 End Using
 
-                oCustomer.EditValue = cust
-                Query2 = "SELECT tblOut2.Serial, tblOut2.Kind, tblOut2.Item, tblItems.Serial AS ItemSerial, tblItems.Name AS ItemName, tblOut2.Compound, CASE WHEN (tblOut2.Compound = '' OR tblOut2.Compound = 0 ) THEN tblItems.Name ELSE tblCompounds.Name END AS CompoundName, tblOut2.Qnty, tblOut2.Price, tblOut2.UnitPrice, tblOut2.Discount" _
-                    & " FROM tblOut2 LEFT OUTER JOIN tblItems" _
-                    & " ON tblOut2.Item = tblItems.PrKey" _
-                    & " LEFT OUTER JOIN tblCompounds" _
-                    & " ON tblOut2.Compound = tblCompounds.Serial" _
-                    & " WHERE(tblOut2.Serial = " & Val(oSearch.Text) & ")" _
-                    & " ORDER BY tblOut2.PrKey"
-                If myConn.State = ConnectionState.Closed Then
-                    myConn.Open()
-                End If
+                RecallSeller(seller)
 
-
-                Using cmd = New SqlCommand(Query2, myConn)
-
-                    Using dr As SqlDataReader = cmd.ExecuteReader
-                        Dim dt As New DataTable
-                        dt.Load(dr)
-                        oDgv.Rows.Clear()
-                        For x As Integer = 0 To dt.Rows.Count - 1
-                            oDgv.Rows.Add(dt(x)(7), dt(x)(1), dt(x)(3), dt(x)(4), dt(x)(9), dt(x)(10), dt(x)(8), dt(x)(2))
-                        Next
-                    End Using
-
-                End Using
-
-
-                Call OutTotalize()
-
-                LabelControl16.Visible = True
-                LabelControl15.Visible = True
-                oTime.Visible = True
-                oUser.Visible = True
-                KryptonButton5.Enabled = False
-
-
-                'show the date and the username of the invoice
-                Dim theQuery As String = "SELECT tblOut1.[Date], tblLogin.UserName AS [User], CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time] FROM tblOut1 INNER JOIN tblLogin ON tblOut1.[User] = tblLogin.Sr" _
-                                         & " WHERE tblOut1.Serial = '" & Val(oSearch.Text) & "'"
-
-                Using cmd = New SqlCommand(theQuery, myConn)
-                    Using dr As SqlDataReader = cmd.ExecuteReader
-                        If dr.Read() Then
-                            oTime.Text = dr(0) & "   " & dr(2)
-                            oUser.Text = dr(1)
-                        Else
-                            oTime.Text = ""
-                            oUser.Text = ""
-                        End If
-                    End Using
-                End Using
-                myConn.Close()
-                If GlobalVariables.authority <> "User" And GlobalVariables.authority <> "Cashier" Then
-                    SimpleButton6.Visible = True
-                End If
-            Else
-                oQnty.Text = "1"
-                oItemSerial.Text = Nothing
-                oItemName.Text = Nothing
-                oUnitPrice.Text = ""
-                oSubTotal.Text = ""
-                SimpleButton6.Visible = False
-                oDgv.Rows.Clear()
-                oItemSerial.Focus()
-                lblCurrency.Text = "USD"
-                ceVisaCurrency.Checked = False
-                tValueAmount = 0
-                oCustomer.EditValue = Nothing
-                KryptonButton5.Enabled = True
-                txtVAT.Text = ""
-                txtTax1.Text = ""
-                txtTax2.Text = ""
-                ceDebit.Checked = False
-                LabelControl16.Visible = False
-                LabelControl15.Visible = False
-                oTime.Visible = False
-                oUser.Visible = False
+            oCustomer.EditValue = cust
+            Query2 = "SELECT tblOut2.Serial, tblOut2.Kind, tblOut2.Item, tblItems.Serial AS ItemSerial, tblItems.Name AS ItemName, tblOut2.Compound, CASE WHEN (tblOut2.Compound = '' OR tblOut2.Compound = 0 ) THEN tblItems.Name ELSE tblCompounds.Name END AS CompoundName, tblOut2.Qnty, tblOut2.Price, tblOut2.UnitPrice, tblOut2.Discount" _
+                & " FROM tblOut2 LEFT OUTER JOIN tblItems" _
+                & " ON tblOut2.Item = tblItems.PrKey" _
+                & " LEFT OUTER JOIN tblCompounds" _
+                & " ON tblOut2.Compound = tblCompounds.Serial" _
+                & " WHERE(tblOut2.Serial = " & Val(oSearch.Text) & ")" _
+                & " ORDER BY tblOut2.PrKey"
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
             End If
+
+
+            Using cmd = New SqlCommand(Query2, myConn)
+
+                Using dr As SqlDataReader = cmd.ExecuteReader
+                    Dim dt As New DataTable
+                    dt.Load(dr)
+                    oDgv.Rows.Clear()
+                    For x As Integer = 0 To dt.Rows.Count - 1
+                        oDgv.Rows.Add(dt(x)(7), dt(x)(1), dt(x)(3), dt(x)(4), dt(x)(9), dt(x)(10), dt(x)(8), dt(x)(2))
+                    Next
+                End Using
+
+            End Using
+
+
+            Call OutTotalize()
+
+            LabelControl16.Visible = True
+            LabelControl15.Visible = True
+            oTime.Visible = True
+            oUser.Visible = True
+            KryptonButton5.Enabled = False
+
+
+            'show the date and the username of the invoice
+            Dim theQuery As String = "SELECT tblOut1.[Date], tblLogin.UserName AS [User], CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time] FROM tblOut1 INNER JOIN tblLogin ON tblOut1.[User] = tblLogin.Sr" _
+                                     & " WHERE tblOut1.Serial = '" & Val(oSearch.Text) & "'"
+
+            Using cmd = New SqlCommand(theQuery, myConn)
+                Using dr As SqlDataReader = cmd.ExecuteReader
+                    If dr.Read() Then
+                        oTime.Text = dr(0) & "   " & dr(2)
+                        oUser.Text = dr(1)
+                    Else
+                        oTime.Text = ""
+                        oUser.Text = ""
+                    End If
+                End Using
+            End Using
+            myConn.Close()
+            If GlobalVariables.authority <> "User" And GlobalVariables.authority <> "Cashier" Then
+                SimpleButton6.Visible = True
+            End If
+            Else
+
+                ClearData()
+
+            End If
+
         End If
     End Sub
 
@@ -1377,7 +1393,7 @@ Restart:
             oItemSerial.Focus()
             oCustomer.EditValue = Nothing
             oSearch.Text = ""
-            lblCurrency.Text = "USD"
+            lblCurrency.Text = "EGP"
             txtVAT.Text = ""
             txtTax1.Text = ""
             txtTax2.Text = ""
@@ -1412,7 +1428,10 @@ Restart:
                 Dim resString As String = GetItem(oItemSerial.Text)
                 Dim result() As String = resString.Split(";")
                 Application.DoEvents()
-                If result(2) = "0" And oItemSerial.Text Like "200" & "*" Then
+                If oItemSerial.Text Like "999*" Then
+                    RecallSeller(oItemSerial.Text)
+                    Exit Sub
+                ElseIf result(2) = "0" And oItemSerial.Text Like "200" & "*" Then
                     '   oItemName.Text = result(2)
                     'Else
                     ''''to fix the barcode error!
@@ -1893,28 +1912,34 @@ Restart:
             pCNY = 0
             Select Case lblCurrency.Text
                 Case "EUR"
-                    pEUR = Val(tbTotal.Text)
+                    pEUR = Val(tbCurrency.Text)
                 Case "USD"
-                    pUSD = Val(tbTotal.Text)
+                    pUSD = Val(tbCurrency.Text)
                 Case "GBP"
-                    pGBP = Val(tbTotal.Text)
+                    pGBP = Val(tbCurrency.Text)
                 Case "RUB"
-                    pRUB = Val(tbTotal.Text)
+                    pRUB = Val(tbCurrency.Text)
                 Case "CHF"
-                    pCHF = Val(tbTotal.Text)
+                    pCHF = Val(tbCurrency.Text)
                 Case "CNY"
-                    pCNY = Val(tbTotal.Text)
+                    pCNY = Val(tbCurrency.Text)
             End Select
             pEGP = Val(tbEgyptian.Text)
             Dim Cust As String = "NULL"
             If Not oCustomer.EditValue = Nothing Then
                 Cust = oCustomer.EditValue
             End If
+
+            Dim seller As String = "NULL"
+            If currentSeller <> "" Then
+                seller = currentSeller
+            End If
+
             Dim Query As String = "UPDATE tblOut1 SET Customer = " & Cust & ", SubTotal = '" & tbTotal.Text & "', Discount = '" & Val(tbCurrency.Text) & "', NetTotal = '" & tbRest.Text & "', [User] = '" & GlobalVariables.ID & "'" _
                                   & ", pEGP = " & pEGP & ", pEUR = " & pEUR & ", pUSD = " & pUSD & ", pGBP = " & pGBP _
                                   & ", pRUB = " & pRUB & ", pCHF = " & pCHF & ", pCNY = " & pCNY & ", RealValue = " & tValueAmount & ", Currency = '" & lblCurrency.Text & "'" _
                                   & ", Visa1 = " & CInt(ceVisaEGP.Checked) & ", Visa2 = " & CInt(ceVisaCurrency.Checked) _
-                                  & ", VAT = " & Val(txtVAT.Text) & ", Tax1 = " & Val(txtTax1.Text) & ", Tax2 = " & Val(txtTax2.Text) & ", Debit = " & CInt(ceDebit.Checked) _
+                                  & ", VAT = " & Val(txtVAT.Text) & ", Tax1 = " & Val(txtTax1.Text) & ", Tax2 = " & Val(txtTax2.Text) & ", Debit = " & CInt(ceDebit.Checked) & ", Seller = " & seller _
                                   & " WHERE Serial = '" & oSearch.Text & "'"
 
             Using cmd = New SqlCommand(Query, myConn)
@@ -1961,24 +1986,7 @@ Restart:
             myConn.Close()
 
             'clear
-            oQnty.Text = "1"
-            oItemSerial.Text = Nothing
-            oItemName.Text = Nothing
-            tbCurrency.Text = ""
-            tbEgyptian.Text = ""
-            oUnitPrice.Text = ""
-            oSubTotal.Text = ""
-            oDgv.Rows.Clear()
-            oItemSerial.Focus()
-            oQnty.SelectAll()
-            lblCurrency.Text = "USD"
-            ceVisaCurrency.Checked = False
-            tValueAmount = 0
-            oCustomer.EditValue = Nothing
-            txtVAT.Text = ""
-            txtTax1.Text = ""
-            txtTax2.Text = ""
-            ceDebit.Checked = False
+            ClearData()
             Call Notification("Invoice Added")
 
             If KryptonButton5.Text <> "Õ›‹‹‹‹Ÿ" Then
@@ -2019,7 +2027,7 @@ Restart:
                 oDgv.Rows(x).Cells(5).Value = 0
                 oDgv.Rows(x).Cells(6).Value = 0
             Next
-            lblCurrency.Text = "USD"
+            lblCurrency.Text = "EGP"
             ceVisaCurrency.Checked = False
             tValueAmount = 0
 
@@ -2037,7 +2045,7 @@ Restart:
                 End If
                 cmd.ExecuteNonQuery()
 
-                cmd.CommandText = "SELECT @@IDENTITY;"
+                cmd.CommandText = "SELECT MAX(Serial) FROM tblOut1;"
                 Using dt As SqlDataReader = cmd.ExecuteReader
                     If dt.Read() Then
                         OSerial.Text = dt(0).ToString
@@ -2064,21 +2072,7 @@ Restart:
             myConn.Close()
 
             'clear
-            oQnty.Text = "1"
-            oItemSerial.Text = Nothing
-            oItemName.Text = Nothing
-            tbCurrency.Text = ""
-            tbEgyptian.Text = ""
-            oUnitPrice.Text = ""
-            oSubTotal.Text = ""
-            oDgv.Rows.Clear()
-            oItemSerial.Focus()
-            oQnty.SelectAll()
-            oCustomer.EditValue = Nothing
-            txtVAT.Text = ""
-            txtTax1.Text = ""
-            txtTax2.Text = ""
-            ceDebit.Checked = False
+            ClearData()
             Call Notification("Invoice Added")
 
             If KryptonButton5.Text <> "Õ›‹‹‹‹Ÿ" Then
@@ -2409,9 +2403,9 @@ Restart:
         If oCustomer.EditValue = Nothing Then
             lblDiscount.Visible = False
             lblDiscount.Text = "0"
-            If GlobalVariables.authority = "Admin" Then
-                oDgv.Columns(5).ReadOnly = False
-            End If
+            'If GlobalVariables.authority = "Admin" Then
+            oDgv.Columns(5).ReadOnly = False
+            'End If
             oDgv.Columns(4).ReadOnly = True
         Else
             lblDiscount.Visible = True
@@ -2431,9 +2425,9 @@ Restart:
             lblDiscount.Text = disc & "%"
 
             oDgv.Columns(5).ReadOnly = True
-            If GlobalVariables.authority = "Admin" Then
-                oDgv.Columns(4).ReadOnly = False
-            End If
+            'If GlobalVariables.authority = "Admin" Then
+            oDgv.Columns(4).ReadOnly = False
+            'End If
         End If
         OutTotalize()
     End Sub
@@ -2567,5 +2561,6 @@ Restart:
             End If
         End If
     End Sub
+
 End Class
 

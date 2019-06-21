@@ -1,0 +1,23 @@
+
+CREATE FUNCTION [dbo].[ItemLastPrice]
+(
+    @ItemSerial BIGINT
+)
+RETURNS FLOAT
+AS
+BEGIN
+
+    RETURN (
+		SELECT TOP 1 UnitPrice
+		FROM tblIn2
+		WHERE Item = @ItemSerial
+		ORDER BY PrKey DESC
+	)
+
+END
+
+=====================
+
+create unique index itemSerial on tblItems(Serial);
+create unique index itemName on tblItems(Name);
+create unique index itemCode on tblMultiCodes(Code);

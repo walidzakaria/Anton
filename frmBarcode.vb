@@ -342,6 +342,62 @@ Public Class frmBarcode
 
     End Sub
 
+    Private Sub PrintLablePages(ByVal SelectedReport As String, ByVal extraCopy As Boolean)
+        If iDgv.RowCount = 0 Then
+            MessageBox.Show("·«  ÊÃœ »Ì«‰«  ·Ì „ ÿ»«⁄ Â«!", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ElseIf cbPrinters.Text = "" Then
+            MessageBox.Show("!»—Ã«¡ «Œ Ì«— «·ÿ«»⁄…", "Printer", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            'check the numbers
+            Dim num As String
+            For x As Integer = 0 To iDgv.RowCount - 1
+                num = iDgv.Rows(x).Cells(2).Value
+                If Not IsNumeric(num) Then
+                    MsgBox("·ﬁœ √œŒ·  —ﬁ„ €Ì— ’ÕÌÕ!")
+                    iDgv.ClearSelection()
+                    iDgv.Rows(x).Cells(2).Selected = True
+                    Exit Sub
+                End If
+            Next
+
+            Dim theQuery As String = ""
+
+            Dim sr, itm As String
+            Dim co As Integer
+            Dim mainCount As Integer = 0
+            Dim Price As Single = 0
+            Dim numberOfLabels As Integer = 0
+
+            For x As Integer = 0 To iDgv.RowCount - 1
+                sr = iDgv.Rows(x).Cells(0).Value
+                itm = iDgv.Rows(x).Cells(1).Value
+                co = iDgv.Rows(x).Cells(2).Value
+                If extraCopy Then
+                    co *= 2
+                End If
+                Price = iDgv.Rows(x).Cells(3).Value
+
+                If GV.dualBarcode Then
+                    If co Mod 2 <> 0 Then
+                        co += 1
+                    End If
+                    co = co / 2
+                End If
+
+                For y As Integer = 0 To co - 1
+                    theQuery += "SELECT '" & sr & "' AS PrKey, N'" & itm & "' AS Item, " & Price & " AS Price UNION ALL "
+                Next
+            Next
+            If Not theQuery = "" Then
+                theQuery = theQuery.Substring(0, theQuery.LastIndexOf(" UNION ALL "))
+                createBarcode(theQuery, SelectedReport)
+            End If
+
+        End If
+
+    End Sub
+
+
     Private Sub createBarcode(ByVal Query As String, ByVal reportTemplate As String)
         Dim ds As New ReportsDS
         Dim da As New SqlDataAdapter(Query, myConn)
@@ -351,6 +407,7 @@ Public Class frmBarcode
         Dim rep As New XtraBarcodeLabels
         Try
             rep.LoadLayout(reportTemplate)
+
         Catch ex As Exception
 
         End Try
@@ -361,6 +418,7 @@ Public Class frmBarcode
         Dim tool As ReportPrintTool = New ReportPrintTool(rep)
         rep.CreateDocument()
         Try
+
             rep.Print(cbPrinters.Text)
         Catch ex As Exception
 
@@ -498,7 +556,7 @@ Public Class frmBarcode
     End Sub
 
     Private Sub btnPrintLabels1_Click(sender As Object, e As EventArgs) Handles btnPrintLabels1.Click
-        PrintLables("BarcodeLabels.repx", False)
+        PrintLablePages("BarcodePages.repx", False)
     End Sub
 
     Private Sub btnPrintLabels2_Click(sender As Object, e As EventArgs) Handles btnPrintLabels2.Click

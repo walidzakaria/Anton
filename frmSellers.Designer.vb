@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Public Class frmCustomers
+Partial Public Class frmSellers
     Inherits DevExpress.XtraEditors.XtraForm
     ''' <summary>
     ''' Required designer variable.
@@ -25,11 +25,11 @@ Partial Public Class frmCustomers
     ''' </summary>
     '''
     Private Sub InitializeComponent()
-        Dim WindowsUIButtonImageOptions1 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions2 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim WindowsUIButtonImageOptions3 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
-        Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression1 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim WindowsUIButtonImageOptions4 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions5 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim WindowsUIButtonImageOptions6 As DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions = New DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions()
+        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression2 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
         Me.windowsUIButtonPanel = New DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -57,10 +57,10 @@ Partial Public Class frmCustomers
         Me.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = True
         Me.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = True
         Me.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
-        WindowsUIButtonImageOptions1.ImageUri.Uri = "New;Size32x32;GrayScaled"
-        WindowsUIButtonImageOptions2.ImageUri.Uri = "Edit;Size32x32;GrayScaled"
-        WindowsUIButtonImageOptions3.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled"
-        Me.windowsUIButtonPanel.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("New", True, WindowsUIButtonImageOptions1), New DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", True, WindowsUIButtonImageOptions2), New DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", True, WindowsUIButtonImageOptions3)})
+        WindowsUIButtonImageOptions4.ImageUri.Uri = "New;Size32x32;GrayScaled"
+        WindowsUIButtonImageOptions5.ImageUri.Uri = "Edit;Size32x32;GrayScaled"
+        WindowsUIButtonImageOptions6.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled"
+        Me.windowsUIButtonPanel.Buttons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraBars.Docking2010.WindowsUIButton("New", True, WindowsUIButtonImageOptions4), New DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", True, WindowsUIButtonImageOptions5), New DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", True, WindowsUIButtonImageOptions6)})
         Me.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.windowsUIButtonPanel.EnableImageTransparency = True
         Me.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White
@@ -145,17 +145,17 @@ Partial Public Class frmCustomers
         Me.GridView1.Appearance.ViewCaption.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.GridView1.Appearance.ViewCaption.Options.UseFont = True
         Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn11, Me.GridColumn4})
-        GridFormatRule1.ApplyToRow = True
-        GridFormatRule1.Name = "Format0"
-        FormatConditionRuleExpression1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        FormatConditionRuleExpression1.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        FormatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Red
-        FormatConditionRuleExpression1.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression1.Expression = "[Details] <> 'Selling'"
-        FormatConditionRuleExpression1.PredefinedName = "Red Text"
-        GridFormatRule1.Rule = FormatConditionRuleExpression1
-        Me.GridView1.FormatRules.Add(GridFormatRule1)
+        GridFormatRule2.ApplyToRow = True
+        GridFormatRule2.Name = "Format0"
+        FormatConditionRuleExpression2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleExpression2.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        FormatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Red
+        FormatConditionRuleExpression2.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression2.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression2.Expression = "[Details] <> 'Selling'"
+        FormatConditionRuleExpression2.PredefinedName = "Red Text"
+        GridFormatRule2.Rule = FormatConditionRuleExpression2
+        Me.GridView1.FormatRules.Add(GridFormatRule2)
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "EGP", Nothing, "(EGP: SUM={0:0.##})"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "EUR", Nothing, "")})
         Me.GridView1.Name = "GridView1"
@@ -172,22 +172,23 @@ Partial Public Class frmCustomers
         '
         'GridColumn11
         '
-        Me.GridColumn11.Caption = "اسم العميل"
-        Me.GridColumn11.FieldName = "Customer"
+        Me.GridColumn11.Caption = "اسم البائع"
+        Me.GridColumn11.FieldName = "Seller"
         Me.GridColumn11.Name = "GridColumn11"
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 0
-        Me.GridColumn11.Width = 505
+        Me.GridColumn11.Width = 383
         '
         'GridColumn4
         '
-        Me.GridColumn4.Caption = "الخصم"
-        Me.GridColumn4.FieldName = "Discount"
+        Me.GridColumn4.Caption = "الكود"
+        Me.GridColumn4.FieldName = "Code"
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 1
+        Me.GridColumn4.Width = 300
         '
-        'frmCustomers
+        'frmSellers
         '
         Me.Appearance.BackColor = System.Drawing.Color.White
         Me.Appearance.Options.UseBackColor = True
@@ -196,10 +197,10 @@ Partial Public Class frmCustomers
         Me.ClientSize = New System.Drawing.Size(458, 488)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.windowsUIButtonPanel)
-        Me.Name = "frmCustomers"
+        Me.Name = "frmSellers"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Customers"
+        Me.Text = "Sellers"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

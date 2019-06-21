@@ -38,6 +38,7 @@ Partial Class frmCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.KryptonPanel4 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
+        Me.lblSeller = New DevExpress.XtraEditors.LabelControl()
         Me.al9 = New DevExpress.XtraEditors.LabelControl()
         Me.PictureEdit2 = New DevExpress.XtraEditors.PictureEdit()
         Me.lblIndicateTotal = New DevExpress.XtraEditors.LabelControl()
@@ -316,6 +317,7 @@ Partial Class frmCashier
         '
         'KryptonPanel4
         '
+        Me.KryptonPanel4.Controls.Add(Me.lblSeller)
         Me.KryptonPanel4.Controls.Add(Me.al9)
         Me.KryptonPanel4.Controls.Add(Me.PictureEdit2)
         Me.KryptonPanel4.Controls.Add(Me.lblIndicateTotal)
@@ -342,6 +344,19 @@ Partial Class frmCashier
         Me.KryptonPanel4.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabHighProfile
         Me.KryptonPanel4.Size = New System.Drawing.Size(761, 235)
         Me.KryptonPanel4.TabIndex = 0
+        '
+        'lblSeller
+        '
+        Me.lblSeller.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblSeller.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.lblSeller.Appearance.ForeColor = System.Drawing.Color.Gray
+        Me.lblSeller.Appearance.Options.UseFont = True
+        Me.lblSeller.Appearance.Options.UseForeColor = True
+        Me.lblSeller.Location = New System.Drawing.Point(199, 180)
+        Me.lblSeller.Name = "lblSeller"
+        Me.lblSeller.Size = New System.Drawing.Size(123, 27)
+        Me.lblSeller.TabIndex = 100
+        Me.lblSeller.Text = "ÇáÈÇÆÚ: áÇ íæÌÏ"
         '
         'al9
         '
@@ -866,9 +881,9 @@ Partial Class frmCashier
         Me.lblCurrency.Appearance.Options.UseForeColor = True
         Me.lblCurrency.Location = New System.Drawing.Point(8, 17)
         Me.lblCurrency.Name = "lblCurrency"
-        Me.lblCurrency.Size = New System.Drawing.Size(51, 33)
+        Me.lblCurrency.Size = New System.Drawing.Size(48, 33)
         Me.lblCurrency.TabIndex = 95
-        Me.lblCurrency.Text = "USD"
+        Me.lblCurrency.Text = "EGP"
         '
         'tbCurrency
         '
@@ -1662,5 +1677,6 @@ Partial Class frmCashier
     Friend WithEvents Column11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ceDebit As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblSeller As DevExpress.XtraEditors.LabelControl
 
 End Class

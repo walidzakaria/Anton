@@ -28,10 +28,11 @@ Partial Class frmCashierReport
         Me.KryptonLabel1 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonLabel2 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.cbCashiers = New System.Windows.Forms.ComboBox()
-        Me.btnCurrency = New DevExpress.XtraEditors.SimpleButton()
-        Me.Cancel = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnItems = New DevExpress.XtraEditors.SimpleButton()
         Me.rgPayment = New DevExpress.XtraEditors.RadioGroup()
+        Me.Cancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnSellers = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnItems = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnCurrency = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.rgPayment.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -39,7 +40,7 @@ Partial Class frmCashierReport
         '
         Me.KryptonLabel77.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel77.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel77.Location = New System.Drawing.Point(336, 21)
+        Me.KryptonLabel77.Location = New System.Drawing.Point(363, 21)
         Me.KryptonLabel77.Name = "KryptonLabel77"
         Me.KryptonLabel77.Size = New System.Drawing.Size(59, 24)
         Me.KryptonLabel77.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
@@ -52,7 +53,7 @@ Partial Class frmCashierReport
         Me.dailyDateFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dailyDateFrom.CalendarTodayDate = New Date(2015, 9, 7, 0, 0, 0, 0)
         Me.dailyDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dailyDateFrom.Location = New System.Drawing.Point(187, 21)
+        Me.dailyDateFrom.Location = New System.Drawing.Point(214, 21)
         Me.dailyDateFrom.Name = "dailyDateFrom"
         Me.dailyDateFrom.Size = New System.Drawing.Size(129, 25)
         Me.dailyDateFrom.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -63,7 +64,7 @@ Partial Class frmCashierReport
         Me.dailyDateTill.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dailyDateTill.CalendarTodayDate = New Date(2015, 9, 7, 0, 0, 0, 0)
         Me.dailyDateTill.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dailyDateTill.Location = New System.Drawing.Point(20, 21)
+        Me.dailyDateTill.Location = New System.Drawing.Point(47, 21)
         Me.dailyDateTill.Name = "dailyDateTill"
         Me.dailyDateTill.Size = New System.Drawing.Size(129, 25)
         Me.dailyDateTill.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -75,7 +76,7 @@ Partial Class frmCashierReport
         Me.tmFrom.CalendarTodayDate = New Date(2015, 6, 18, 0, 0, 0, 0)
         Me.tmFrom.CustomFormat = "HH:mm"
         Me.tmFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.tmFrom.Location = New System.Drawing.Point(227, 52)
+        Me.tmFrom.Location = New System.Drawing.Point(254, 52)
         Me.tmFrom.Name = "tmFrom"
         Me.tmFrom.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.tmFrom.ShowUpDown = True
@@ -90,7 +91,7 @@ Partial Class frmCashierReport
         Me.tmTill.CalendarTodayDate = New Date(2015, 6, 18, 0, 0, 0, 0)
         Me.tmTill.CustomFormat = "HH:mm"
         Me.tmTill.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.tmTill.Location = New System.Drawing.Point(60, 52)
+        Me.tmTill.Location = New System.Drawing.Point(87, 52)
         Me.tmTill.Name = "tmTill"
         Me.tmTill.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.tmTill.ShowUpDown = True
@@ -103,7 +104,7 @@ Partial Class frmCashierReport
         '
         Me.KryptonLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel1.Location = New System.Drawing.Point(339, 53)
+        Me.KryptonLabel1.Location = New System.Drawing.Point(366, 53)
         Me.KryptonLabel1.Name = "KryptonLabel1"
         Me.KryptonLabel1.Size = New System.Drawing.Size(56, 24)
         Me.KryptonLabel1.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
@@ -115,7 +116,7 @@ Partial Class frmCashierReport
         '
         Me.KryptonLabel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel2.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel2.Location = New System.Drawing.Point(326, 90)
+        Me.KryptonLabel2.Location = New System.Drawing.Point(353, 90)
         Me.KryptonLabel2.Name = "KryptonLabel2"
         Me.KryptonLabel2.Size = New System.Drawing.Size(69, 24)
         Me.KryptonLabel2.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
@@ -130,55 +131,16 @@ Partial Class frmCashierReport
         Me.cbCashiers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbCashiers.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCashiers.FormattingEnabled = True
-        Me.cbCashiers.Location = New System.Drawing.Point(40, 87)
+        Me.cbCashiers.Location = New System.Drawing.Point(67, 87)
         Me.cbCashiers.Name = "cbCashiers"
         Me.cbCashiers.Size = New System.Drawing.Size(276, 27)
         Me.cbCashiers.TabIndex = 78
         Me.cbCashiers.TabStop = False
         '
-        'btnCurrency
-        '
-        Me.btnCurrency.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCurrency.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.btnCurrency.Appearance.Options.UseFont = True
-        Me.btnCurrency.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCurrency.ImageOptions.Image = CType(resources.GetObject("btnCurrency.ImageOptions.Image"), System.Drawing.Image)
-        Me.btnCurrency.Location = New System.Drawing.Point(271, 173)
-        Me.btnCurrency.Name = "btnCurrency"
-        Me.btnCurrency.Size = New System.Drawing.Size(109, 34)
-        Me.btnCurrency.TabIndex = 79
-        Me.btnCurrency.Text = "عملة"
-        '
-        'Cancel
-        '
-        Me.Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Cancel.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.Cancel.Appearance.Options.UseFont = True
-        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.ImageOptions.Image = CType(resources.GetObject("Cancel.ImageOptions.Image"), System.Drawing.Image)
-        Me.Cancel.Location = New System.Drawing.Point(20, 173)
-        Me.Cancel.Name = "Cancel"
-        Me.Cancel.Size = New System.Drawing.Size(109, 34)
-        Me.Cancel.TabIndex = 80
-        Me.Cancel.Text = "CLOSE"
-        '
-        'btnItems
-        '
-        Me.btnItems.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnItems.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.btnItems.Appearance.Options.UseFont = True
-        Me.btnItems.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnItems.ImageOptions.Image = CType(resources.GetObject("btnItems.ImageOptions.Image"), System.Drawing.Image)
-        Me.btnItems.Location = New System.Drawing.Point(146, 173)
-        Me.btnItems.Name = "btnItems"
-        Me.btnItems.Size = New System.Drawing.Size(109, 34)
-        Me.btnItems.TabIndex = 81
-        Me.btnItems.Text = "صنف"
-        '
         'rgPayment
         '
         Me.rgPayment.EditValue = CType(0, Byte)
-        Me.rgPayment.Location = New System.Drawing.Point(146, 120)
+        Me.rgPayment.Location = New System.Drawing.Point(173, 120)
         Me.rgPayment.Name = "rgPayment"
         Me.rgPayment.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.rgPayment.Properties.Appearance.Options.UseFont = True
@@ -187,12 +149,65 @@ Partial Class frmCashierReport
         Me.rgPayment.Size = New System.Drawing.Size(170, 26)
         Me.rgPayment.TabIndex = 82
         '
+        'Cancel
+        '
+        Me.Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Cancel.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Cancel.Appearance.Options.UseFont = True
+        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel.ImageOptions.Image = CType(resources.GetObject("Cancel.ImageOptions.Image"), System.Drawing.Image)
+        Me.Cancel.Location = New System.Drawing.Point(12, 173)
+        Me.Cancel.Name = "Cancel"
+        Me.Cancel.Size = New System.Drawing.Size(100, 33)
+        Me.Cancel.TabIndex = 80
+        Me.Cancel.Text = "CLOSE"
+        '
+        'btnSellers
+        '
+        Me.btnSellers.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSellers.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.btnSellers.Appearance.Options.UseFont = True
+        Me.btnSellers.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnSellers.ImageOptions.Image = CType(resources.GetObject("btnSellers.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnSellers.Location = New System.Drawing.Point(118, 173)
+        Me.btnSellers.Name = "btnSellers"
+        Me.btnSellers.Size = New System.Drawing.Size(100, 33)
+        Me.btnSellers.TabIndex = 83
+        Me.btnSellers.Text = "بائع"
+        '
+        'btnItems
+        '
+        Me.btnItems.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnItems.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.btnItems.Appearance.Options.UseFont = True
+        Me.btnItems.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnItems.ImageOptions.Image = CType(resources.GetObject("btnItems.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnItems.Location = New System.Drawing.Point(224, 173)
+        Me.btnItems.Name = "btnItems"
+        Me.btnItems.Size = New System.Drawing.Size(100, 33)
+        Me.btnItems.TabIndex = 81
+        Me.btnItems.Text = "صنف"
+        '
+        'btnCurrency
+        '
+        Me.btnCurrency.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCurrency.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.btnCurrency.Appearance.Options.UseFont = True
+        Me.btnCurrency.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnCurrency.ImageOptions.Image = CType(resources.GetObject("btnCurrency.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnCurrency.Location = New System.Drawing.Point(330, 173)
+        Me.btnCurrency.Name = "btnCurrency"
+        Me.btnCurrency.Size = New System.Drawing.Size(100, 33)
+        Me.btnCurrency.TabIndex = 79
+        Me.btnCurrency.Text = "عملة"
+        '
         'frmCashierReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(421, 219)
+        Me.ClientSize = New System.Drawing.Size(448, 226)
+        Me.Controls.Add(Me.btnSellers)
         Me.Controls.Add(Me.rgPayment)
         Me.Controls.Add(Me.btnItems)
         Me.Controls.Add(Me.btnCurrency)
@@ -229,4 +244,5 @@ Partial Class frmCashierReport
     Friend WithEvents Cancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btnItems As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents rgPayment As DevExpress.XtraEditors.RadioGroup
+    Friend WithEvents btnSellers As DevExpress.XtraEditors.SimpleButton
 End Class

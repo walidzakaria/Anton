@@ -46,20 +46,21 @@ Public Class frmCashierReport
         Dim PaymentType As Integer
         PaymentType = rgPayment.SelectedIndex
 
-        Dim Que As String = "SELECT tblOut1.[Date], tblOut1.[Time], tblOut1.Serial," _
-                            & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 0 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS USD," _
-                            & " (CASE WHEN tblOut1.Visa1 = 0 THEN (CASE WHEN tblOut1.Currency = 'EGP' THEN tblOut1.RealValue ELSE tblOut1.pEGP END) ELSE 0 END) AS EGP," _
-                            & " (CASE WHEN tblOut1.Currency = 'EUR' THEN tblOut1.pEUR - tblOut1.NetTotal ELSE 0 END) AS EUR," _
-                            & " (CASE WHEN tblOut1.Currency = 'GBP' THEN tblOut1.pGBP - tblOut1.NetTotal ELSE 0 END) AS GBP," _
-                            & " (CASE WHEN tblOut1.Currency = 'RUB' THEN tblOut1.pRUB - tblOut1.NetTotal ELSE 0 END) AS RUB," _
-                            & " (CASE WHEN tblOut1.Currency = 'CHF' THEN tblOut1.pCHF - tblOut1.NetTotal ELSE 0 END) AS CHF," _
-                            & " (CASE WHEN tblOut1.Currency = 'CNY' THEN tblOut1.pCNY - tblOut1.NetTotal ELSE 0 END) AS CNY," _
-                            & " (CASE WHEN tblOut1.Visa1 = 1 THEN (CASE WHEN tblOut1.Currency = 'EGP' THEN tblOut1.RealValue ELSE tblOut1.pEGP END) ELSE 0 END) AS VisaEGP," _
-                            & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 1 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS VisaUSD," _
-                            & " tblLogin.UserName AS [User]" _
-                            & " FROM tblOut1 INNER JOIN tblLogin ON tblOut1.[User] = tblLogin.Sr" _
-                            & " WHERE (tblOut1.Debit = " & PaymentType & ") AND (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
-                            & " ORDER BY tblOut1.[Date], tblOut1.[Time];"
+        Dim query As String
+        query = "SELECT tblOut1.[Date], tblOut1.[Time], tblOut1.Serial," _
+                & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 0 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS USD," _
+                & " (CASE WHEN tblOut1.Currency = 'USD' AND tblOut1.Visa2 = 1 THEN tblOut1.pUSD - tblOut1.NetTotal ELSE 0 END) AS VisaUSD," _
+                & " (CASE WHEN tblOut1.Currency = 'EGP' THEN (CASE WHEN tblOut1.Visa1 = 0 THEN tblOut1.pEGP - tblOut1.NetTotal ELSE 0 END) ELSE (CASE WHEN tblOut1.Visa1 = 0 THEN tblOut1.pEGP ELSE 0 END) END) AS EGP," _
+                & " (CASE WHEN tblOut1.Currency = 'EGP' THEN (CASE WHEN tblOut1.Visa1 = 1 THEN tblOut1.pEGP - tblOut1.NetTotal ELSE 0 END) ELSE (CASE WHEN tblOut1.Visa1 = 1 THEN tblOut1.pEGP ELSE 0 END) END) AS VisaEGP," _
+                & " (CASE WHEN tblOut1.Currency = 'EUR' THEN tblOut1.pEUR - tblOut1.NetTotal ELSE 0 END) AS EUR," _
+                & " (CASE WHEN tblOut1.Currency = 'GBP' THEN tblOut1.pGBP - tblOut1.NetTotal ELSE 0 END) AS GBP," _
+                & " (CASE WHEN tblOut1.Currency = 'RUB' THEN tblOut1.pRUB - tblOut1.NetTotal ELSE 0 END) AS RUB," _
+                & " (CASE WHEN tblOut1.Currency = 'CHF' THEN tblOut1.pCHF - tblOut1.NetTotal ELSE 0 END) AS CHF," _
+                & " (CASE WHEN tblOut1.Currency = 'CNY' THEN tblOut1.pCNY - tblOut1.NetTotal ELSE 0 END) AS CNY," _
+                & " tblLogin.UserName AS [User]" _
+                & " FROM tblOut1 INNER JOIN tblLogin ON tblOut1.[User] = tblLogin.Sr" _
+                & " WHERE (tblOut1.Debit = " & PaymentType & ") AND (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
+                & " ORDER BY tblOut1.[Date], tblOut1.[Time];"
 
 
         If frmMain.myConn.State = ConnectionState.Closed Then
@@ -67,7 +68,7 @@ Public Class frmCashierReport
         End If
 
         Dim ds As New ReportsDS
-        Dim da As New SqlDataAdapter(Que, frmMain.myConn)
+        Dim da As New SqlDataAdapter(query, frmMain.myConn)
         da.Fill(ds.Tables("XtraCashier"))
 
         Dim Report As New XtraCashier
@@ -157,4 +158,35 @@ Public Class frmCashierReport
 
     End Sub
 
+    Private Sub btnSellers_Click(sender As Object, e As EventArgs) Handles btnSellers.Click
+        Dim timFrom, timTill As String
+        timFrom = dailyDateFrom.Value.ToString("MM/dd/yyyy") & " " & tmFrom.Value.ToString("HH:mm") & ":00.000"
+        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59.999"
+
+        Dim query As String = "SELECT tblOut1.Serial, tblOut1.[Date], tblOut1.[Time], SUM(Cost.Cost) AS Cost," _
+                              & " tblOut1.RealValue, tblSellers.Seller" _
+                              & "         FROM tblOut1" _
+                              & " LEFT OUTER JOIN tblSellers ON tblOut1.Seller = tblSellers.ID" _
+                              & "         Left Join " _
+                              & " (" _
+                              & " SELECT tblOut2.Serial, tblOut2.Item, (dbo.ItemLastPrice(tblOut2.Item) * tblOut2.Qnty) AS Cost" _
+                              & " FROM tblOut2" _
+                              & " ) Cost" _
+                              & " ON tblOut1.Serial = Cost.Serial" _
+                              & " WHERE (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" _
+                              & " GROUP BY tblOut1.Serial, tblOut1.[Date], tblOut1.[Time], tblOut1.RealValue, tblSellers.Seller ;"
+        Dim dt As New DataTable()
+        Using cmd = New SqlCommand(query, frmMain.myConn)
+            If frmMain.myConn.State = ConnectionState.Closed Then
+                frmMain.myConn.Open()
+            End If
+            Using dr As SqlDataReader = cmd.ExecuteReader
+                dt.Load(dr)
+            End Using
+            frmMain.myConn.Close()
+        End Using
+        frmSellersReport.GridControl1.DataSource = dt
+        frmSellersReport.ShowDialog()
+
+    End Sub
 End Class

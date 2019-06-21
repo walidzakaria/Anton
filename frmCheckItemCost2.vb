@@ -52,7 +52,8 @@ Public Class frmCheckItemCost2
     Public Sub CheckItem(ByVal Serial As String)
         Dim Query As String = "SELECT TOP(1) tblItems.Name, CONVERT(DECIMAL(19,2), tblIn2.UnitPrice) AS UnitPrice" _
                               & " FROM tblIn2 INNER JOIN tblItems ON tblIn2.Item = tblItems.PrKey" _
-                              & " WHERE tblItems.Serial = '" & Serial & "'" _
+                              & " LEFT OUTER JOIN tblMultiCodes ON tblItems.PrKey = tblMultiCodes.Item" _
+                              & " WHERE tblItems.Serial = '" & Serial & "' OR tblMultiCodes.Code = '" & Serial & "'" _
                               & " ORDER BY tblIn2.PrKey DESC"
 
         Using cmd = New SqlCommand(Query, frmMain.myConn)

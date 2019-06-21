@@ -238,6 +238,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Class1.vb" />
+    <Compile Include="Reports\crSales.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DBDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -321,6 +327,18 @@
       <DependentUpon>frmPassKey.vb</DependentUpon>
     </Compile>
     <Compile Include="frmPassKey.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSellers.Designer.vb">
+      <DependentUpon>frmSellers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSellers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSellersReport.Designer.vb">
+      <DependentUpon>frmSellersReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSellersReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSQL.Designer.vb">
@@ -560,6 +578,12 @@
     <Compile Include="XtraBarcodeLabels.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="XtraBarcodePages.Designer.vb">
+      <DependentUpon>XtraBarcodePages.vb</DependentUpon>
+    </Compile>
+    <Compile Include="XtraBarcodePages.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="XtraBarcodes1.Designer.vb">
       <DependentUpon>XtraBarcodes1.vb</DependentUpon>
     </Compile>
@@ -637,6 +661,10 @@
     <EmbeddedResource Include="CashierNew.resx">
       <DependentUpon>CashierNew.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSales.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddCheck.resx">
       <DependentUpon>frmAddCheck.vb</DependentUpon>
     </EmbeddedResource>
@@ -678,6 +706,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPassKey.resx">
       <DependentUpon>frmPassKey.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSellers.resx">
+      <DependentUpon>frmSellers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSellersReport.resx">
+      <DependentUpon>frmSellersReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSQL.resx">
       <DependentUpon>frmSQL.vb</DependentUpon>
@@ -929,6 +963,7 @@
     <None Include="Resources\student-loan-debt-installment-payment-check-money-paid-back-paying-owed-obligation-borrowed-funding-college-45808135.jpg" />
     <None Include="Resources\unnamed.png" />
     <None Include="Resources\elementary_school.png" />
+    <None Include="Resources\elementary_school1.png" />
     <Content Include="TrinitY.ico" />
     <None Include="Resources\Support.jpg" />
     <None Include="Resources\support-icons.png" />

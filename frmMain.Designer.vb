@@ -19,11 +19,10 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.KryptonManager1 = New ComponentFactory.Krypton.Toolkit.KryptonManager(Me.components)
+        Me.KryptonManager1 = New ComponentFactory.Krypton.Toolkit.KryptonManager()
         Me.KryptonPanel1 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.KryptonDockableNavigator1 = New ComponentFactory.Krypton.Docking.KryptonDockableNavigator()
         Me.KryptonPage1 = New ComponentFactory.Krypton.Navigator.KryptonPage()
@@ -334,6 +333,7 @@ Partial Class frmMain
         Me.KryptonRibbonGroupTriple5 = New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple()
         Me.btnChangePassword = New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton()
         Me.btnPassKey = New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton()
+        Me.btnSellers = New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton()
         Me.KryptonRibbonGroup7 = New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup()
         Me.KryptonRibbonGroupTriple7 = New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple()
         Me.KryptonRibbonGroupButton16 = New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton()
@@ -388,7 +388,7 @@ Partial Class frmMain
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbMonitor = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer1 = New System.Windows.Forms.Timer()
         CType(Me.KryptonPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel1.SuspendLayout()
         CType(Me.KryptonDockableNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -4562,7 +4562,7 @@ Partial Class frmMain
         '
         'KryptonRibbonGroupTriple5
         '
-        Me.KryptonRibbonGroupTriple5.Items.AddRange(New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem() {Me.btnChangePassword, Me.btnPassKey})
+        Me.KryptonRibbonGroupTriple5.Items.AddRange(New ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem() {Me.btnChangePassword, Me.btnPassKey, Me.btnSellers})
         '
         'btnChangePassword
         '
@@ -4576,6 +4576,11 @@ Partial Class frmMain
         Me.btnPassKey.ImageLarge = Global.MASTER_pro.My.Resources.Resources.unnamed
         Me.btnPassKey.TextLine1 = "Pass"
         Me.btnPassKey.TextLine2 = "Key"
+        '
+        'btnSellers
+        '
+        Me.btnSellers.ImageLarge = Global.MASTER_pro.My.Resources.Resources.elementary_school1
+        Me.btnSellers.TextLine1 = "ÈÇÆÚíä"
         '
         'KryptonRibbonGroup7
         '
@@ -5412,5 +5417,6 @@ Partial Class frmMain
     Friend WithEvents Qnty As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UnitPrice As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Value As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnSellers As ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton
 
 End Class
