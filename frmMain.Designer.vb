@@ -19,10 +19,11 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.KryptonManager1 = New ComponentFactory.Krypton.Toolkit.KryptonManager()
+        Me.KryptonManager1 = New ComponentFactory.Krypton.Toolkit.KryptonManager(Me.components)
         Me.KryptonPanel1 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.KryptonDockableNavigator1 = New ComponentFactory.Krypton.Docking.KryptonDockableNavigator()
         Me.KryptonPage1 = New ComponentFactory.Krypton.Navigator.KryptonPage()
@@ -388,7 +389,7 @@ Partial Class frmMain
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbMonitor = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer1 = New System.Windows.Forms.Timer()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.KryptonPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel1.SuspendLayout()
         CType(Me.KryptonDockableNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -4488,7 +4489,7 @@ Partial Class frmMain
         Me.kryptonRibbon.RibbonTabs.AddRange(New ComponentFactory.Krypton.Ribbon.KryptonRibbonTab() {Me.tabHome, Me.contextRed, Me.contextGreen1})
         Me.kryptonRibbon.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.kryptonRibbon.SelectedContext = "Red,Green"
-        Me.kryptonRibbon.SelectedTab = Me.contextRed
+        Me.kryptonRibbon.SelectedTab = Me.tabHome
         Me.kryptonRibbon.Size = New System.Drawing.Size(1100, 115)
         Me.kryptonRibbon.TabIndex = 3
         '

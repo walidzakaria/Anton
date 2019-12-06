@@ -684,17 +684,35 @@ Public Class frmMain
     End Sub
 
     Private Sub KryptonRibbonGroupButton16_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles KryptonRibbonGroupButton16.Click
+        'Dim fbd As New FolderBrowserDialog()
+        'Dim path As String
+        'Dim dR As DialogResult = fbd.ShowDialog
+
+        'If dR = Windows.Forms.DialogResult.OK Then
+        '    path = fbd.SelectedPath
+        '    Try
+        '        System.IO.File.Copy("DB.sdf", String.Format(path & "\DB.sdf", Date.Today), True)
+        '    Catch ex As Exception
+        '        MsgBox(ex)
+        '    End Try
+        'End If
+
         Dim fbd As New FolderBrowserDialog()
         Dim path As String
         Dim dR As DialogResult = fbd.ShowDialog
 
         If dR = Windows.Forms.DialogResult.OK Then
             path = fbd.SelectedPath
-            Try
-                System.IO.File.Copy("DB.sdf", String.Format(path & "\DB.sdf", Date.Today), True)
-            Catch ex As Exception
-                MsgBox(ex)
-            End Try
+            'Try
+            'System.IO.File.Copy("DB.sdf", String.Format(path & "\DB.sdf", Date.Today), True)
+            'Catch ex As Exception
+            'MsgBox(ex)
+            'End Try
+            ExTools.ShrinkDB("MasterPro", myConn)
+            path &= "\MasterPro (" & Today.ToString("ddMMyy") & ")"
+            Dim result As String = ExTools.Backup(path, "MasterPro", myConn)
+
+            MsgBox(result)
         End If
 
     End Sub

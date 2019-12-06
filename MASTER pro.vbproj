@@ -238,6 +238,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Class1.vb" />
+    <Compile Include="ExTools.vb" />
     <Compile Include="Reports\crSales.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
