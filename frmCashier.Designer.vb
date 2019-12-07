@@ -130,6 +130,7 @@ Partial Class frmCashier
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
         CType(Me.KryptonPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1510,6 +1511,11 @@ Partial Class frmCashier
         Me.Timer2.Enabled = True
         Me.Timer2.Interval = 1000
         '
+        'AlertControl1
+        '
+        Me.AlertControl1.AllowHtmlText = True
+        Me.AlertControl1.AutoHeight = True
+        '
         'frmCashier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 19.0!)
@@ -1678,5 +1684,6 @@ Partial Class frmCashier
     Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ceDebit As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblSeller As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents AlertControl1 As DevExpress.XtraBars.Alerter.AlertControl
 
 End Class

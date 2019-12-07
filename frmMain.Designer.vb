@@ -536,7 +536,7 @@ Partial Class frmMain
         Me.KryptonDockableNavigator1.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuItemImage
         Me.KryptonDockableNavigator1.Pages.AddRange(New ComponentFactory.Krypton.Navigator.KryptonPage() {Me.KryptonPage1, Me.KryptonPage2, Me.KryptonPage3, Me.KryptonPage4, Me.KryptonPage11, Me.KryptonPage5, Me.KryptonPage6, Me.KryptonPage7, Me.KryptonPage8, Me.KryptonPage9, Me.KryptonPage10})
         Me.KryptonDockableNavigator1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.KryptonDockableNavigator1.SelectedIndex = 7
+        Me.KryptonDockableNavigator1.SelectedIndex = 0
         Me.KryptonDockableNavigator1.Size = New System.Drawing.Size(1100, 587)
         Me.KryptonDockableNavigator1.TabIndex = 0
         Me.KryptonDockableNavigator1.TabStop = False

@@ -1340,6 +1340,13 @@ Public Class frmMain
 
     Private Sub iItem_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles iItem.KeyDown
 
+        If e.Control And e.KeyCode = Keys.F Then
+            frmItemSearch.ShowDialog()
+            iItem.Text = frmItemSearch.SearchedItem
+            iItem.Focus()
+            iItem.SelectAll()
+        End If
+
         If Not iItem.Text = "" And e.KeyCode = Keys.Enter Then
 
             Dim ne As Boolean
@@ -3734,6 +3741,15 @@ restart2:
 
     End Sub
 
+    Private Sub iiSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles iiSearch.KeyDown
+        If e.Control And e.KeyCode = Keys.F Then
+            frmItemSearch.ShowDialog()
+            iiSearch.Text = frmItemSearch.SearchedItem
+            iiSearch.Focus()
+            iiSearch.SelectAll()
+        End If
+    End Sub
+
     Private Sub iiSearch_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles iiSearch.SelectedIndexChanged
         If iiSearch.Text <> "" Then
             Dim NQuery As String = "SELECT tblItems.* FROM tblItems LEFT OUTER JOIN tblMultiCodes ON tblItems.PrKey = tblMultiCodes.Item" _
@@ -5615,7 +5631,7 @@ Restart:
 
         Dim timFrom, timTill As String
         timFrom = dailyDateFrom.Value.ToString("MM/dd/yyyy") & " " & tmFrom.Value.ToString("HH:mm") & ":00.000"
-        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59.999"
+        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59"
         Dim Debit As Integer = 0
         Debit = rgPayment.SelectedIndex
 
@@ -6300,7 +6316,7 @@ retry:
 
         Dim timFrom, timTill As String
         timFrom = dailyDateFrom.Value.ToString("MM/dd/yyyy") & " " & tmFrom.Value.ToString("HH:mm") & ":00.000"
-        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59.999"
+        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59"
 
         Dim Debit As Integer = 0
         Debit = rgPayment.SelectedIndex

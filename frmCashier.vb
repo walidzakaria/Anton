@@ -344,7 +344,7 @@ Restart:
             Call frmMain.AutoRate(Today)
             Dim oDate As String = Today.ToString("MM/dd/yyyy")
             Dim oTime As String = Now.ToString("HH:mm")
-
+            Dim invoiceSerial As String = ""
 
             'check if the valid qnty
             If CheckQnty() = False Then
@@ -398,10 +398,11 @@ Restart:
                 End If
                 cmd.ExecuteNonQuery()
 
-                cmd.CommandText = "SELECT MAX(Serial) FROM tblOut1;"
+                cmd.CommandText = "SELECT @@IDENTITY;"
                 Using dt As SqlDataReader = cmd.ExecuteReader
                     If dt.Read() Then
-                        OSerial.Text = dt(0).ToString
+                        invoiceSerial = dt(0).ToString
+                        OSerial.Text = invoiceSerial
                     End If
                 End Using
                 myConn.Close()
@@ -414,7 +415,7 @@ Restart:
             Dim theQuery As String = "INSERT INTO tblOut2 (Serial, Kind, Item, Compound, Qnty, Price, Discount, UnitPrice, [User], VAT, Tax1, Tax2) VALUES"
 
             For Each oRow As DataGridViewRow In oDgv.Rows
-                theQuery += "('" & OSerial.Text & "', '" & oRow.Cells(1).Value & "', '" & oRow.Cells(7).Value & "', '0', '" & oRow.Cells(0).Value & "', '" & oRow.Cells(6).Value & "', '" & oRow.Cells(5).Value & "', '" & oRow.Cells(4).Value & "', '" & GlobalVariables.ID & "', " _
+                theQuery += "('" & invoiceSerial & "', '" & oRow.Cells(1).Value & "', '" & oRow.Cells(7).Value & "', '0', '" & oRow.Cells(0).Value & "', '" & oRow.Cells(6).Value & "', '" & oRow.Cells(5).Value & "', '" & oRow.Cells(4).Value & "', '" & GlobalVariables.ID & "', " _
                     & Val(oRow.Cells(9).Value) & ", " & Val(oRow.Cells(10).Value) & " , " & Val(oRow.Cells(11).Value) & "), "
             Next
 
@@ -438,7 +439,7 @@ Restart:
 
             'Update the Customer combobox
             fillCustomers()
-
+            AmountAlerts(invoiceSerial)
             
         End If
 
@@ -820,8 +821,11 @@ Restart:
         ElseIf e.KeyCode = Keys.F7 Then
             KryptonButton4.PerformClick()
         ElseIf e.KeyValue = Keys.F And e.Control Then
-            oSearch.Focus()
-            oSearch.SelectAll()
+            frmItemSearch.ShowDialog()
+            oItemSerial.Text = frmItemSearch.SearchedItem
+            oItemSerial.Focus()
+            oItemSerial.SelectAll()
+
         ElseIf e.KeyCode = Keys.F8 Then
             If KryptonPanel6.Visible = True Then
                 KryptonPanel6.Visible = False
@@ -1988,7 +1992,7 @@ Restart:
             'clear
             ClearData()
             Call Notification("Invoice Added")
-
+            AmountAlerts(oSearch.Text)
             If KryptonButton5.Text <> "Õ›‹‹‹‹Ÿ" Then
                 krInvoicePrint.PerformClick()
             End If
@@ -2015,6 +2019,7 @@ Restart:
         Else
             Dim oDate As String = Today.ToString("MM/dd/yyyy")
             Dim oTime As String = Now.ToString("HH:mm")
+            Dim invoiceSerial As String = ""
 
             'check if the valid qnty
             If CheckQnty() = False Then
@@ -2048,7 +2053,8 @@ Restart:
                 cmd.CommandText = "SELECT MAX(Serial) FROM tblOut1;"
                 Using dt As SqlDataReader = cmd.ExecuteReader
                     If dt.Read() Then
-                        OSerial.Text = dt(0).ToString
+                        invoiceSerial = dt(0).ToString
+                        OSerial.Text = invoiceSerial
                     End If
                 End Using
                 myConn.Close()
@@ -2061,7 +2067,7 @@ Restart:
             Dim theQuery As String = "INSERT INTO tblOut2 (Serial, Kind, Item, Compound, Qnty, Price, Discount, UnitPrice, [User]) VALUES"
 
             For Each oRow As DataGridViewRow In oDgv.Rows
-                theQuery += "('" & OSerial.Text & "', '" & oRow.Cells(1).Value & "', '" & oRow.Cells(7).Value & "', '0', '" & oRow.Cells(0).Value & "', '" & oRow.Cells(6).Value & "', '" & oRow.Cells(5).Value & "', '" & oRow.Cells(4).Value & "', '" & GlobalVariables.ID & "'), "
+                theQuery += "('" & invoiceSerial & "', '" & oRow.Cells(1).Value & "', '" & oRow.Cells(7).Value & "', '0', '" & oRow.Cells(0).Value & "', '" & oRow.Cells(6).Value & "', '" & oRow.Cells(5).Value & "', '" & oRow.Cells(4).Value & "', '" & GlobalVariables.ID & "'), "
             Next
 
             theQuery = theQuery.Substring(0, theQuery.Length - 2)
@@ -2078,7 +2084,7 @@ Restart:
             If KryptonButton5.Text <> "Õ›‹‹‹‹Ÿ" Then
                 krInvoicePrint.PerformClick()
             End If
-
+            AmountAlerts(invoiceSerial)
         End If
 
 
@@ -2562,5 +2568,59 @@ Restart:
         End If
     End Sub
 
+    Private Sub AmountAlerts(ByVal invoiceSerial As String)
+        Dim query As String = "SELECT DISTINCT tblItems.Serial AS Code, tblItems.Name AS ItemName, tblItems.Minimum, COALESCE(TotalIn.TotalIn, 0) - COALESCE(TotalOut.TotalOut, 0) AS Balance" _
+                              & " FROM tblItems" _
+                              & " JOIN (" _
+                              & " SELECT Item, SUM(Qnty) AS TotalIn FROM tblIn2 GROUP BY Item" _
+                              & " ) TotalIn ON tblItems.PrKey = TotalIn.Item" _
+                              & " JOIN (" _
+                              & " SELECT Item, SUM(Qnty) AS TotalOut FROM tblOut2 GROUP BY Item" _
+                              & " ) TotalOut ON tblItems.PrKey = TotalOut.Item" _
+                              & " JOIN tblOut2 ON tblItems.PrKey = tblOut2.Item" _
+                              & " WHERE COALESCE(TotalIn.TotalIn, 0) - COALESCE(TotalOut.TotalOut, 0) <= tblItems.Minimum" _
+                              & " AND tblOut2.Serial = " & invoiceSerial & ";"
+
+        Dim dt As New DataTable()
+        Using cmd = New SqlCommand(query, myConn)
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
+            End If
+            Using dr As SqlDataReader = cmd.ExecuteReader()
+                dt.Load(dr)
+            End Using
+            myConn.Close()
+        End Using
+        Dim noAmounts As String = ""
+        Dim lowAmounts As String = ""
+
+        If dt.Rows.Count <> 0 Then
+            For x As Integer = 0 To dt.Rows.Count - 1
+
+
+                If dt.Rows(x)(3) = 0 Then
+                    If noAmounts = "" Then
+                        noAmounts = vbNewLine & "No more stock of the below item(s):" & vbNewLine
+                    End If
+                    noAmounts &= String.Format("Item: {0};{1}" & vbNewLine, dt.Rows(x)(0), dt.Rows(x)(1))
+                Else
+                    If lowAmounts = "" Then
+                        lowAmounts = vbNewLine & "The below item(s) exceeded the min limit:" & vbNewLine
+                    End If
+                    lowAmounts &= String.Format("Item: {0};{1}: {2}" & vbNewLine, dt.Rows(x)(0), dt.Rows(x)(1), dt.Rows(x)(3))
+
+                End If
+
+            Next
+            AlertControl1.Show(Me, "<b>Amounts Alert</b>", noAmounts & lowAmounts, True)
+        End If
+
+
+
+    End Sub
+
+    Private Sub HighSalesAlert()
+
+    End Sub
 End Class
 

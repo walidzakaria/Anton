@@ -42,7 +42,7 @@ Public Class frmCashierReport
 
         Dim timFrom, timTill As String
         timFrom = dailyDateFrom.Value.ToString("MM/dd/yyyy") & " " & tmFrom.Value.ToString("HH:mm") & ":00.000"
-        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59.999"
+        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59"
         Dim PaymentType As Integer
         PaymentType = rgPayment.SelectedIndex
 
@@ -107,7 +107,7 @@ Public Class frmCashierReport
 
         Dim timFrom, timTill As String
         timFrom = dailyDateFrom.Value.ToString("MM/dd/yyyy") & " " & tmFrom.Value.ToString("HH:mm") & ":00.000"
-        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59.999"
+        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59"
         Dim PaymentType As Integer
         PaymentType = rgPayment.SelectedIndex
 
@@ -161,7 +161,7 @@ Public Class frmCashierReport
     Private Sub btnSellers_Click(sender As Object, e As EventArgs) Handles btnSellers.Click
         Dim timFrom, timTill As String
         timFrom = dailyDateFrom.Value.ToString("MM/dd/yyyy") & " " & tmFrom.Value.ToString("HH:mm") & ":00.000"
-        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59.999"
+        timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59"
 
         Dim query As String = "SELECT tblOut1.Serial, tblOut1.[Date], tblOut1.[Time], SUM(Cost.Cost) AS Cost," _
                               & " tblOut1.RealValue, tblSellers.Seller" _

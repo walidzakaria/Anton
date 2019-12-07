@@ -239,6 +239,12 @@
     </Compile>
     <Compile Include="Class1.vb" />
     <Compile Include="ExTools.vb" />
+    <Compile Include="frmItemSearch.Designer.vb">
+      <DependentUpon>frmItemSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmItemSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reports\crSales.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -661,6 +667,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CashierNew.resx">
       <DependentUpon>CashierNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItemSearch.resx">
+      <DependentUpon>frmItemSearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crSales.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
