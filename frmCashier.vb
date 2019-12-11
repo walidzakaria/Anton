@@ -390,15 +390,14 @@ Restart:
             Dim Query As String = "INSERT INTO tblOut1 ([Date], [Time], Customer, LaborOverhaul, Transfers, SubTotal, Discount, SaleTax, NetTotal, [User], pEGP, pEUR, pUSD, pGBP, pRUB, pCHF, pCNY, RealValue, Currency, Visa1, Visa2, VAT, Tax1, Tax2, Debit, Seller) " _
                                   & "VALUES ('" & oDate & "', '" & oTime & "', " & Cust & ", '" & "0" & "', '" & "0" & "', '" & tbTotal.Text & "', '" & Val(tbCurrency.Text) & "', '" & "0" & "', '" & tbRest.Text & "', '" & GlobalVariables.ID & "', " _
                                   & pEGP & " , " & pEUR & ", " & pUSD & ", " & pGBP & ", " & pRUB & ", " & pCHF & ", " & pCNY & ", " & tValueAmount & ", '" & lblCurrency.Text & "', " & CInt(ceVisaEGP.Checked) & ", " & CInt(ceVisaCurrency.Checked) & ", " & Val(txtVAT.Text) _
-                                  & ", " & Val(txtTax1.Text) & ", " & Val(txtTax2.Text) & ", " & CInt(ceDebit.Checked) & ", " & seller & ")"
+                                  & ", " & Val(txtTax1.Text) & ", " & Val(txtTax2.Text) & ", " & CInt(ceDebit.Checked) & ", " & seller & "); SELECT @@IDENTITY;"
 
             Using cmd = New SqlCommand(Query, myConn)
                 If myConn.State = ConnectionState.Closed Then
                     myConn.Open()
                 End If
-                cmd.ExecuteNonQuery()
 
-                cmd.CommandText = "SELECT @@IDENTITY;"
+
                 Using dt As SqlDataReader = cmd.ExecuteReader
                     If dt.Read() Then
                         invoiceSerial = dt(0).ToString
@@ -440,7 +439,7 @@ Restart:
             'Update the Customer combobox
             fillCustomers()
             AmountAlerts(invoiceSerial)
-            
+            SalesAlert(invoiceSerial)
         End If
 
         Cursor = Cursors.Default
@@ -1993,6 +1992,7 @@ Restart:
             ClearData()
             Call Notification("Invoice Added")
             AmountAlerts(oSearch.Text)
+            SalesAlert(oSearch.Text)
             If KryptonButton5.Text <> "ÍÝÜÜÜÜÙ" Then
                 krInvoicePrint.PerformClick()
             End If
@@ -2085,6 +2085,7 @@ Restart:
                 krInvoicePrint.PerformClick()
             End If
             AmountAlerts(invoiceSerial)
+            SalesAlert(invoiceSerial)
         End If
 
 
@@ -2600,14 +2601,14 @@ Restart:
 
                 If dt.Rows(x)(3) = 0 Then
                     If noAmounts = "" Then
-                        noAmounts = vbNewLine & "No more stock of the below item(s):" & vbNewLine
+                        noAmounts = vbNewLine & "Items No stock:" & vbNewLine
                     End If
-                    noAmounts &= String.Format("Item: {0};{1}" & vbNewLine, dt.Rows(x)(0), dt.Rows(x)(1))
+                    noAmounts &= String.Format("Item: {0}; {1}" & vbNewLine, dt.Rows(x)(0), dt.Rows(x)(1))
                 Else
                     If lowAmounts = "" Then
-                        lowAmounts = vbNewLine & "The below item(s) exceeded the min limit:" & vbNewLine
+                        lowAmounts = vbNewLine & "Items below limit:" & vbNewLine
                     End If
-                    lowAmounts &= String.Format("Item: {0};{1}: {2}" & vbNewLine, dt.Rows(x)(0), dt.Rows(x)(1), dt.Rows(x)(3))
+                    lowAmounts &= String.Format("Item: {0}; {1} - Balance ({2})" & vbNewLine, dt.Rows(x)(0), dt.Rows(x)(1), dt.Rows(x)(3))
 
                 End If
 
@@ -2619,8 +2620,46 @@ Restart:
 
     End Sub
 
-    Private Sub HighSalesAlert()
+    Private Sub SalesAlert(ByVal invoiceSerial As String)
+        Dim query As String = "SELECT tblItems.Serial AS Code, tblItems.Name, TotalSold.Total FROM tblItems" _
+                              & " JOIN (" _
+                              & " SELECT TOP(20) Item, SUM(Qnty) AS Total" _
+                              & " FROM tblOut2, tblOut1" _
+                              & " WHERE tblOut1.Serial = tblOut2.Serial" _
+                              & " AND tblOut1.Date >= DATEADD(MONTH, -3, GETDATE())" _
+                              & " GROUP BY Item" _
+                              & " ORDER BY Total DESC" _
+                              & " ) TotalSold" _
+                              & " ON tblItems.PrKey = TotalSold.Item" _
+                              & " JOIN tblOut2 ON tblOut2.Item = tblItems.PrKey" _
+                              & " WHERE tblOut2.Serial = " & invoiceSerial & " AND TotalSold.Total > 20;"
+
+        Dim dt As New DataTable()
+        Using cmd = New SqlCommand(query, myConn)
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
+            End If
+            Using dr As SqlDataReader = cmd.ExecuteReader()
+                dt.Load(dr)
+            End Using
+            myConn.Close()
+        End Using
+        Dim highSales As String = ""
+
+        If dt.Rows.Count <> 0 Then
+            For x As Integer = 0 To dt.Rows.Count - 1
+                If highSales = "" Then
+                    highSales = vbNewLine & "High Sales Item:" & vbNewLine
+                End If
+                highSales &= String.Format("Item: {0}; {1} - Sold ({2})" & vbNewLine, dt.Rows(x)(0), dt.Rows(x)(1), dt.Rows(x)(2))
+
+            Next
+            AlertControl1.Show(Me, "<b>Sales Score</b>", highSales, True)
+        End If
+
+
 
     End Sub
+
 End Class
 
