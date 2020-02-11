@@ -15,7 +15,7 @@ Public Class frmValidate
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         txtOldPassword.Text = ""
-        Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
 
@@ -39,9 +39,9 @@ Public Class frmValidate
             myConn.Close()
         End Using
         If valid = 0 Then
-            Me.DialogResult = Windows.Forms.DialogResult.Cancel
+            Me.DialogResult = DialogResult.Cancel
         Else
-            Me.DialogResult = Windows.Forms.DialogResult.OK
+            Me.DialogResult = DialogResult.OK
         End If
         Me.Close()
     End Sub

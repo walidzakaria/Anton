@@ -154,7 +154,7 @@ Partial Class frmCashierReport
         Me.Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.Cancel.Appearance.Options.UseFont = True
-        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel.DialogResult = DialogResult.Cancel
         Me.Cancel.ImageOptions.Image = CType(resources.GetObject("Cancel.ImageOptions.Image"), System.Drawing.Image)
         Me.Cancel.Location = New System.Drawing.Point(12, 173)
         Me.Cancel.Name = "Cancel"
@@ -167,7 +167,7 @@ Partial Class frmCashierReport
         Me.btnSellers.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSellers.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.btnSellers.Appearance.Options.UseFont = True
-        Me.btnSellers.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnSellers.DialogResult = DialogResult.Cancel
         Me.btnSellers.ImageOptions.Image = CType(resources.GetObject("btnSellers.ImageOptions.Image"), System.Drawing.Image)
         Me.btnSellers.Location = New System.Drawing.Point(118, 173)
         Me.btnSellers.Name = "btnSellers"
@@ -180,7 +180,7 @@ Partial Class frmCashierReport
         Me.btnItems.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnItems.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.btnItems.Appearance.Options.UseFont = True
-        Me.btnItems.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnItems.DialogResult = DialogResult.Cancel
         Me.btnItems.ImageOptions.Image = CType(resources.GetObject("btnItems.ImageOptions.Image"), System.Drawing.Image)
         Me.btnItems.Location = New System.Drawing.Point(224, 173)
         Me.btnItems.Name = "btnItems"
@@ -193,7 +193,7 @@ Partial Class frmCashierReport
         Me.btnCurrency.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCurrency.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.btnCurrency.Appearance.Options.UseFont = True
-        Me.btnCurrency.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnCurrency.DialogResult = DialogResult.Cancel
         Me.btnCurrency.ImageOptions.Image = CType(resources.GetObject("btnCurrency.ImageOptions.Image"), System.Drawing.Image)
         Me.btnCurrency.Location = New System.Drawing.Point(330, 173)
         Me.btnCurrency.Name = "btnCurrency"

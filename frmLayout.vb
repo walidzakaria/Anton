@@ -64,7 +64,7 @@ Public Class frmLayout
         Catch ex As Exception
         End Try
 
-        Report.XrCurrency.Text = Currency
+        'Report.XrCurrency.Text = Currency
         Report.LoadLayout("Receipt.repx")
         myConn.Close()
 

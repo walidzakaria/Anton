@@ -58,7 +58,7 @@ Partial Class frmPassword
         'btCancel
         '
         Me.btCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btCancel.DialogResult = DialogResult.Cancel
         Me.btCancel.Image = CType(resources.GetObject("btCancel.Image"), System.Drawing.Image)
         Me.btCancel.Location = New System.Drawing.Point(33, 134)
         Me.btCancel.Name = "btCancel"

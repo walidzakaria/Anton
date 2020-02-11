@@ -390,7 +390,7 @@ Restart:
             Dim Query As String = "INSERT INTO tblOut1 ([Date], [Time], Customer, LaborOverhaul, Transfers, SubTotal, Discount, SaleTax, NetTotal, [User], pEGP, pEUR, pUSD, pGBP, pRUB, pCHF, pCNY, RealValue, Currency, Visa1, Visa2, VAT, Tax1, Tax2, Debit, Seller) " _
                                   & "VALUES ('" & oDate & "', '" & oTime & "', " & Cust & ", '" & "0" & "', '" & "0" & "', '" & tbTotal.Text & "', '" & Val(tbCurrency.Text) & "', '" & "0" & "', '" & tbRest.Text & "', '" & GlobalVariables.ID & "', " _
                                   & pEGP & " , " & pEUR & ", " & pUSD & ", " & pGBP & ", " & pRUB & ", " & pCHF & ", " & pCNY & ", " & tValueAmount & ", '" & lblCurrency.Text & "', " & CInt(ceVisaEGP.Checked) & ", " & CInt(ceVisaCurrency.Checked) & ", " & Val(txtVAT.Text) _
-                                  & ", " & Val(txtTax1.Text) & ", " & Val(txtTax2.Text) & ", " & CInt(ceDebit.Checked) & ", " & seller & "); SELECT @@IDENTITY;"
+                                  & ", " & Val(txtTax1.Text) & ", " & Val(txtTax2.Text) & ", " & CInt(ceDebit.Checked) & ", " & seller & "); SELECT MAX(Serial) FROM tblOut1;"
 
             Using cmd = New SqlCommand(Query, myConn)
                 If myConn.State = ConnectionState.Closed Then
@@ -419,7 +419,8 @@ Restart:
             Next
 
             theQuery = theQuery.Substring(0, theQuery.Length - 2)
-
+            theQuery &= String.Format("; UPDATE tblOut2 SET Cost = COALESCE(dbo.ItemLastPrice(Item), 1) * Qnty WHERE Serial = {0};" _
+                , invoiceSerial)
             Using cmd = New SqlCommand(theQuery, myConn)
                 cmd.ExecuteNonQuery()
             End Using
@@ -1977,6 +1978,8 @@ Restart:
                 Next
 
                 theQuery = theQuery.Substring(0, theQuery.Length - 2)
+                theQuery &= String.Format("; UPDATE tblOut2 SET Cost = COALESCE(dbo.ItemLastPrice(Item), 1) * Qnty WHERE Serial = {0};" _
+                    , OSerial.Text)
 
                 Using cmd = New SqlCommand(theQuery, myConn)
                     cmd.ExecuteNonQuery()
@@ -2010,7 +2013,7 @@ Restart:
 Restart:
 
         Dim dia As DialogResult = MessageBox.Show("Â·  —Ìœ »«· «ﬂÌœ ≈Œ—«Ã «·›« Ê—… ﬂÂÊ«·ﬂø", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If dia = Windows.Forms.DialogResult.No Then
+        If dia = DialogResult.No Then
             Exit Sub
         End If
         If oDgv.RowCount = 0 Then
@@ -2071,6 +2074,8 @@ Restart:
             Next
 
             theQuery = theQuery.Substring(0, theQuery.Length - 2)
+            theQuery &= String.Format("; UPDATE tblOut2 SET Cost = COALESCE(dbo.ItemLastPrice(Item), 1) * Qnty WHERE Serial = {0};" _
+                , invoiceSerial)
 
             Using cmd = New SqlCommand(theQuery, myConn)
                 cmd.ExecuteNonQuery()

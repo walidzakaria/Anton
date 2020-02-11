@@ -36,7 +36,7 @@ Partial Class frmValidate
         Me.btnCancel.Appearance.ForeColor = System.Drawing.Color.Red
         Me.btnCancel.Appearance.Options.UseFont = True
         Me.btnCancel.Appearance.Options.UseForeColor = True
-        Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnCancel.DialogResult = DialogResult.Cancel
         Me.btnCancel.Location = New System.Drawing.Point(297, 91)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(106, 32)

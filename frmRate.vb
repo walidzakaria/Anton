@@ -37,7 +37,7 @@ Public Class frmRate
                 Else
                     Dim dr = DialogResult
                     dr = MessageBox.Show("Date: " & dat.ToString("dd/MM/yyyy") & " already exists. Do you want to modify it?", "Modify?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                    If dr = Windows.Forms.DialogResult.Yes Then
+                    If dr = DialogResult.Yes Then
                         Using cmd = New SqlCommand("UPDATE tblRate SET Rate = '" & Val(KryptonTextBox3.Text) & "' WHERE Day = '" & dat.ToString("MM/dd/yyyy") & "'", frmMain.myConn)
                             frmMain.myConn.Open()
                             cmd.ExecuteNonQuery()

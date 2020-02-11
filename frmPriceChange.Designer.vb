@@ -136,7 +136,7 @@ Partial Class frmPriceChange
         Me.btCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btCancel.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.btCancel.Appearance.Options.UseFont = True
-        Me.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btCancel.DialogResult = DialogResult.Cancel
         Me.btCancel.Image = CType(resources.GetObject("btCancel.Image"), System.Drawing.Image)
         Me.btCancel.Location = New System.Drawing.Point(26, 155)
         Me.btCancel.Name = "btCancel"

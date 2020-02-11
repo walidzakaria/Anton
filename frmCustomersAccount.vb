@@ -54,7 +54,7 @@ Partial Public Class frmCustomersAccount
             fillCustomers()
             frmAddPayment.deDate.EditValue = Today
             frmAddPayment.ShowDialog()
-            If frmAddPayment.DialogResult = Windows.Forms.DialogResult.OK Then
+            If frmAddPayment.DialogResult = DialogResult.OK Then
                 loadData()
             End If
         ElseIf e.Button.Properties.Caption = "Edit" Then
@@ -82,7 +82,7 @@ Partial Public Class frmCustomersAccount
                 End Using
                 frmAddPayment.ID = ID
                 frmAddPayment.ShowDialog()
-                If frmAddPayment.DialogResult = Windows.Forms.DialogResult.OK Then
+                If frmAddPayment.DialogResult = DialogResult.OK Then
                     loadData()
                 End If
             End If

@@ -688,7 +688,7 @@ Public Class frmMain
         'Dim path As String
         'Dim dR As DialogResult = fbd.ShowDialog
 
-        'If dR = Windows.Forms.DialogResult.OK Then
+        'If dR = DialogResult.OK Then
         '    path = fbd.SelectedPath
         '    Try
         '        System.IO.File.Copy("DB.sdf", String.Format(path & "\DB.sdf", Date.Today), True)
@@ -701,7 +701,7 @@ Public Class frmMain
         Dim path As String
         Dim dR As DialogResult = fbd.ShowDialog
 
-        If dR = Windows.Forms.DialogResult.OK Then
+        If dR = DialogResult.OK Then
             path = fbd.SelectedPath
             'Try
             'System.IO.File.Copy("DB.sdf", String.Format(path & "\DB.sdf", Date.Today), True)
@@ -970,7 +970,7 @@ Public Class frmMain
         ElseIf vAdd.Text = "Õ–›" Then
             Dim dia As DialogResult
             dia = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ Õ–› '" & vSearch.Text & "'ø", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
-            If dia = Windows.Forms.DialogResult.Yes Then
+            If dia = DialogResult.Yes Then
                 Try
                     Using cmd = New SqlCommand("DELETE FROM tblVendors WHERE Name = N'" & vSearch.Text & "'", myConn)
                         If myConn.State = ConnectionState.Closed Then
@@ -1688,7 +1688,7 @@ Public Class frmMain
 
             If old = False Then
                 Dim dia As DialogResult = MessageBox.Show("«”„ «·’‰› «·–Ì ﬁ„  »≈œŒ«·Â €Ì— „ÊÃÊœ. Â·  —Ìœ »«·›⁄· ≈÷«› Âø", "New Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                If dia = Windows.Forms.DialogResult.Yes Then
+                If dia = DialogResult.Yes Then
                     'check if the serial is dup
                     Dim dupSr As Boolean
                     Dim NQuery2 As String = "SELECT tblItems.* FROM tblItems LEFT OUTER JOIN tblMultiCodes ON tblItems.PrKey = tblMultiCodes.Item" _
@@ -1863,7 +1863,7 @@ record:
         If Not iDgv.RowCount = 0 Then
             Dim dia As DialogResult
             dia = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ „”Õ Â–« «·’›ø", "Remove", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If dia = Windows.Forms.DialogResult.Yes Then
+            If dia = DialogResult.Yes Then
                 iDgv.Rows.Remove(iDgv.CurrentRow)
 
                 Notification("Current row removed!")
@@ -1936,7 +1936,7 @@ record:
 
             If old = False Then
                 Dim dia As DialogResult = MessageBox.Show("«”„ «·’‰› «·–Ì ﬁ„  »≈œŒ«·Â €Ì— „ÊÃÊœ. Â·  —Ìœ »«·›⁄· ≈÷«› Âø", "New Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                If dia = Windows.Forms.DialogResult.Yes Then
+                If dia = DialogResult.Yes Then
                     'check if the serial is dup
                     Dim dupSr As Boolean
                     Using cmd = New SqlCommand(NQuery, myConn)
@@ -2179,7 +2179,7 @@ record:
     Private Sub iClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles iClear.Click
         Dim dia As DialogResult
         dia = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ „”Õ ﬂ· «·»Ì«‰«  «·Õ«·Ì…ø", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If dia = Windows.Forms.DialogResult.Yes Then
+        If dia = DialogResult.Yes Then
             iDgv.Rows.Clear()
             iVendor.Text = Nothing
             ' iVendor.Enabled = True
@@ -2332,7 +2332,7 @@ restart:
                 If Val(itPaid.Text) = 0 Or Val(itPaid.Text) < Val(iTotalSales.Text) Then
                     Dim dia As DialogResult
                     dia = MessageBox.Show("·„ Ì „ ≈œŒ«· «·„»·€ »«·ﬂ«„·. Â·  —Ìœ Õ›Ÿ «·›« Ê—… »œ›⁄ ¬Ã·ø", "Unpaid Invoice", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                    If dia = Windows.Forms.DialogResult.No Then
+                    If dia = DialogResult.No Then
                         itPaid.Focus()
                         itPaid.SelectAll()
                         Exit Sub
@@ -2514,7 +2514,7 @@ restart2:
 
             Dim dia As DialogResult
             dia = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ  ⁄œÌ· «·›« Ê—… «·Õ«·Ì…ø", "Modify", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If dia = Windows.Forms.DialogResult.Yes Then
+            If dia = DialogResult.Yes Then
                 If iVendor.Text = "" Then
                     MessageBox.Show("ÌÃ» «Œ Ì«— «”„ «·„Ê“⁄!", "Vendor", MessageBoxButtons.OK)
                     iVendor.Focus()
@@ -2741,7 +2741,7 @@ restart2:
             End If
             Dim dia As DialogResult
             dia = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ Õ–› «·›« Ê—… «·Õ«·Ì…ø ·‰  ﬁœ— ⁄·Ï «” —Ã«⁄Â« „—… √Œ—Ï!", "Invoice Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
-            If dia = Windows.Forms.DialogResult.Yes Then
+            If dia = DialogResult.Yes Then
 
 
                 Dim invoSer As Integer
@@ -3664,7 +3664,7 @@ restart2:
         ElseIf iiAdd.Text = "Õ–›" Then
             Dim dia As DialogResult
             dia = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ Õ–› «·’‰› «·Õ«·Ìø", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If dia = Windows.Forms.DialogResult.Yes Then
+            If dia = DialogResult.Yes Then
                 Dim DelQuery As String = "DECLARE @PrKey INT;" _
                                          & " SET @prkey = (SELECT tblItems.PrKey FROM tblItems LEFT OUTER JOIN tblMultiCodes ON tblItems.PrKey = tblMultiCodes.Item" _
                                          & " WHERE tblItems.Serial = '" & iiSearch.Text & "' OR tblMultiCodes.Code = '" & iiSearch.Text & "');" _
@@ -4364,7 +4364,7 @@ restart2:
         If Not oDgv.RowCount = 0 Then
             Dim dia As DialogResult
             dia = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ Õ–› «·’› «·Õ«·Ìø", "Remove", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If dia = Windows.Forms.DialogResult.Yes Then
+            If dia = DialogResult.Yes Then
                 oDgv.Rows.Remove(oDgv.CurrentRow)
 
                 'update the discount 
@@ -4728,7 +4728,7 @@ Restart:
         ElseIf KryptonButton5.Text = "Õ–›" Then
             Dim diaR As DialogResult
             diaR = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ Õ–› «·›« Ê—… «·Õ«·Ì…ø ·‰  ” ÿÌ⁄ «” —Ã«⁄Â« „—… √Œ—Ï!", "DELETE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
-            If diaR = Windows.Forms.DialogResult.Yes Then
+            If diaR = DialogResult.Yes Then
                 If myConn.State = ConnectionState.Closed Then
                     myConn.Open()
                 End If
@@ -5779,7 +5779,7 @@ Restart:
 
     Private Sub cEdit_Click(sender As System.Object, e As System.EventArgs) Handles cEdit.Click
         Dim dia As DialogResult = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ  ⁄œÌ· Â–« «·„œŒ·ø", "Modify", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If dia = Windows.Forms.DialogResult.Yes Then
+        If dia = DialogResult.Yes Then
 
             If myConn.State = ConnectionState.Closed Then
                 myConn.Open()
@@ -5814,7 +5814,7 @@ Restart:
 
     Private Sub cDelete_Click(sender As System.Object, e As System.EventArgs) Handles cDelete.Click
         Dim dia As DialogResult = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ Õ–› Â–« «·„œŒ·ø", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If dia = Windows.Forms.DialogResult.Yes Then
+        If dia = DialogResult.Yes Then
 
             If myConn.State = ConnectionState.Closed Then
                 myConn.Open()
@@ -6268,9 +6268,9 @@ retry:
 
     Private Sub KryptonLabel33_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles KryptonLabel33.MouseDoubleClick
         Dim diar As DialogResult = MessageBox.Show("Â·  —Ìœ »«· √ﬂÌœ ⁄„· Õ–› ‰Â«∆Ì ·Â–« «·’‰› ”Ê› ÌƒÀ— Â–« ⁄·Ï ⁄„·Ì«  «·»Ì⁄ Ê«·‘—«¡ «· Ì œÂ· ›ÌÂ« Â–« «·„‰ Ãø", "Hard Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-        If diar = Windows.Forms.DialogResult.Yes AndAlso GlobalVariables.authority = "Admin" Then
+        If diar = DialogResult.Yes AndAlso GlobalVariables.authority = "Admin" Then
             Dim diar2 As DialogResult = MessageBox.Show("«÷€ÿ „Ê«›ﬁ ··Õ–›. ÌÊ’Ï »√Œ– ‰”Œ… «Õ Ì«ÿÌ… „‰ ﬁ«⁄œ… «·»Ì«‰«  ﬁ»· «·Õ–›", "Confirm", MessageBoxButtons.OKCancel)
-            If diar2 = Windows.Forms.DialogResult.OK Then
+            If diar2 = DialogResult.OK Then
                 Dim Query As String = "DECLARE @Serial BIGINT = (SELECT PrKey FROM tblItems WHERE Serial = '" & iiSearch.Text & "');" _
                                       & " DELETE FROM tblOut2 WHERE Item = @Serial;" _
                                       & " DELETE FROM tblIn2 WHERE Item = @Serial;" _

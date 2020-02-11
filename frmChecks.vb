@@ -31,7 +31,7 @@ Partial Public Class frmChecks
         ElseIf e.Button.Properties.Caption = "New" Then
             frmAddCheck.deDate.EditValue = Today
             frmAddCheck.ShowDialog()
-            If frmAddCheck.DialogResult = Windows.Forms.DialogResult.OK Then
+            If frmAddCheck.DialogResult = DialogResult.OK Then
                 loadData()
             End If
         ElseIf e.Button.Properties.Caption = "Edit" Then
@@ -62,7 +62,7 @@ Partial Public Class frmChecks
                 End Using
                 frmAddCheck.ID = ID
                 frmAddCheck.ShowDialog()
-                If frmAddCheck.DialogResult = Windows.Forms.DialogResult.OK Then
+                If frmAddCheck.DialogResult = DialogResult.OK Then
                     loadData()
                 End If
             End If

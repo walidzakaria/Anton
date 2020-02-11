@@ -67,7 +67,7 @@ Public Class frmCustomers
 
         ElseIf e.Button.Properties.Caption = "Delete" Then
             Dim DiaR As DialogResult = MessageBox.Show("هل تريد بالتأكيد حذف العمل؟", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
-            If DiaR = Windows.Forms.DialogResult.Yes Then
+            If DiaR = DialogResult.Yes Then
                 Dim ID As String = GridView1.GetFocusedRowCellValue("ID")
                 Dim Query As String = "DELETE FROM tblCustomers WHERE ID = " & ID & ";"
                 Using cmd = New SqlCommand(Query, myConn)

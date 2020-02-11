@@ -38,7 +38,7 @@ Public Class frmLogin
             End Using
 restart:
             If frmSplash.validity = False Then
-                If frmVerify.DialogResult = Windows.Forms.DialogResult.Cancel Then
+                If frmVerify.DialogResult = DialogResult.Cancel Then
                     Application.Exit()
                 Else
                     frmVerify.Close()

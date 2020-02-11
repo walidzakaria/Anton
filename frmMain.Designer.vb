@@ -743,7 +743,7 @@ Partial Class frmMain
         Me.nEnglishName.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.nEnglishName.Location = New System.Drawing.Point(11, 6)
         Me.nEnglishName.Name = "nEnglishName"
-        Me.nEnglishName.Size = New System.Drawing.Size(245, 24)
+        Me.nEnglishName.Size = New System.Drawing.Size(245, 27)
         Me.nEnglishName.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nEnglishName.TabIndex = 80
         Me.nEnglishName.TabStop = False
@@ -769,7 +769,7 @@ Partial Class frmMain
         Me.KryptonTextBox1.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.KryptonTextBox1.Location = New System.Drawing.Point(143, 61)
         Me.KryptonTextBox1.Name = "KryptonTextBox1"
-        Me.KryptonTextBox1.Size = New System.Drawing.Size(113, 24)
+        Me.KryptonTextBox1.Size = New System.Drawing.Size(113, 27)
         Me.KryptonTextBox1.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KryptonTextBox1.TabIndex = 78
         Me.KryptonTextBox1.TabStop = False
@@ -795,7 +795,7 @@ Partial Class frmMain
         Me.nItemPrice.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.nItemPrice.Location = New System.Drawing.Point(143, 34)
         Me.nItemPrice.Name = "nItemPrice"
-        Me.nItemPrice.Size = New System.Drawing.Size(113, 24)
+        Me.nItemPrice.Size = New System.Drawing.Size(113, 27)
         Me.nItemPrice.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nItemPrice.TabIndex = 76
         Me.nItemPrice.TabStop = False
@@ -1124,7 +1124,7 @@ Partial Class frmMain
         Me.itPaid.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.itPaid.Location = New System.Drawing.Point(68, 37)
         Me.itPaid.Name = "itPaid"
-        Me.itPaid.Size = New System.Drawing.Size(113, 24)
+        Me.itPaid.Size = New System.Drawing.Size(113, 27)
         Me.itPaid.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.itPaid.TabIndex = 67
         Me.itPaid.TabStop = False
@@ -1363,7 +1363,7 @@ Partial Class frmMain
         Me.iSerial.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iSerial.Location = New System.Drawing.Point(76, 203)
         Me.iSerial.Name = "iSerial"
-        Me.iSerial.Size = New System.Drawing.Size(189, 24)
+        Me.iSerial.Size = New System.Drawing.Size(189, 27)
         Me.iSerial.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iSerial.TabIndex = 37
         Me.iSerial.TabStop = False
@@ -1507,7 +1507,7 @@ Partial Class frmMain
         Me.tbRest.Location = New System.Drawing.Point(22, 187)
         Me.tbRest.Name = "tbRest"
         Me.tbRest.ReadOnly = True
-        Me.tbRest.Size = New System.Drawing.Size(143, 24)
+        Me.tbRest.Size = New System.Drawing.Size(143, 27)
         Me.tbRest.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbRest.TabIndex = 85
         Me.tbRest.TabStop = False
@@ -1520,7 +1520,7 @@ Partial Class frmMain
         Me.tbPaid.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.tbPaid.Location = New System.Drawing.Point(25, 113)
         Me.tbPaid.Name = "tbPaid"
-        Me.tbPaid.Size = New System.Drawing.Size(143, 24)
+        Me.tbPaid.Size = New System.Drawing.Size(143, 27)
         Me.tbPaid.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPaid.TabIndex = 84
         Me.tbPaid.TabStop = False
@@ -1577,7 +1577,7 @@ Partial Class frmMain
         Me.tbTotal.Name = "tbTotal"
         Me.tbTotal.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple
         Me.tbTotal.ReadOnly = True
-        Me.tbTotal.Size = New System.Drawing.Size(143, 24)
+        Me.tbTotal.Size = New System.Drawing.Size(143, 27)
         Me.tbTotal.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbTotal.TabIndex = 80
         Me.tbTotal.TabStop = False
@@ -1764,7 +1764,7 @@ Partial Class frmMain
         Me.oSubTotal.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.oSubTotal.Location = New System.Drawing.Point(494, 149)
         Me.oSubTotal.Name = "oSubTotal"
-        Me.oSubTotal.Size = New System.Drawing.Size(113, 24)
+        Me.oSubTotal.Size = New System.Drawing.Size(113, 27)
         Me.oSubTotal.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.oSubTotal.TabIndex = 59
         Me.oSubTotal.TabStop = False
@@ -1777,7 +1777,7 @@ Partial Class frmMain
         Me.oUnitPrice.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.oUnitPrice.Location = New System.Drawing.Point(494, 117)
         Me.oUnitPrice.Name = "oUnitPrice"
-        Me.oUnitPrice.Size = New System.Drawing.Size(113, 24)
+        Me.oUnitPrice.Size = New System.Drawing.Size(113, 27)
         Me.oUnitPrice.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.oUnitPrice.TabIndex = 58
         Me.oUnitPrice.TabStop = False
@@ -1790,7 +1790,7 @@ Partial Class frmMain
         Me.oQnty.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.oQnty.Location = New System.Drawing.Point(495, 12)
         Me.oQnty.Name = "oQnty"
-        Me.oQnty.Size = New System.Drawing.Size(113, 24)
+        Me.oQnty.Size = New System.Drawing.Size(113, 27)
         Me.oQnty.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.oQnty.TabIndex = 57
         Me.oQnty.TabStop = False
@@ -2268,7 +2268,7 @@ Partial Class frmMain
         Me.vAddress.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.vAddress.Location = New System.Drawing.Point(675, 207)
         Me.vAddress.Name = "vAddress"
-        Me.vAddress.Size = New System.Drawing.Size(243, 24)
+        Me.vAddress.Size = New System.Drawing.Size(243, 27)
         Me.vAddress.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vAddress.TabIndex = 4
         '
@@ -2280,7 +2280,7 @@ Partial Class frmMain
         Me.vEmail.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.vEmail.Location = New System.Drawing.Point(675, 177)
         Me.vEmail.Name = "vEmail"
-        Me.vEmail.Size = New System.Drawing.Size(243, 24)
+        Me.vEmail.Size = New System.Drawing.Size(243, 27)
         Me.vEmail.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vEmail.TabIndex = 3
         '
@@ -2295,7 +2295,7 @@ Partial Class frmMain
         Me.vPhone2.Name = "vPhone2"
         Me.vPhone2.PromptChar = Global.Microsoft.VisualBasic.ChrW(63)
         Me.vPhone2.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.vPhone2.Size = New System.Drawing.Size(184, 24)
+        Me.vPhone2.Size = New System.Drawing.Size(184, 27)
         Me.vPhone2.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vPhone2.TabIndex = 2
         Me.vPhone2.Text = "(   )   -  -"
@@ -2317,7 +2317,7 @@ Partial Class frmMain
         Me.vPhone1.Name = "vPhone1"
         Me.vPhone1.PromptChar = Global.Microsoft.VisualBasic.ChrW(63)
         Me.vPhone1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.vPhone1.Size = New System.Drawing.Size(183, 24)
+        Me.vPhone1.Size = New System.Drawing.Size(183, 27)
         Me.vPhone1.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vPhone1.TabIndex = 1
         Me.vPhone1.Text = "(   )   -  -"
@@ -2336,7 +2336,7 @@ Partial Class frmMain
         Me.vName.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.vName.Location = New System.Drawing.Point(677, 78)
         Me.vName.Name = "vName"
-        Me.vName.Size = New System.Drawing.Size(243, 24)
+        Me.vName.Size = New System.Drawing.Size(243, 27)
         Me.vName.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vName.TabIndex = 0
         '
@@ -2502,7 +2502,7 @@ Partial Class frmMain
         Me.iiEnglishName.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiEnglishName.Location = New System.Drawing.Point(64, 132)
         Me.iiEnglishName.Name = "iiEnglishName"
-        Me.iiEnglishName.Size = New System.Drawing.Size(273, 24)
+        Me.iiEnglishName.Size = New System.Drawing.Size(273, 27)
         Me.iiEnglishName.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiEnglishName.TabIndex = 91
         '
@@ -2555,7 +2555,7 @@ Partial Class frmMain
         Me.iiUnitNumber.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiUnitNumber.Location = New System.Drawing.Point(148, 285)
         Me.iiUnitNumber.Name = "iiUnitNumber"
-        Me.iiUnitNumber.Size = New System.Drawing.Size(189, 24)
+        Me.iiUnitNumber.Size = New System.Drawing.Size(189, 27)
         Me.iiUnitNumber.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiUnitNumber.TabIndex = 88
         '
@@ -2581,7 +2581,7 @@ Partial Class frmMain
         Me.iiGroupPrice.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiGroupPrice.Location = New System.Drawing.Point(148, 255)
         Me.iiGroupPrice.Name = "iiGroupPrice"
-        Me.iiGroupPrice.Size = New System.Drawing.Size(189, 24)
+        Me.iiGroupPrice.Size = New System.Drawing.Size(189, 27)
         Me.iiGroupPrice.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiGroupPrice.TabIndex = 86
         '
@@ -2607,7 +2607,7 @@ Partial Class frmMain
         Me.iiSerial2.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiSerial2.Location = New System.Drawing.Point(148, 224)
         Me.iiSerial2.Name = "iiSerial2"
-        Me.iiSerial2.Size = New System.Drawing.Size(189, 24)
+        Me.iiSerial2.Size = New System.Drawing.Size(189, 27)
         Me.iiSerial2.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiSerial2.TabIndex = 84
         '
@@ -2633,7 +2633,7 @@ Partial Class frmMain
         Me.iiMinimumQnty.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiMinimumQnty.Location = New System.Drawing.Point(148, 193)
         Me.iiMinimumQnty.Name = "iiMinimumQnty"
-        Me.iiMinimumQnty.Size = New System.Drawing.Size(189, 24)
+        Me.iiMinimumQnty.Size = New System.Drawing.Size(189, 27)
         Me.iiMinimumQnty.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiMinimumQnty.TabIndex = 82
         '
@@ -2671,7 +2671,7 @@ Partial Class frmMain
         Me.iiPrice.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiPrice.Location = New System.Drawing.Point(148, 163)
         Me.iiPrice.Name = "iiPrice"
-        Me.iiPrice.Size = New System.Drawing.Size(189, 24)
+        Me.iiPrice.Size = New System.Drawing.Size(189, 27)
         Me.iiPrice.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiPrice.TabIndex = 77
         '
@@ -2760,7 +2760,7 @@ Partial Class frmMain
         Me.iiItem.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiItem.Location = New System.Drawing.Point(64, 102)
         Me.iiItem.Name = "iiItem"
-        Me.iiItem.Size = New System.Drawing.Size(273, 24)
+        Me.iiItem.Size = New System.Drawing.Size(273, 27)
         Me.iiItem.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiItem.TabIndex = 4
         '
@@ -2772,7 +2772,7 @@ Partial Class frmMain
         Me.iiSerial.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
         Me.iiSerial.Location = New System.Drawing.Point(148, 69)
         Me.iiSerial.Name = "iiSerial"
-        Me.iiSerial.Size = New System.Drawing.Size(189, 24)
+        Me.iiSerial.Size = New System.Drawing.Size(189, 27)
         Me.iiSerial.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiSerial.TabIndex = 3
         '
@@ -3677,7 +3677,7 @@ Partial Class frmMain
         'KryptonCheckBox1
         '
         Me.KryptonCheckBox1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
-        Me.KryptonCheckBox1.Location = New System.Drawing.Point(122, 187)
+        Me.KryptonCheckBox1.Location = New System.Drawing.Point(122, 190)
         Me.KryptonCheckBox1.Name = "KryptonCheckBox1"
         Me.KryptonCheckBox1.Size = New System.Drawing.Size(98, 24)
         Me.KryptonCheckBox1.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3713,7 +3713,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel66.Dock = System.Windows.Forms.DockStyle.Top
         Me.KryptonLabel66.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel66.Location = New System.Drawing.Point(226, 187)
+        Me.KryptonLabel66.Location = New System.Drawing.Point(226, 190)
         Me.KryptonLabel66.Name = "KryptonLabel66"
         Me.KryptonLabel66.Size = New System.Drawing.Size(60, 20)
         Me.KryptonLabel66.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
@@ -3723,7 +3723,7 @@ Partial Class frmMain
         'FlowLayoutPanel6
         '
         Me.FlowLayoutPanel6.AutoSize = True
-        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(223, 184)
+        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(223, 187)
         Me.FlowLayoutPanel6.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
         Me.FlowLayoutPanel6.Size = New System.Drawing.Size(0, 0)
@@ -3733,7 +3733,7 @@ Partial Class frmMain
         '
         Me.FlowLayoutPanel7.AutoSize = True
         Me.FlowLayoutPanel7.Controls.Add(Me.siSearch)
-        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(28, 214)
+        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(28, 217)
         Me.FlowLayoutPanel7.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
         Me.FlowLayoutPanel7.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
@@ -3761,14 +3761,14 @@ Partial Class frmMain
         Me.FlowLayoutPanel8.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel8.Name = "FlowLayoutPanel8"
         Me.FlowLayoutPanel8.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
-        Me.FlowLayoutPanel8.Size = New System.Drawing.Size(196, 43)
+        Me.FlowLayoutPanel8.Size = New System.Drawing.Size(196, 46)
         Me.FlowLayoutPanel8.TabIndex = 19
         '
         'siQntyFrom
         '
         Me.siQntyFrom.Location = New System.Drawing.Point(100, 16)
         Me.siQntyFrom.Name = "siQntyFrom"
-        Me.siQntyFrom.Size = New System.Drawing.Size(93, 24)
+        Me.siQntyFrom.Size = New System.Drawing.Size(93, 27)
         Me.siQntyFrom.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.siQntyFrom.TabIndex = 2
         '
@@ -3776,7 +3776,7 @@ Partial Class frmMain
         '
         Me.siQntyTill.Location = New System.Drawing.Point(3, 16)
         Me.siQntyTill.Name = "siQntyTill"
-        Me.siQntyTill.Size = New System.Drawing.Size(91, 24)
+        Me.siQntyTill.Size = New System.Drawing.Size(91, 27)
         Me.siQntyTill.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.siQntyTill.TabIndex = 3
         '
@@ -3784,7 +3784,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel67.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.KryptonLabel67.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel67.Location = New System.Drawing.Point(226, 157)
+        Me.KryptonLabel67.Location = New System.Drawing.Point(226, 160)
         Me.KryptonLabel67.Name = "KryptonLabel67"
         Me.KryptonLabel67.Size = New System.Drawing.Size(60, 24)
         Me.KryptonLabel67.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -4489,7 +4489,7 @@ Partial Class frmMain
         Me.kryptonRibbon.RibbonTabs.AddRange(New ComponentFactory.Krypton.Ribbon.KryptonRibbonTab() {Me.tabHome, Me.contextRed, Me.contextGreen1})
         Me.kryptonRibbon.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.kryptonRibbon.SelectedContext = "Red,Green"
-        Me.kryptonRibbon.SelectedTab = Me.tabHome
+        Me.kryptonRibbon.SelectedTab = Me.contextRed
         Me.kryptonRibbon.Size = New System.Drawing.Size(1100, 115)
         Me.kryptonRibbon.TabIndex = 3
         '

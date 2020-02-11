@@ -37,7 +37,7 @@ Partial Class frmSignup
         'Cancel
         '
         Me.Cancel.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel.DialogResult = DialogResult.Cancel
         Me.Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Cancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Cancel.Location = New System.Drawing.Point(435, 251)

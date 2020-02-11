@@ -293,7 +293,7 @@ Partial Class frmRates
         Me.Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.Cancel.Appearance.Options.UseFont = True
-        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel.DialogResult = DialogResult.Cancel
         Me.Cancel.Image = CType(resources.GetObject("Cancel.Image"), System.Drawing.Image)
         Me.Cancel.Location = New System.Drawing.Point(20, 181)
         Me.Cancel.Name = "Cancel"
@@ -306,7 +306,7 @@ Partial Class frmRates
         Me.OK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OK.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.OK.Appearance.Options.UseFont = True
-        Me.OK.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.OK.DialogResult = DialogResult.Cancel
         Me.OK.Image = CType(resources.GetObject("OK.Image"), System.Drawing.Image)
         Me.OK.Location = New System.Drawing.Point(154, 181)
         Me.OK.Name = "OK"
@@ -319,7 +319,7 @@ Partial Class frmRates
         Me.SimpleButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.SimpleButton1.Appearance.Options.UseFont = True
-        Me.SimpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.SimpleButton1.DialogResult = DialogResult.Cancel
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
         Me.SimpleButton1.Location = New System.Drawing.Point(465, 181)
         Me.SimpleButton1.Name = "SimpleButton1"

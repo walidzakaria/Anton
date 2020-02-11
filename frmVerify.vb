@@ -72,11 +72,11 @@ Public Class frmVerify
    
     Private Sub btOK_Click(sender As Object, e As EventArgs) Handles btOK.Click
         ActivateApp()
-        Me.DialogResult = Windows.Forms.DialogResult.OK
+        Me.DialogResult = DialogResult.OK
     End Sub
 
     Private Sub btCancel_Click(sender As Object, e As EventArgs) Handles btCancel.Click
-        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        Me.DialogResult = DialogResult.Cancel
         CloseApp()
     End Sub
 End Class

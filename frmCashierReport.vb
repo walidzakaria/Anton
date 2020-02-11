@@ -163,18 +163,18 @@ Public Class frmCashierReport
         timFrom = dailyDateFrom.Value.ToString("MM/dd/yyyy") & " " & tmFrom.Value.ToString("HH:mm") & ":00.000"
         timTill = dailyDateTill.Value.ToString("MM/dd/yyyy") & " " & tmTill.Value.ToString("HH:mm") & ":59"
 
-        Dim query As String = "SELECT tblOut1.Serial, tblOut1.[Date], tblOut1.[Time], SUM(Cost.Cost) AS Cost," _
-                              & " tblOut1.RealValue, tblSellers.Seller" _
-                              & "         FROM tblOut1" _
-                              & " LEFT OUTER JOIN tblSellers ON tblOut1.Seller = tblSellers.ID" _
-                              & "         Left Join " _
-                              & " (" _
-                              & " SELECT tblOut2.Serial, tblOut2.Item, (dbo.ItemLastPrice(tblOut2.Item) * tblOut2.Qnty) AS Cost" _
-                              & " FROM tblOut2" _
-                              & " ) Cost" _
-                              & " ON tblOut1.Serial = Cost.Serial" _
-                              & " WHERE (tblOut1.[Date] + tblOut1.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" _
-                              & " GROUP BY tblOut1.Serial, tblOut1.[Date], tblOut1.[Time], tblOut1.RealValue, tblSellers.Seller ;"
+        Dim query As String = String.Format(
+            "SELECT tblOut1.Serial, tblOut1.[Date], tblOut1.[Time], SUM(tblOut2.Cost) AS Cost,
+                tblOut1.RealValue, tblSellers.Seller
+                FROM tblOut1
+                LEFT JOIN tblOut2 ON tblOut1.Serial = tblOut2.Serial
+                LEFT JOIN tblSellers ON tblOut1.Seller = tblSellers.ID
+                WHERE (tblOut1.[Date] + tblOut1.[Time] BETWEEN '{0}' AND '{1}')
+                GROUP BY tblOut1.Serial, tblOut1.[Date], tblOut1.[Time], tblOut1.RealValue, tblSellers.Seller
+                ORDER BY tblOut1.[Date], tblOut1.[Time];" _
+            , timFrom, timTill)
+
+
         Dim dt As New DataTable()
         Using cmd = New SqlCommand(query, frmMain.myConn)
             If frmMain.myConn.State = ConnectionState.Closed Then

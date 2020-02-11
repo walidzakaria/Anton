@@ -55,7 +55,7 @@ Public Class frmItemSearch
                 Dim code As String
                 code = GridView1.GetFocusedRowCellValue("Serial")
                 SearchedItem = code
-                Me.DialogResult = Windows.Forms.DialogResult.OK
+                Me.DialogResult = DialogResult.OK
                 Me.Close()
             Catch ex As Exception
                 SearchedItem = ""
@@ -63,7 +63,7 @@ Public Class frmItemSearch
         ElseIf e.KeyCode = Keys.Escape Then
             If SearchControl1.Text = "" Then
                 SearchedItem = ""
-                Me.DialogResult = Windows.Forms.DialogResult.Cancel
+                Me.DialogResult = DialogResult.Cancel
                 Me.Close()
             Else
                 SearchControl1.Text = ""
@@ -77,7 +77,7 @@ Public Class frmItemSearch
             Dim code As String
             code = GridView1.GetFocusedRowCellValue("Serial")
             SearchedItem = code
-            Me.DialogResult = Windows.Forms.DialogResult.OK
+            Me.DialogResult = DialogResult.OK
             Me.Close()
         Catch ex As Exception
             SearchedItem = ""

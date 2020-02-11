@@ -4,7 +4,7 @@ Public Class frmAddPayment
     Public Shared ID As Integer = 0
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
 
@@ -45,7 +45,7 @@ Public Class frmAddPayment
                     myConn.Close()
                 End If
             End Using
-            Me.DialogResult = Windows.Forms.DialogResult.OK
+            Me.DialogResult = DialogResult.OK
         End If
 
     End Sub
