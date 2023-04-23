@@ -164,6 +164,9 @@ Partial Class frmMain
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
         Me.KryptonPanel6 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.KryptonPanel5 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
+        Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
+        Me.KryptonLabel34 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.iiCategory = New System.Windows.Forms.ComboBox()
         Me.iiEnglishName = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel31 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.iiAlterCodes = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
@@ -244,31 +247,34 @@ Partial Class frmMain
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
         Me.osDateFrom = New ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker()
         Me.osDateTill = New ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker()
-        Me.KryptonCheckBox2 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.osItem = New System.Windows.Forms.ComboBox()
         Me.osCode = New System.Windows.Forms.ComboBox()
+        Me.KryptonLabel59 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.osCategory = New System.Windows.Forms.ComboBox()
+        Me.KryptonCheckBox2 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.KryptonPage7 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel15 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.CrystalReportViewer4 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.KryptonPanel14 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.KryptonLabel61 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.KryptonCheckBox1 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.KryptonLabel63 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.KryptonLabel64 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.KryptonLabel66 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel7 = New System.Windows.Forms.FlowLayoutPanel()
         Me.siSearch = New ComponentFactory.Krypton.Toolkit.KryptonButton()
+        Me.siItem = New System.Windows.Forms.ComboBox()
+        Me.siCode = New System.Windows.Forms.ComboBox()
+        Me.KryptonCheckBox1 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
+        Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel8 = New System.Windows.Forms.FlowLayoutPanel()
         Me.siQntyFrom = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.siQntyTill = New ComponentFactory.Krypton.Toolkit.KryptonTextBox()
         Me.KryptonLabel67 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
-        Me.siItem = New System.Windows.Forms.ComboBox()
+        Me.KryptonLabel66 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
+        Me.KryptonLabel64 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.FlowLayoutPanel9 = New System.Windows.Forms.FlowLayoutPanel()
         Me.siDateFrom = New ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker()
         Me.siDateTill = New ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker()
-        Me.siCode = New System.Windows.Forms.ComboBox()
+        Me.siCategory = New System.Windows.Forms.ComboBox()
         Me.KryptonPage8 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel16 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.CrystalReportViewer3 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
@@ -536,7 +542,7 @@ Partial Class frmMain
         Me.KryptonDockableNavigator1.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuItemImage
         Me.KryptonDockableNavigator1.Pages.AddRange(New ComponentFactory.Krypton.Navigator.KryptonPage() {Me.KryptonPage1, Me.KryptonPage2, Me.KryptonPage3, Me.KryptonPage4, Me.KryptonPage11, Me.KryptonPage5, Me.KryptonPage6, Me.KryptonPage7, Me.KryptonPage8, Me.KryptonPage9, Me.KryptonPage10})
         Me.KryptonDockableNavigator1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.KryptonDockableNavigator1.SelectedIndex = 0
+        Me.KryptonDockableNavigator1.SelectedIndex = 5
         Me.KryptonDockableNavigator1.Size = New System.Drawing.Size(1100, 587)
         Me.KryptonDockableNavigator1.TabIndex = 0
         Me.KryptonDockableNavigator1.TabStop = False
@@ -2149,7 +2155,7 @@ Partial Class frmMain
         Me.KryptonPage3.MinimumSize = New System.Drawing.Size(50, 50)
         Me.KryptonPage3.Name = "KryptonPage3"
         Me.KryptonPage3.Size = New System.Drawing.Size(1098, 558)
-        Me.KryptonPage3.Text = "„Ê“⁄Ì‰"
+        Me.KryptonPage3.Text = "„Ê—œÌ‰"
         Me.KryptonPage3.ToolTipTitle = "Page ToolTip"
         Me.KryptonPage3.UniqueName = "D57FBEBA2776468A5FA5B3C329598D5D"
         '
@@ -2409,14 +2415,14 @@ Partial Class frmMain
         '
         Me.KryptonLabel10.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel10.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitleControl
-        Me.KryptonLabel10.Location = New System.Drawing.Point(781, 17)
+        Me.KryptonLabel10.Location = New System.Drawing.Point(785, 17)
         Me.KryptonLabel10.Name = "KryptonLabel10"
-        Me.KryptonLabel10.Size = New System.Drawing.Size(90, 30)
+        Me.KryptonLabel10.Size = New System.Drawing.Size(86, 30)
         Me.KryptonLabel10.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KryptonLabel10.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
         Me.KryptonLabel10.StateCommon.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near
         Me.KryptonLabel10.TabIndex = 29
-        Me.KryptonLabel10.Values.Text = "„Ê“⁄Ì‰"
+        Me.KryptonLabel10.Values.Text = "„Ê—œÌ‰"
         '
         'KryptonPage4
         '
@@ -2460,6 +2466,9 @@ Partial Class frmMain
         '
         'KryptonPanel5
         '
+        Me.KryptonPanel5.Controls.Add(Me.SimpleButton6)
+        Me.KryptonPanel5.Controls.Add(Me.KryptonLabel34)
+        Me.KryptonPanel5.Controls.Add(Me.iiCategory)
         Me.KryptonPanel5.Controls.Add(Me.iiEnglishName)
         Me.KryptonPanel5.Controls.Add(Me.KryptonLabel31)
         Me.KryptonPanel5.Controls.Add(Me.iiAlterCodes)
@@ -2494,13 +2503,52 @@ Partial Class frmMain
         Me.KryptonPanel5.Size = New System.Drawing.Size(543, 563)
         Me.KryptonPanel5.TabIndex = 1
         '
+        'SimpleButton6
+        '
+        Me.SimpleButton6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SimpleButton6.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
+        Me.SimpleButton6.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.SimpleButton6.ImageOptions.Image = CType(resources.GetObject("SimpleButton6.ImageOptions.Image"), System.Drawing.Image)
+        Me.SimpleButton6.Location = New System.Drawing.Point(104, 366)
+        Me.SimpleButton6.Name = "SimpleButton6"
+        Me.SimpleButton6.Size = New System.Drawing.Size(32, 23)
+        Me.SimpleButton6.TabIndex = 103
+        Me.SimpleButton6.TabStop = False
+        '
+        'KryptonLabel34
+        '
+        Me.KryptonLabel34.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.KryptonLabel34.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
+        Me.KryptonLabel34.Location = New System.Drawing.Point(374, 365)
+        Me.KryptonLabel34.Name = "KryptonLabel34"
+        Me.KryptonLabel34.Size = New System.Drawing.Size(75, 24)
+        Me.KryptonLabel34.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel34.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel34.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
+        Me.KryptonLabel34.StateCommon.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near
+        Me.KryptonLabel34.TabIndex = 102
+        Me.KryptonLabel34.Values.Text = "«·‰‹‹‹‹‹‹Ê⁄:"
+        '
+        'iiCategory
+        '
+        Me.iiCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.iiCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.iiCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.iiCategory.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iiCategory.FormattingEnabled = True
+        Me.iiCategory.Location = New System.Drawing.Point(147, 363)
+        Me.iiCategory.Name = "iiCategory"
+        Me.iiCategory.Size = New System.Drawing.Size(189, 27)
+        Me.iiCategory.TabIndex = 101
+        Me.iiCategory.TabStop = False
+        '
         'iiEnglishName
         '
         Me.iiEnglishName.AlwaysActive = False
         Me.iiEnglishName.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiEnglishName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiEnglishName.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiEnglishName.Location = New System.Drawing.Point(64, 132)
+        Me.iiEnglishName.Location = New System.Drawing.Point(63, 117)
         Me.iiEnglishName.Name = "iiEnglishName"
         Me.iiEnglishName.Size = New System.Drawing.Size(273, 27)
         Me.iiEnglishName.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2510,7 +2558,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel31.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel31.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel31.Location = New System.Drawing.Point(364, 127)
+        Me.KryptonLabel31.Location = New System.Drawing.Point(363, 112)
         Me.KryptonLabel31.Name = "KryptonLabel31"
         Me.KryptonLabel31.Size = New System.Drawing.Size(86, 24)
         Me.KryptonLabel31.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2526,10 +2574,10 @@ Partial Class frmMain
         Me.iiAlterCodes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiAlterCodes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiAlterCodes.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiAlterCodes.Location = New System.Drawing.Point(64, 316)
+        Me.iiAlterCodes.Location = New System.Drawing.Point(63, 301)
         Me.iiAlterCodes.Multiline = True
         Me.iiAlterCodes.Name = "iiAlterCodes"
-        Me.iiAlterCodes.Size = New System.Drawing.Size(273, 69)
+        Me.iiAlterCodes.Size = New System.Drawing.Size(273, 56)
         Me.iiAlterCodes.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiAlterCodes.TabIndex = 90
         '
@@ -2537,7 +2585,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel21.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel21.Location = New System.Drawing.Point(353, 316)
+        Me.KryptonLabel21.Location = New System.Drawing.Point(352, 301)
         Me.KryptonLabel21.Name = "KryptonLabel21"
         Me.KryptonLabel21.Size = New System.Drawing.Size(97, 24)
         Me.KryptonLabel21.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2553,7 +2601,7 @@ Partial Class frmMain
         Me.iiUnitNumber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiUnitNumber.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiUnitNumber.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiUnitNumber.Location = New System.Drawing.Point(148, 285)
+        Me.iiUnitNumber.Location = New System.Drawing.Point(147, 270)
         Me.iiUnitNumber.Name = "iiUnitNumber"
         Me.iiUnitNumber.Size = New System.Drawing.Size(189, 27)
         Me.iiUnitNumber.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2563,7 +2611,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel78.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel78.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel78.Location = New System.Drawing.Point(348, 285)
+        Me.KryptonLabel78.Location = New System.Drawing.Point(347, 270)
         Me.KryptonLabel78.Name = "KryptonLabel78"
         Me.KryptonLabel78.Size = New System.Drawing.Size(102, 24)
         Me.KryptonLabel78.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2579,7 +2627,7 @@ Partial Class frmMain
         Me.iiGroupPrice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiGroupPrice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiGroupPrice.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiGroupPrice.Location = New System.Drawing.Point(148, 255)
+        Me.iiGroupPrice.Location = New System.Drawing.Point(147, 240)
         Me.iiGroupPrice.Name = "iiGroupPrice"
         Me.iiGroupPrice.Size = New System.Drawing.Size(189, 27)
         Me.iiGroupPrice.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2589,7 +2637,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel65.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel65.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel65.Location = New System.Drawing.Point(351, 255)
+        Me.KryptonLabel65.Location = New System.Drawing.Point(350, 240)
         Me.KryptonLabel65.Name = "KryptonLabel65"
         Me.KryptonLabel65.Size = New System.Drawing.Size(99, 24)
         Me.KryptonLabel65.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2605,7 +2653,7 @@ Partial Class frmMain
         Me.iiSerial2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiSerial2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiSerial2.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiSerial2.Location = New System.Drawing.Point(148, 224)
+        Me.iiSerial2.Location = New System.Drawing.Point(147, 209)
         Me.iiSerial2.Name = "iiSerial2"
         Me.iiSerial2.Size = New System.Drawing.Size(189, 27)
         Me.iiSerial2.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2615,7 +2663,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel62.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel62.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel62.Location = New System.Drawing.Point(359, 224)
+        Me.KryptonLabel62.Location = New System.Drawing.Point(358, 209)
         Me.KryptonLabel62.Name = "KryptonLabel62"
         Me.KryptonLabel62.Size = New System.Drawing.Size(91, 24)
         Me.KryptonLabel62.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2631,7 +2679,7 @@ Partial Class frmMain
         Me.iiMinimumQnty.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiMinimumQnty.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiMinimumQnty.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiMinimumQnty.Location = New System.Drawing.Point(148, 193)
+        Me.iiMinimumQnty.Location = New System.Drawing.Point(147, 178)
         Me.iiMinimumQnty.Name = "iiMinimumQnty"
         Me.iiMinimumQnty.Size = New System.Drawing.Size(189, 27)
         Me.iiMinimumQnty.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2641,7 +2689,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel53.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel53.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel53.Location = New System.Drawing.Point(356, 193)
+        Me.KryptonLabel53.Location = New System.Drawing.Point(355, 178)
         Me.KryptonLabel53.Name = "KryptonLabel53"
         Me.KryptonLabel53.Size = New System.Drawing.Size(94, 24)
         Me.KryptonLabel53.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2657,7 +2705,7 @@ Partial Class frmMain
         Me.SimpleButton3.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
         Me.SimpleButton3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.SimpleButton3.ImageOptions.Image = CType(resources.GetObject("SimpleButton3.ImageOptions.Image"), System.Drawing.Image)
-        Me.SimpleButton3.Location = New System.Drawing.Point(105, 65)
+        Me.SimpleButton3.Location = New System.Drawing.Point(104, 50)
         Me.SimpleButton3.Name = "SimpleButton3"
         Me.SimpleButton3.Size = New System.Drawing.Size(32, 28)
         Me.SimpleButton3.TabIndex = 80
@@ -2669,7 +2717,7 @@ Partial Class frmMain
         Me.iiPrice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiPrice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiPrice.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiPrice.Location = New System.Drawing.Point(148, 163)
+        Me.iiPrice.Location = New System.Drawing.Point(147, 148)
         Me.iiPrice.Name = "iiPrice"
         Me.iiPrice.Size = New System.Drawing.Size(189, 27)
         Me.iiPrice.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2682,9 +2730,9 @@ Partial Class frmMain
         Me.iiSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.iiSearch.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.iiSearch.FormattingEnabled = True
-        Me.iiSearch.Location = New System.Drawing.Point(145, 446)
+        Me.iiSearch.Location = New System.Drawing.Point(97, 449)
         Me.iiSearch.Name = "iiSearch"
-        Me.iiSearch.Size = New System.Drawing.Size(194, 27)
+        Me.iiSearch.Size = New System.Drawing.Size(242, 27)
         Me.iiSearch.TabIndex = 0
         Me.iiSearch.TabStop = False
         Me.iiSearch.Visible = False
@@ -2693,7 +2741,7 @@ Partial Class frmMain
         '
         Me.iiClear.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiClear.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.iiClear.Location = New System.Drawing.Point(97, 395)
+        Me.iiClear.Location = New System.Drawing.Point(97, 404)
         Me.iiClear.Name = "iiClear"
         Me.iiClear.Size = New System.Drawing.Size(117, 37)
         Me.iiClear.StateCommon.Content.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2706,7 +2754,7 @@ Partial Class frmMain
         '
         Me.iiAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiAdd.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.iiAdd.Location = New System.Drawing.Point(222, 395)
+        Me.iiAdd.Location = New System.Drawing.Point(222, 404)
         Me.iiAdd.Name = "iiAdd"
         Me.iiAdd.Size = New System.Drawing.Size(117, 37)
         Me.iiAdd.StateCommon.Content.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2719,7 +2767,7 @@ Partial Class frmMain
         '
         Me.iiRdNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiRdNew.Checked = True
-        Me.iiRdNew.Location = New System.Drawing.Point(309, 483)
+        Me.iiRdNew.Location = New System.Drawing.Point(270, 482)
         Me.iiRdNew.Name = "iiRdNew"
         Me.iiRdNew.Size = New System.Drawing.Size(69, 28)
         Me.iiRdNew.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2731,7 +2779,7 @@ Partial Class frmMain
         'iiRdModify
         '
         Me.iiRdModify.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.iiRdModify.Location = New System.Drawing.Point(228, 482)
+        Me.iiRdModify.Location = New System.Drawing.Point(178, 481)
         Me.iiRdModify.Name = "iiRdModify"
         Me.iiRdModify.Size = New System.Drawing.Size(70, 28)
         Me.iiRdModify.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2743,7 +2791,7 @@ Partial Class frmMain
         'iiRdDelete
         '
         Me.iiRdDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.iiRdDelete.Location = New System.Drawing.Point(153, 481)
+        Me.iiRdDelete.Location = New System.Drawing.Point(93, 482)
         Me.iiRdDelete.Name = "iiRdDelete"
         Me.iiRdDelete.Size = New System.Drawing.Size(65, 28)
         Me.iiRdDelete.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2758,7 +2806,7 @@ Partial Class frmMain
         Me.iiItem.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiItem.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiItem.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiItem.Location = New System.Drawing.Point(64, 102)
+        Me.iiItem.Location = New System.Drawing.Point(63, 87)
         Me.iiItem.Name = "iiItem"
         Me.iiItem.Size = New System.Drawing.Size(273, 27)
         Me.iiItem.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2770,7 +2818,7 @@ Partial Class frmMain
         Me.iiSerial.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.iiSerial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.iiSerial.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon
-        Me.iiSerial.Location = New System.Drawing.Point(148, 69)
+        Me.iiSerial.Location = New System.Drawing.Point(147, 54)
         Me.iiSerial.Name = "iiSerial"
         Me.iiSerial.Size = New System.Drawing.Size(189, 27)
         Me.iiSerial.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2780,7 +2828,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel25.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel25.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel25.Location = New System.Drawing.Point(366, 160)
+        Me.KryptonLabel25.Location = New System.Drawing.Point(365, 145)
         Me.KryptonLabel25.Name = "KryptonLabel25"
         Me.KryptonLabel25.Size = New System.Drawing.Size(84, 24)
         Me.KryptonLabel25.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2794,7 +2842,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel26.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel26.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel26.Location = New System.Drawing.Point(399, 98)
+        Me.KryptonLabel26.Location = New System.Drawing.Point(398, 83)
         Me.KryptonLabel26.Name = "KryptonLabel26"
         Me.KryptonLabel26.Size = New System.Drawing.Size(51, 24)
         Me.KryptonLabel26.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2808,7 +2856,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel27.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel27.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel27.Location = New System.Drawing.Point(393, 69)
+        Me.KryptonLabel27.Location = New System.Drawing.Point(392, 54)
         Me.KryptonLabel27.Name = "KryptonLabel27"
         Me.KryptonLabel27.Size = New System.Drawing.Size(57, 24)
         Me.KryptonLabel27.StateCommon.LongText.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3203,7 +3251,7 @@ Partial Class frmMain
         '
         Me.KryptonLabel36.Dock = System.Windows.Forms.DockStyle.Right
         Me.KryptonLabel36.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel36.Location = New System.Drawing.Point(229, 3)
+        Me.KryptonLabel36.Location = New System.Drawing.Point(230, 3)
         Me.KryptonLabel36.Name = "KryptonLabel36"
         Me.KryptonLabel36.Size = New System.Drawing.Size(59, 69)
         Me.KryptonLabel36.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3217,7 +3265,7 @@ Partial Class frmMain
         Me.isVendor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.isVendor.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.isVendor.FormattingEnabled = True
-        Me.isVendor.Location = New System.Drawing.Point(29, 78)
+        Me.isVendor.Location = New System.Drawing.Point(30, 78)
         Me.isVendor.Name = "isVendor"
         Me.isVendor.Size = New System.Drawing.Size(194, 27)
         Me.isVendor.TabIndex = 77
@@ -3227,21 +3275,21 @@ Partial Class frmMain
         '
         Me.KryptonLabel55.Dock = System.Windows.Forms.DockStyle.Right
         Me.KryptonLabel55.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel55.Location = New System.Drawing.Point(229, 78)
+        Me.KryptonLabel55.Location = New System.Drawing.Point(230, 78)
         Me.KryptonLabel55.Name = "KryptonLabel55"
-        Me.KryptonLabel55.Size = New System.Drawing.Size(60, 27)
+        Me.KryptonLabel55.Size = New System.Drawing.Size(57, 27)
         Me.KryptonLabel55.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KryptonLabel55.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
         Me.KryptonLabel55.TabIndex = 4
-        Me.KryptonLabel55.Values.Text = "«·„Ê“⁄:"
+        Me.KryptonLabel55.Values.Text = "«·„Ê—œ:"
         '
         'KryptonLabel56
         '
         Me.KryptonLabel56.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.KryptonLabel56.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel56.Location = New System.Drawing.Point(229, 111)
+        Me.KryptonLabel56.Location = New System.Drawing.Point(230, 111)
         Me.KryptonLabel56.Name = "KryptonLabel56"
-        Me.KryptonLabel56.Size = New System.Drawing.Size(60, 20)
+        Me.KryptonLabel56.Size = New System.Drawing.Size(59, 20)
         Me.KryptonLabel56.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
         Me.KryptonLabel56.TabIndex = 9
         Me.KryptonLabel56.Values.Text = "                         "
@@ -3250,9 +3298,9 @@ Partial Class frmMain
         '
         Me.KryptonLabel57.Dock = System.Windows.Forms.DockStyle.Top
         Me.KryptonLabel57.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel57.Location = New System.Drawing.Point(229, 137)
+        Me.KryptonLabel57.Location = New System.Drawing.Point(230, 137)
         Me.KryptonLabel57.Name = "KryptonLabel57"
-        Me.KryptonLabel57.Size = New System.Drawing.Size(60, 20)
+        Me.KryptonLabel57.Size = New System.Drawing.Size(59, 20)
         Me.KryptonLabel57.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
         Me.KryptonLabel57.TabIndex = 11
         Me.KryptonLabel57.Values.Text = "   "
@@ -3260,7 +3308,7 @@ Partial Class frmMain
         'FlowLayoutPanel3
         '
         Me.FlowLayoutPanel3.AutoSize = True
-        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(226, 134)
+        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(227, 134)
         Me.FlowLayoutPanel3.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
         Me.FlowLayoutPanel3.Size = New System.Drawing.Size(0, 0)
@@ -3270,7 +3318,7 @@ Partial Class frmMain
         '
         Me.FlowLayoutPanel26.AutoSize = True
         Me.FlowLayoutPanel26.Controls.Add(Me.isSearch)
-        Me.FlowLayoutPanel26.Location = New System.Drawing.Point(31, 160)
+        Me.FlowLayoutPanel26.Location = New System.Drawing.Point(32, 160)
         Me.FlowLayoutPanel26.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel26.Name = "FlowLayoutPanel26"
         Me.FlowLayoutPanel26.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
@@ -3292,7 +3340,7 @@ Partial Class frmMain
         Me.FlowLayoutPanel4.AutoSize = True
         Me.FlowLayoutPanel4.Controls.Add(Me.isDateFrom)
         Me.FlowLayoutPanel4.Controls.Add(Me.isDateTill)
-        Me.FlowLayoutPanel4.Location = New System.Drawing.Point(91, 0)
+        Me.FlowLayoutPanel4.Location = New System.Drawing.Point(92, 0)
         Me.FlowLayoutPanel4.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
         Me.FlowLayoutPanel4.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
@@ -3387,16 +3435,18 @@ Partial Class frmMain
         Me.TableLayoutPanel1.Controls.Add(Me.KryptonLabel58, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.KryptonLabel60, 0, 7)
         Me.TableLayoutPanel1.Controls.Add(Me.FlowLayoutPanel1, 1, 6)
-        Me.TableLayoutPanel1.Controls.Add(Me.FlowLayoutPanel2, 1, 9)
+        Me.TableLayoutPanel1.Controls.Add(Me.FlowLayoutPanel2, 1, 12)
         Me.TableLayoutPanel1.Controls.Add(Me.FlowLayoutPanel5, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.KryptonCheckBox2, 1, 8)
         Me.TableLayoutPanel1.Controls.Add(Me.osItem, 1, 7)
         Me.TableLayoutPanel1.Controls.Add(Me.osCode, 1, 5)
+        Me.TableLayoutPanel1.Controls.Add(Me.KryptonLabel59, 0, 8)
+        Me.TableLayoutPanel1.Controls.Add(Me.osCategory, 1, 8)
+        Me.TableLayoutPanel1.Controls.Add(Me.KryptonCheckBox2, 1, 9)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(10, 14)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 10
+        Me.TableLayoutPanel1.RowCount = 11
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -3406,7 +3456,10 @@ Partial Class frmMain
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(303, 534)
         Me.TableLayoutPanel1.TabIndex = 1
         '
@@ -3485,7 +3538,7 @@ Partial Class frmMain
         '
         Me.FlowLayoutPanel2.AutoSize = True
         Me.FlowLayoutPanel2.Controls.Add(Me.KryptonButton9)
-        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(40, 223)
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(40, 282)
         Me.FlowLayoutPanel2.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
         Me.FlowLayoutPanel2.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
@@ -3539,17 +3592,6 @@ Partial Class frmMain
         Me.osDateTill.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.osDateTill.TabIndex = 1
         '
-        'KryptonCheckBox2
-        '
-        Me.KryptonCheckBox2.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
-        Me.KryptonCheckBox2.Location = New System.Drawing.Point(142, 177)
-        Me.KryptonCheckBox2.Name = "KryptonCheckBox2"
-        Me.KryptonCheckBox2.Size = New System.Drawing.Size(90, 24)
-        Me.KryptonCheckBox2.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonCheckBox2.TabIndex = 3
-        Me.KryptonCheckBox2.Text = "Â‹‹‹‹‹‹Ê«·ﬂ"
-        Me.KryptonCheckBox2.Values.Text = "Â‹‹‹‹‹‹Ê«·ﬂ"
-        '
         'osItem
         '
         Me.osItem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
@@ -3573,6 +3615,40 @@ Partial Class frmMain
         Me.osCode.Size = New System.Drawing.Size(194, 27)
         Me.osCode.TabIndex = 80
         Me.osCode.TabStop = False
+        '
+        'KryptonLabel59
+        '
+        Me.KryptonLabel59.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
+        Me.KryptonLabel59.Location = New System.Drawing.Point(242, 177)
+        Me.KryptonLabel59.Name = "KryptonLabel59"
+        Me.KryptonLabel59.Size = New System.Drawing.Size(58, 24)
+        Me.KryptonLabel59.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
+        Me.KryptonLabel59.StateNormal.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel59.TabIndex = 84
+        Me.KryptonLabel59.Values.Text = "«·‰‹‹Ê⁄:"
+        '
+        'osCategory
+        '
+        Me.osCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.osCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.osCategory.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.osCategory.FormattingEnabled = True
+        Me.osCategory.Location = New System.Drawing.Point(3, 177)
+        Me.osCategory.Name = "osCategory"
+        Me.osCategory.Size = New System.Drawing.Size(229, 27)
+        Me.osCategory.TabIndex = 86
+        Me.osCategory.TabStop = False
+        '
+        'KryptonCheckBox2
+        '
+        Me.KryptonCheckBox2.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.KryptonCheckBox2.Location = New System.Drawing.Point(142, 226)
+        Me.KryptonCheckBox2.Name = "KryptonCheckBox2"
+        Me.KryptonCheckBox2.Size = New System.Drawing.Size(90, 24)
+        Me.KryptonCheckBox2.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonCheckBox2.TabIndex = 3
+        Me.KryptonCheckBox2.Text = "Â‹‹‹‹‹‹Ê«·ﬂ"
+        Me.KryptonCheckBox2.Values.Text = "Â‹‹‹‹‹‹Ê«·ﬂ"
         '
         'KryptonPage7
         '
@@ -3633,22 +3709,23 @@ Partial Class frmMain
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel61, 0, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.KryptonCheckBox1, 1, 7)
         Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel63, 0, 2)
-        Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel64, 0, 3)
-        Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel66, 0, 7)
-        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel6, 1, 6)
-        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel7, 1, 8)
-        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel8, 1, 5)
-        Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel67, 0, 5)
+        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel7, 1, 9)
         Me.TableLayoutPanel3.Controls.Add(Me.siItem, 1, 2)
-        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel9, 1, 3)
         Me.TableLayoutPanel3.Controls.Add(Me.siCode, 1, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.KryptonCheckBox1, 1, 8)
+        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel6, 1, 5)
+        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel8, 1, 7)
+        Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel67, 0, 7)
+        Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel66, 0, 3)
+        Me.TableLayoutPanel3.Controls.Add(Me.KryptonLabel64, 0, 6)
+        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel9, 1, 6)
+        Me.TableLayoutPanel3.Controls.Add(Me.siCategory, 1, 3)
         Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.TableLayoutPanel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TableLayoutPanel3.Location = New System.Drawing.Point(10, 14)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
-        Me.TableLayoutPanel3.RowCount = 9
+        Me.TableLayoutPanel3.RowCount = 10
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -3674,17 +3751,6 @@ Partial Class frmMain
         Me.KryptonLabel61.TabIndex = 6
         Me.KryptonLabel61.Values.Text = "«·ﬂÊœ:"
         '
-        'KryptonCheckBox1
-        '
-        Me.KryptonCheckBox1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
-        Me.KryptonCheckBox1.Location = New System.Drawing.Point(122, 190)
-        Me.KryptonCheckBox1.Name = "KryptonCheckBox1"
-        Me.KryptonCheckBox1.Size = New System.Drawing.Size(98, 24)
-        Me.KryptonCheckBox1.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonCheckBox1.TabIndex = 1
-        Me.KryptonCheckBox1.Text = "‰Ê«ﬁ’ ›ﬁÿ"
-        Me.KryptonCheckBox1.Values.Text = "‰Ê«ﬁ’ ›ﬁÿ"
-        '
         'KryptonLabel63
         '
         Me.KryptonLabel63.Dock = System.Windows.Forms.DockStyle.Right
@@ -3697,43 +3763,11 @@ Partial Class frmMain
         Me.KryptonLabel63.TabIndex = 4
         Me.KryptonLabel63.Values.Text = "«·’‰›:"
         '
-        'KryptonLabel64
-        '
-        Me.KryptonLabel64.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.KryptonLabel64.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel64.Location = New System.Drawing.Point(226, 69)
-        Me.KryptonLabel64.Name = "KryptonLabel64"
-        Me.KryptonLabel64.Size = New System.Drawing.Size(60, 69)
-        Me.KryptonLabel64.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KryptonLabel64.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
-        Me.KryptonLabel64.TabIndex = 6
-        Me.KryptonLabel64.Values.Text = "«· «—ÌŒ:"
-        '
-        'KryptonLabel66
-        '
-        Me.KryptonLabel66.Dock = System.Windows.Forms.DockStyle.Top
-        Me.KryptonLabel66.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel66.Location = New System.Drawing.Point(226, 190)
-        Me.KryptonLabel66.Name = "KryptonLabel66"
-        Me.KryptonLabel66.Size = New System.Drawing.Size(60, 20)
-        Me.KryptonLabel66.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
-        Me.KryptonLabel66.TabIndex = 11
-        Me.KryptonLabel66.Values.Text = "   "
-        '
-        'FlowLayoutPanel6
-        '
-        Me.FlowLayoutPanel6.AutoSize = True
-        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(223, 187)
-        Me.FlowLayoutPanel6.Margin = New System.Windows.Forms.Padding(0)
-        Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
-        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(0, 0)
-        Me.FlowLayoutPanel6.TabIndex = 5
-        '
         'FlowLayoutPanel7
         '
         Me.FlowLayoutPanel7.AutoSize = True
         Me.FlowLayoutPanel7.Controls.Add(Me.siSearch)
-        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(28, 217)
+        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(28, 269)
         Me.FlowLayoutPanel7.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
         Me.FlowLayoutPanel7.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
@@ -3752,12 +3786,58 @@ Partial Class frmMain
         Me.siSearch.TabIndex = 0
         Me.siSearch.Values.Text = "»ÕÀ"
         '
+        'siItem
+        '
+        Me.siItem.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.siItem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.siItem.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.siItem.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.siItem.FormattingEnabled = True
+        Me.siItem.Location = New System.Drawing.Point(3, 36)
+        Me.siItem.Name = "siItem"
+        Me.siItem.Size = New System.Drawing.Size(217, 27)
+        Me.siItem.TabIndex = 76
+        Me.siItem.TabStop = False
+        '
+        'siCode
+        '
+        Me.siCode.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.siCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.siCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.siCode.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.siCode.FormattingEnabled = True
+        Me.siCode.Location = New System.Drawing.Point(3, 3)
+        Me.siCode.Name = "siCode"
+        Me.siCode.Size = New System.Drawing.Size(217, 27)
+        Me.siCode.TabIndex = 77
+        Me.siCode.TabStop = False
+        '
+        'KryptonCheckBox1
+        '
+        Me.KryptonCheckBox1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl
+        Me.KryptonCheckBox1.Location = New System.Drawing.Point(122, 223)
+        Me.KryptonCheckBox1.Name = "KryptonCheckBox1"
+        Me.KryptonCheckBox1.Size = New System.Drawing.Size(98, 24)
+        Me.KryptonCheckBox1.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonCheckBox1.TabIndex = 1
+        Me.KryptonCheckBox1.Text = "‰Ê«ﬁ’ ›ﬁÿ"
+        Me.KryptonCheckBox1.Values.Text = "‰Ê«ﬁ’ ›ﬁÿ"
+        '
+        'FlowLayoutPanel6
+        '
+        Me.FlowLayoutPanel6.AutoSize = True
+        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(223, 99)
+        Me.FlowLayoutPanel6.Margin = New System.Windows.Forms.Padding(0)
+        Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
+        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(0, 0)
+        Me.FlowLayoutPanel6.TabIndex = 5
+        '
         'FlowLayoutPanel8
         '
         Me.FlowLayoutPanel8.AutoSize = True
         Me.FlowLayoutPanel8.Controls.Add(Me.siQntyFrom)
         Me.FlowLayoutPanel8.Controls.Add(Me.siQntyTill)
-        Me.FlowLayoutPanel8.Location = New System.Drawing.Point(27, 141)
+        Me.FlowLayoutPanel8.Location = New System.Drawing.Point(27, 174)
         Me.FlowLayoutPanel8.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel8.Name = "FlowLayoutPanel8"
         Me.FlowLayoutPanel8.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
@@ -3782,9 +3862,8 @@ Partial Class frmMain
         '
         'KryptonLabel67
         '
-        Me.KryptonLabel67.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.KryptonLabel67.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel67.Location = New System.Drawing.Point(226, 160)
+        Me.KryptonLabel67.Location = New System.Drawing.Point(226, 177)
         Me.KryptonLabel67.Name = "KryptonLabel67"
         Me.KryptonLabel67.Size = New System.Drawing.Size(60, 24)
         Me.KryptonLabel67.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3792,25 +3871,36 @@ Partial Class frmMain
         Me.KryptonLabel67.TabIndex = 5
         Me.KryptonLabel67.Values.Text = "«·ﬂ„Ì…:"
         '
-        'siItem
+        'KryptonLabel66
         '
-        Me.siItem.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.siItem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.siItem.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.siItem.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.siItem.FormattingEnabled = True
-        Me.siItem.Location = New System.Drawing.Point(3, 36)
-        Me.siItem.Name = "siItem"
-        Me.siItem.Size = New System.Drawing.Size(217, 27)
-        Me.siItem.TabIndex = 76
-        Me.siItem.TabStop = False
+        Me.KryptonLabel66.Dock = System.Windows.Forms.DockStyle.Top
+        Me.KryptonLabel66.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
+        Me.KryptonLabel66.Location = New System.Drawing.Point(226, 69)
+        Me.KryptonLabel66.Name = "KryptonLabel66"
+        Me.KryptonLabel66.Size = New System.Drawing.Size(60, 24)
+        Me.KryptonLabel66.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.KryptonLabel66.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
+        Me.KryptonLabel66.TabIndex = 11
+        Me.KryptonLabel66.Values.Text = "«·‰‹‹Ê⁄:"
+        '
+        'KryptonLabel64
+        '
+        Me.KryptonLabel64.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.KryptonLabel64.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
+        Me.KryptonLabel64.Location = New System.Drawing.Point(226, 102)
+        Me.KryptonLabel64.Name = "KryptonLabel64"
+        Me.KryptonLabel64.Size = New System.Drawing.Size(60, 69)
+        Me.KryptonLabel64.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel64.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
+        Me.KryptonLabel64.TabIndex = 6
+        Me.KryptonLabel64.Values.Text = "«· «—ÌŒ:"
         '
         'FlowLayoutPanel9
         '
         Me.FlowLayoutPanel9.AutoSize = True
         Me.FlowLayoutPanel9.Controls.Add(Me.siDateFrom)
         Me.FlowLayoutPanel9.Controls.Add(Me.siDateTill)
-        Me.FlowLayoutPanel9.Location = New System.Drawing.Point(88, 66)
+        Me.FlowLayoutPanel9.Location = New System.Drawing.Point(88, 99)
         Me.FlowLayoutPanel9.Margin = New System.Windows.Forms.Padding(0)
         Me.FlowLayoutPanel9.Name = "FlowLayoutPanel9"
         Me.FlowLayoutPanel9.Padding = New System.Windows.Forms.Padding(0, 13, 0, 0)
@@ -3841,18 +3931,17 @@ Partial Class frmMain
         Me.siDateTill.StateCommon.Content.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.siDateTill.TabIndex = 1
         '
-        'siCode
+        'siCategory
         '
-        Me.siCode.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.siCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.siCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.siCode.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.siCode.FormattingEnabled = True
-        Me.siCode.Location = New System.Drawing.Point(3, 3)
-        Me.siCode.Name = "siCode"
-        Me.siCode.Size = New System.Drawing.Size(217, 27)
-        Me.siCode.TabIndex = 77
-        Me.siCode.TabStop = False
+        Me.siCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.siCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.siCategory.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.siCategory.FormattingEnabled = True
+        Me.siCategory.Location = New System.Drawing.Point(4, 69)
+        Me.siCategory.Name = "siCategory"
+        Me.siCategory.Size = New System.Drawing.Size(216, 27)
+        Me.siCategory.TabIndex = 87
+        Me.siCategory.TabStop = False
         '
         'KryptonPage8
         '
@@ -5227,17 +5316,6 @@ Partial Class frmMain
     Private WithEvents KryptonPanel11 As ComponentFactory.Krypton.Toolkit.KryptonPanel
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel9 As ComponentFactory.Krypton.Toolkit.KryptonPanel
-    Private WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
-    Private WithEvents KryptonLabel37 As ComponentFactory.Krypton.Toolkit.KryptonLabel
-    Friend WithEvents osCustomer As System.Windows.Forms.ComboBox
-    Private WithEvents KryptonLabel58 As ComponentFactory.Krypton.Toolkit.KryptonLabel
-    Private WithEvents KryptonLabel60 As ComponentFactory.Krypton.Toolkit.KryptonLabel
-    Private WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
-    Private WithEvents FlowLayoutPanel2 As System.Windows.Forms.FlowLayoutPanel
-    Private WithEvents KryptonButton9 As ComponentFactory.Krypton.Toolkit.KryptonButton
-    Private WithEvents FlowLayoutPanel5 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents osDateFrom As ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker
-    Friend WithEvents osDateTill As ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker
     Private WithEvents KryptonPanel15 As ComponentFactory.Krypton.Toolkit.KryptonPanel
     Friend WithEvents CrystalReportViewer4 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel14 As ComponentFactory.Krypton.Toolkit.KryptonPanel
@@ -5247,7 +5325,6 @@ Partial Class frmMain
     Friend WithEvents siQntyTill As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Private WithEvents KryptonLabel63 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Private WithEvents KryptonLabel64 As ComponentFactory.Krypton.Toolkit.KryptonLabel
-    Private WithEvents KryptonLabel66 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Private WithEvents FlowLayoutPanel6 As System.Windows.Forms.FlowLayoutPanel
     Private WithEvents FlowLayoutPanel7 As System.Windows.Forms.FlowLayoutPanel
     Private WithEvents siSearch As ComponentFactory.Krypton.Toolkit.KryptonButton
@@ -5365,7 +5442,6 @@ Partial Class frmMain
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents KryptonCheckBox2 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Friend WithEvents lblSellingPrice As DevExpress.XtraEditors.LabelControl
     Friend WithEvents KryptonRibbonGroupTriple10 As ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple
     Friend WithEvents KryptonRibbonGroupButton7 As ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton
@@ -5383,8 +5459,6 @@ Partial Class frmMain
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Private WithEvents iiAlterCodes As ComponentFactory.Krypton.Toolkit.KryptonTextBox
     Private WithEvents KryptonLabel21 As ComponentFactory.Krypton.Toolkit.KryptonLabel
-    Private WithEvents KryptonLabel24 As ComponentFactory.Krypton.Toolkit.KryptonLabel
-    Friend WithEvents osItem As System.Windows.Forms.ComboBox
     Friend WithEvents cbCashiers As System.Windows.Forms.ComboBox
     Private WithEvents KryptonLabel28 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Private WithEvents FlowLayoutPanel14 As System.Windows.Forms.FlowLayoutPanel
@@ -5402,7 +5476,6 @@ Partial Class frmMain
     Friend WithEvents btnPassKey As ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton
     Private WithEvents KryptonLabel61 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents siCode As System.Windows.Forms.ComboBox
-    Friend WithEvents osCode As System.Windows.Forms.ComboBox
     Friend WithEvents KryptonRibbonGroupTriple11 As ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple
     Friend WithEvents btnCustomers As ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton
     Friend WithEvents rgPayment As DevExpress.XtraEditors.RadioGroup
@@ -5419,5 +5492,26 @@ Partial Class frmMain
     Friend WithEvents UnitPrice As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Value As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents btnSellers As ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton
-
+    Public WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
+    Public WithEvents KryptonLabel34 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Public WithEvents iiCategory As ComboBox
+    Private WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Private WithEvents KryptonLabel24 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Private WithEvents KryptonLabel37 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents osCustomer As ComboBox
+    Private WithEvents KryptonLabel58 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Private WithEvents KryptonLabel60 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Private WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Private WithEvents FlowLayoutPanel2 As FlowLayoutPanel
+    Private WithEvents KryptonButton9 As ComponentFactory.Krypton.Toolkit.KryptonButton
+    Private WithEvents FlowLayoutPanel5 As FlowLayoutPanel
+    Friend WithEvents osDateFrom As ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker
+    Friend WithEvents osDateTill As ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker
+    Friend WithEvents osItem As ComboBox
+    Friend WithEvents osCode As ComboBox
+    Public WithEvents KryptonLabel59 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Public WithEvents osCategory As ComboBox
+    Friend WithEvents KryptonCheckBox2 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
+    Private WithEvents KryptonLabel66 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Public WithEvents siCategory As ComboBox
 End Class

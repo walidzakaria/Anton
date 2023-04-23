@@ -120,8 +120,8 @@ Partial Class frmCash
         Me.btCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btCancel.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.btCancel.Appearance.Options.UseFont = True
-        Me.btCancel.DialogResult = DialogResult.Cancel
-        Me.btCancel.Image = CType(resources.GetObject("btCancel.Image"), System.Drawing.Image)
+        Me.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btCancel.ImageOptions.Image = CType(resources.GetObject("btCancel.ImageOptions.Image"), System.Drawing.Image)
         Me.btCancel.Location = New System.Drawing.Point(44, 230)
         Me.btCancel.Name = "btCancel"
         Me.btCancel.Size = New System.Drawing.Size(126, 44)
@@ -133,7 +133,7 @@ Partial Class frmCash
         Me.btOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btOK.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.btOK.Appearance.Options.UseFont = True
-        Me.btOK.Image = CType(resources.GetObject("btOK.Image"), System.Drawing.Image)
+        Me.btOK.ImageOptions.Image = CType(resources.GetObject("btOK.ImageOptions.Image"), System.Drawing.Image)
         Me.btOK.Location = New System.Drawing.Point(176, 230)
         Me.btOK.Name = "btOK"
         Me.btOK.Size = New System.Drawing.Size(126, 44)

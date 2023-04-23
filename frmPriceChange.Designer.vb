@@ -33,6 +33,9 @@ Partial Class frmPriceChange
         Me.KryptonLabel1 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonLabel9 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonManager = New ComponentFactory.Krypton.Toolkit.KryptonManager(Me.components)
+        Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
+        Me.tbCategory = New System.Windows.Forms.ComboBox()
+        Me.KryptonLabel5 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         CType(Me.KryptonPanel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel.SuspendLayout()
         CType(Me.tbEnglishName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -43,6 +46,9 @@ Partial Class frmPriceChange
         '
         'KryptonPanel
         '
+        Me.KryptonPanel.Controls.Add(Me.SimpleButton7)
+        Me.KryptonPanel.Controls.Add(Me.tbCategory)
+        Me.KryptonPanel.Controls.Add(Me.KryptonLabel5)
         Me.KryptonPanel.Controls.Add(Me.tbEnglishName)
         Me.KryptonPanel.Controls.Add(Me.KryptonLabel3)
         Me.KryptonPanel.Controls.Add(Me.tbName)
@@ -58,14 +64,14 @@ Partial Class frmPriceChange
         Me.KryptonPanel.Name = "KryptonPanel"
         Me.KryptonPanel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue
         Me.KryptonPanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.KryptonPanel.Size = New System.Drawing.Size(430, 196)
+        Me.KryptonPanel.Size = New System.Drawing.Size(468, 235)
         Me.KryptonPanel.TabIndex = 0
         '
         'tbEnglishName
         '
         Me.tbEnglishName.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbEnglishName.EnterMoveNextControl = True
-        Me.tbEnglishName.Location = New System.Drawing.Point(26, 44)
+        Me.tbEnglishName.Location = New System.Drawing.Point(64, 44)
         Me.tbEnglishName.Name = "tbEnglishName"
         Me.tbEnglishName.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbEnglishName.Properties.Appearance.Options.UseFont = True
@@ -76,7 +82,7 @@ Partial Class frmPriceChange
         '
         Me.KryptonLabel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel3.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel3.Location = New System.Drawing.Point(332, 46)
+        Me.KryptonLabel3.Location = New System.Drawing.Point(370, 46)
         Me.KryptonLabel3.Name = "KryptonLabel3"
         Me.KryptonLabel3.Size = New System.Drawing.Size(86, 24)
         Me.KryptonLabel3.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -89,7 +95,7 @@ Partial Class frmPriceChange
         '
         Me.tbName.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbName.EnterMoveNextControl = True
-        Me.tbName.Location = New System.Drawing.Point(26, 12)
+        Me.tbName.Location = New System.Drawing.Point(64, 12)
         Me.tbName.Name = "tbName"
         Me.tbName.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbName.Properties.Appearance.Options.UseFont = True
@@ -100,7 +106,7 @@ Partial Class frmPriceChange
         '
         Me.KryptonLabel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel2.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel2.Location = New System.Drawing.Point(322, 14)
+        Me.KryptonLabel2.Location = New System.Drawing.Point(360, 14)
         Me.KryptonLabel2.Name = "KryptonLabel2"
         Me.KryptonLabel2.Size = New System.Drawing.Size(96, 24)
         Me.KryptonLabel2.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -113,7 +119,7 @@ Partial Class frmPriceChange
         '
         Me.tbMinimum.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbMinimum.EnterMoveNextControl = True
-        Me.tbMinimum.Location = New System.Drawing.Point(26, 112)
+        Me.tbMinimum.Location = New System.Drawing.Point(64, 149)
         Me.tbMinimum.Name = "tbMinimum"
         Me.tbMinimum.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMinimum.Properties.Appearance.Options.UseFont = True
@@ -124,7 +130,7 @@ Partial Class frmPriceChange
         '
         Me.tbPrice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbPrice.EnterMoveNextControl = True
-        Me.tbPrice.Location = New System.Drawing.Point(26, 80)
+        Me.tbPrice.Location = New System.Drawing.Point(64, 80)
         Me.tbPrice.Name = "tbPrice"
         Me.tbPrice.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPrice.Properties.Appearance.Options.UseFont = True
@@ -136,9 +142,9 @@ Partial Class frmPriceChange
         Me.btCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btCancel.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.btCancel.Appearance.Options.UseFont = True
-        Me.btCancel.DialogResult = DialogResult.Cancel
-        Me.btCancel.Image = CType(resources.GetObject("btCancel.Image"), System.Drawing.Image)
-        Me.btCancel.Location = New System.Drawing.Point(26, 155)
+        Me.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btCancel.ImageOptions.Image = CType(resources.GetObject("btCancel.ImageOptions.Image"), System.Drawing.Image)
+        Me.btCancel.Location = New System.Drawing.Point(26, 194)
         Me.btCancel.Name = "btCancel"
         Me.btCancel.Size = New System.Drawing.Size(114, 29)
         Me.btCancel.TabIndex = 5
@@ -149,8 +155,8 @@ Partial Class frmPriceChange
         Me.btOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btOK.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.btOK.Appearance.Options.UseFont = True
-        Me.btOK.Image = CType(resources.GetObject("btOK.Image"), System.Drawing.Image)
-        Me.btOK.Location = New System.Drawing.Point(146, 155)
+        Me.btOK.ImageOptions.Image = CType(resources.GetObject("btOK.ImageOptions.Image"), System.Drawing.Image)
+        Me.btOK.Location = New System.Drawing.Point(146, 194)
         Me.btOK.Name = "btOK"
         Me.btOK.Size = New System.Drawing.Size(114, 29)
         Me.btOK.TabIndex = 4
@@ -160,7 +166,7 @@ Partial Class frmPriceChange
         '
         Me.KryptonLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel1.Location = New System.Drawing.Point(322, 114)
+        Me.KryptonLabel1.Location = New System.Drawing.Point(360, 151)
         Me.KryptonLabel1.Name = "KryptonLabel1"
         Me.KryptonLabel1.Size = New System.Drawing.Size(94, 24)
         Me.KryptonLabel1.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -173,7 +179,7 @@ Partial Class frmPriceChange
         '
         Me.KryptonLabel9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KryptonLabel9.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
-        Me.KryptonLabel9.Location = New System.Drawing.Point(334, 82)
+        Me.KryptonLabel9.Location = New System.Drawing.Point(372, 82)
         Me.KryptonLabel9.Name = "KryptonLabel9"
         Me.KryptonLabel9.Size = New System.Drawing.Size(84, 24)
         Me.KryptonLabel9.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -186,11 +192,49 @@ Partial Class frmPriceChange
         '
         Me.KryptonManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver
         '
+        'SimpleButton7
+        '
+        Me.SimpleButton7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SimpleButton7.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
+        Me.SimpleButton7.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.SimpleButton7.ImageOptions.Image = CType(resources.GetObject("SimpleButton7.ImageOptions.Image"), System.Drawing.Image)
+        Me.SimpleButton7.Location = New System.Drawing.Point(26, 117)
+        Me.SimpleButton7.Name = "SimpleButton7"
+        Me.SimpleButton7.Size = New System.Drawing.Size(32, 23)
+        Me.SimpleButton7.TabIndex = 106
+        Me.SimpleButton7.TabStop = False
+        '
+        'tbCategory
+        '
+        Me.tbCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.tbCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.tbCategory.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.tbCategory.FormattingEnabled = True
+        Me.tbCategory.Location = New System.Drawing.Point(64, 114)
+        Me.tbCategory.Name = "tbCategory"
+        Me.tbCategory.Size = New System.Drawing.Size(296, 27)
+        Me.tbCategory.TabIndex = 104
+        Me.tbCategory.TabStop = False
+        '
+        'KryptonLabel5
+        '
+        Me.KryptonLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.KryptonLabel5.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel
+        Me.KryptonLabel5.Location = New System.Drawing.Point(369, 114)
+        Me.KryptonLabel5.Name = "KryptonLabel5"
+        Me.KryptonLabel5.Size = New System.Drawing.Size(87, 24)
+        Me.KryptonLabel5.StateCommon.ShortText.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KryptonLabel5.StateCommon.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far
+        Me.KryptonLabel5.StateCommon.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near
+        Me.KryptonLabel5.TabIndex = 105
+        Me.KryptonLabel5.Values.Text = "«·‰‹‹‹‹‹‹‹‹‹Ê⁄:"
+        '
         'frmPriceChange
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(430, 196)
+        Me.ClientSize = New System.Drawing.Size(468, 235)
         Me.Controls.Add(Me.KryptonPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -234,4 +278,7 @@ Partial Class frmPriceChange
     Private WithEvents KryptonLabel2 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Friend WithEvents tbEnglishName As DevExpress.XtraEditors.TextEdit
     Private WithEvents KryptonLabel3 As ComponentFactory.Krypton.Toolkit.KryptonLabel
+    Friend WithEvents SimpleButton7 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents tbCategory As ComboBox
+    Public WithEvents KryptonLabel5 As ComponentFactory.Krypton.Toolkit.KryptonLabel
 End Class

@@ -340,10 +340,17 @@ Restart:
             oCustomer.Focus()
             oCustomer.SelectAll()
         Else
-
-            Call frmMain.AutoRate(Today)
             Dim oDate As String = Today.ToString("MM/dd/yyyy")
             Dim oTime As String = Now.ToString("HH:mm")
+            Call frmMain.AutoRate(Today)
+            If GV.OptionalDate And DateEdit1.EditValue <> Nothing Then
+                Dim dtDate As DateTime = CDate(DateEdit1.EditValue)
+                oDate = dtDate.ToString("MM/dd/yyyy")
+                oTime = dtDate.ToString("HH:mm")
+                Call frmMain.AutoRate(dtDate)
+            End If
+
+
             Dim invoiceSerial As String = ""
 
             'check if the valid qnty
@@ -527,13 +534,15 @@ Restart:
         Dim Sales As Decimal = 0
         Dim Curr As String = lblCurrency.Text
 
+        Dim tCost As Double = 0
+
         Dim Price, Qnty, Discount As Decimal
 
         For x As Integer = 0 To oDgv.RowCount - 1
             Price = oDgv.Rows(x).Cells(4).Value
             Qnty = oDgv.Rows(x).Cells(0).Value
             Discount = oDgv.Rows(x).Cells(5).Value
-
+            tCost += GetItemCost(oDgv.Rows(x).Cells(7).Value.ToString) * Qnty
             'Select Case Curr
             '    Case "EGP"
             '        Price = Math.Round(Price, 0, MidpointRounding.AwayFromZero)
@@ -583,7 +592,7 @@ Restart:
         End If
 
         tbTotal.Text = tSales
-        
+        lblCostPrices.Text = tCost.ToString("N2")
         getRest()
 
     End Sub
@@ -953,6 +962,8 @@ Restart:
 
 
     Private Sub frmCashier_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        DateEdit1.Visible = GV.OptionalDate
+        DateEdit1.EditValue = Now
         oDgv.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         oDgv.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         oDgv.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -2268,7 +2279,7 @@ Restart:
 
     Private Sub oDgv_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles oDgv.CellValueChanged
         Try
-            If oDgv.CurrentCell.ColumnIndex = 5 Then
+            If oDgv.CurrentCell IsNot Nothing AndAlso (oDgv.CurrentCell.ColumnIndex = 4 OrElse oDgv.CurrentCell.ColumnIndex = 5) Then
                 If oDgv.CurrentRow.Cells(6).Value < oDgv.CurrentRow.Cells(5).Value Then
                     MsgBox("!ÇáãÈáÛ ÇáÐí Êã ÅÏÎÇáå ÛíÑ ÕÍíÍ")
                 Else
@@ -2666,5 +2677,13 @@ Restart:
 
     End Sub
 
+    Private Function GetItemCost(item As String) As Double
+        Dim query As String = $"SELECT COALESCE(dbo.ItemLastPrice({item}), 0);"
+        Dim dt As DataTable = ExClass.GetData(query)
+        If dt.Rows.Count = 0 Then
+            Return 0.0
+        End If
+        Return CDbl(dt.Rows(0)(0))
+    End Function
 End Class
 

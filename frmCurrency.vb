@@ -4,7 +4,7 @@ Public Class frmCurrency
         Me.Close()
     End Sub
     Private Sub fillData()
-        Dim Query As String = "SELECT TOP(1) tblCurrency.[Date] + tblCurrency.[Time] AS [Time], tblCurrency.EUR, tblCurrency.EGP," _
+        Dim Query As String = "SELECT TOP(1) tblCurrency.[Date] + tblCurrency.[Time] AS [Time], tblCurrency.EUR, tblCurrency.USD," _
                               & " tblCurrency.GBP, tblCurrency.RUB, tblCurrency.CHF, tblCurrency.CNY, tblLogin.UserName" _
                               & " FROM tblCurrency INNER JOIN tblLogin ON tblCurrency.[User] = tblLogin.Sr" _
                               & " ORDER BY PrKey DESC;"
@@ -29,7 +29,7 @@ Public Class frmCurrency
     End Sub
 
     Private Sub UpdateData()
-        Dim Query As String = "INSERT INTO tblCurrency ([Date], [Time], EUR, EGP, GBP, RUB, CHF, CNY, [User])" _
+        Dim Query As String = "INSERT INTO tblCurrency ([Date], [Time], EUR, USD, GBP, RUB, CHF, CNY, [User])" _
                               & " VALUES ('" & Today.ToString("MM/dd/yyyy") & "', '" & Now.ToString("HH:mm:ss") & "', " _
                               & Val(txtEUR.Text) & ", " & Val(txtUSD.Text) & ", " & Val(txtGBP.Text) & ", " & Val(txtRUB.Text) _
                               & ", " & Val(txtCHF.Text) & ", " & Val(txtCNY.Text) & ", " & GlobalVariables.ID & ");"
@@ -116,7 +116,7 @@ Public Class frmCurrency
             txtEUR.Focus()
             txtEUR.SelectAll()
         ElseIf Val(txtUSD.Text) = 0 Then
-            MsgBox("You should insert the EGP rate!")
+            MsgBox("You should insert the USD rate!")
             txtUSD.Focus()
             txtUSD.SelectAll()
         ElseIf Val(txtGBP.Text) = 0 Then

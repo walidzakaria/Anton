@@ -48,6 +48,33 @@ Public Class frmBarcode
             myConn.Close()
         End Using
         PopulateInstalledPrintes()
+        GetItems()
+    End Sub
+
+    Private Sub GetItems()
+        Dim fillQuery As String = "SELECT PrKey, Serial FROM tblItems" _
+                                  & " UNION ALL" _
+                                  & " SELECT tblItems.PrKey, tblMultiCodes.Code AS Serial" _
+                                  & " FROM tblMultiCodes INNER JOIN tblItems ON tblMultiCodes.Item = tblItems.PrKey" _
+                                  & " ORDER BY Serial;"
+
+        Using cmd = New SqlCommand(fillQuery, myConn)
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
+            End If
+            Dim adt As New SqlDataAdapter
+            Dim ds As New DataSet()
+            adt.SelectCommand = cmd
+            adt.Fill(ds)
+            adt.Dispose()
+
+            iCode.DataSource = ds.Tables(0)
+            iCode.DisplayMember = "Serial"
+            iCode.ValueMember = "PrKey"
+
+            myConn.Close()
+
+        End Using
     End Sub
 
     Private Sub iSerial_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles iSerial.SelectedIndexChanged
@@ -85,7 +112,13 @@ Public Class frmBarcode
                         'theUSDPrice = 1
                         'End If
                         'iDgv.Rows.Add(dt.Rows(x)(4), dt.Rows(x)(5), dt.Rows(x)(6), theUSDPrice)
-                        iDgv.Rows.Add(dt.Rows(x)(4), dt.Rows(x)(5), dt.Rows(x)(6), dt.Rows(x)(10))
+                        Dim priceIndex As Integer
+                        If GV.PrintCost Then
+                            priceIndex = 7
+                        Else
+                            priceIndex = 10
+                        End If
+                        iDgv.Rows.Add(dt.Rows(x)(4), dt.Rows(x)(5), dt.Rows(x)(6), dt.Rows(x)(priceIndex))
                     Next
 
                 Catch ex As Exception
@@ -618,7 +651,53 @@ Public Class frmBarcode
 
     End Sub
 
-    Private Sub KryptonLabel36_Paint(sender As Object, e As PaintEventArgs) Handles KryptonLabel36.Paint
+
+    Private Sub iCode_KeyDown(sender As Object, e As KeyEventArgs) Handles iCode.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            PutItemIntoGrid(iCode.Text)
+        ElseIf e.KeyCode = Keys.Escape Then
+            iCode.Text = Nothing
+        ElseIf e.Control And e.KeyCode = Keys.F Then
+            frmItemSearch.ShowDialog()
+
+            iCode.Text = frmItemSearch.SearchedItem
+            iCode.Focus()
+            iCode.SelectAll()
+        End If
+    End Sub
+
+    Private Sub PutItemIntoGrid(ByVal code As String)
+        If code = "" Then
+            Exit Sub
+        End If
+        Dim query As String = "SELECT tblItems.Name, tblItems.Price, COALESCE(dbo.ItemLastPrice(tblItems.PrKey), 0) AS Cost FROM tblItems LEFT OUTER JOIN tblMultiCodes ON tblItems.PrKey = tblMultiCodes.Item" _
+                                      & " WHERE tblItems.Serial = '" & code & "' OR tblMultiCodes.Code = '" & code & "';"
+
+        Dim itemName As String = ""
+        Dim itemQnty, itemPrice As Decimal
+
+        Using cmd = New SqlCommand(query, myConn)
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
+            End If
+            Using dt As SqlDataReader = cmd.ExecuteReader
+                If dt.Read() Then
+                    itemName = dt(0).ToString
+                    If GV.PrintCost Then
+                        itemPrice = dt(2)
+                    Else
+                        itemPrice = dt(1)
+                    End If
+                End If
+            End Using
+            myConn.Close()
+        End Using
+
+
+        If itemName <> "" Then
+            iDgv.Rows.Add(code, itemName, itemQnty, itemPrice)
+        End If
 
     End Sub
+
 End Class

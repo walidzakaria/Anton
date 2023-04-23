@@ -50,6 +50,8 @@ Partial Class frmCurrency
         '
         Me.lblUser.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUser.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.lblUser.Appearance.Options.UseFont = True
+        Me.lblUser.Appearance.Options.UseForeColor = True
         Me.lblUser.Location = New System.Drawing.Point(494, 51)
         Me.lblUser.Name = "lblUser"
         Me.lblUser.Size = New System.Drawing.Size(91, 23)
@@ -60,6 +62,8 @@ Partial Class frmCurrency
         '
         Me.lblLastUpdate.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLastUpdate.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.lblLastUpdate.Appearance.Options.UseFont = True
+        Me.lblLastUpdate.Appearance.Options.UseForeColor = True
         Me.lblLastUpdate.Location = New System.Drawing.Point(494, 15)
         Me.lblLastUpdate.Name = "lblLastUpdate"
         Me.lblLastUpdate.Size = New System.Drawing.Size(113, 23)
@@ -70,6 +74,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl7.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl7.Appearance.Options.UseFont = True
+        Me.LabelControl7.Appearance.Options.UseForeColor = True
         Me.LabelControl7.Location = New System.Drawing.Point(366, 51)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(45, 23)
@@ -80,6 +86,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl6.Appearance.Options.UseFont = True
+        Me.LabelControl6.Appearance.Options.UseForeColor = True
         Me.LabelControl6.Location = New System.Drawing.Point(366, 15)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(113, 23)
@@ -140,6 +148,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl3.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl3.Appearance.Options.UseFont = True
+        Me.LabelControl3.Appearance.Options.UseForeColor = True
         Me.LabelControl3.Location = New System.Drawing.Point(39, 159)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(38, 23)
@@ -150,6 +160,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl4.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl4.Appearance.Options.UseFont = True
+        Me.LabelControl4.Appearance.Options.UseForeColor = True
         Me.LabelControl4.Location = New System.Drawing.Point(39, 123)
         Me.LabelControl4.Name = "LabelControl4"
         Me.LabelControl4.Size = New System.Drawing.Size(38, 23)
@@ -160,6 +172,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl5.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl5.Appearance.Options.UseFont = True
+        Me.LabelControl5.Appearance.Options.UseForeColor = True
         Me.LabelControl5.Location = New System.Drawing.Point(39, 87)
         Me.LabelControl5.Name = "LabelControl5"
         Me.LabelControl5.Size = New System.Drawing.Size(37, 23)
@@ -170,6 +184,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        Me.LabelControl1.Appearance.Options.UseForeColor = True
         Me.LabelControl1.Location = New System.Drawing.Point(39, 51)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(38, 23)
@@ -180,6 +196,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl19.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl19.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl19.Appearance.Options.UseFont = True
+        Me.LabelControl19.Appearance.Options.UseForeColor = True
         Me.LabelControl19.Location = New System.Drawing.Point(39, 15)
         Me.LabelControl19.Name = "LabelControl19"
         Me.LabelControl19.Size = New System.Drawing.Size(38, 23)
@@ -191,8 +209,8 @@ Partial Class frmCurrency
         Me.OK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OK.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.OK.Appearance.Options.UseFont = True
-        Me.OK.DialogResult = DialogResult.Cancel
-        Me.OK.Image = CType(resources.GetObject("OK.Image"), System.Drawing.Image)
+        Me.OK.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.OK.ImageOptions.Image = CType(resources.GetObject("OK.ImageOptions.Image"), System.Drawing.Image)
         Me.OK.Location = New System.Drawing.Point(479, 212)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(128, 34)
@@ -204,8 +222,8 @@ Partial Class frmCurrency
         Me.Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
         Me.Cancel.Appearance.Options.UseFont = True
-        Me.Cancel.DialogResult = DialogResult.Cancel
-        Me.Cancel.Image = CType(resources.GetObject("Cancel.Image"), System.Drawing.Image)
+        Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel.ImageOptions.Image = CType(resources.GetObject("Cancel.ImageOptions.Image"), System.Drawing.Image)
         Me.Cancel.Location = New System.Drawing.Point(613, 212)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(128, 34)
@@ -226,6 +244,8 @@ Partial Class frmCurrency
         '
         Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Eras Demi ITC", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl2.Appearance.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.LabelControl2.Appearance.Options.UseFont = True
+        Me.LabelControl2.Appearance.Options.UseForeColor = True
         Me.LabelControl2.Location = New System.Drawing.Point(39, 195)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(39, 23)
@@ -258,7 +278,6 @@ Partial Class frmCurrency
         Me.Controls.Add(Me.LabelControl19)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.KeyPreview = True
-        Me.LookAndFeel.SkinName = "Office 2013"
         Me.MaximizeBox = False
         Me.Name = "frmCurrency"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

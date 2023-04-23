@@ -29,6 +29,11 @@ Public Class frmPriceChange
                 tbPrice.Text = dt.Rows(0)(3).ToString
                 tbMinimum.Text = dt.Rows(0)(5).ToString
                 tbEnglishName.Text = dt.Rows(0)(9).ToString
+                If Not IsDBNull(dt.Rows(0)(4)) Then
+                    tbCategory.SelectedValue = dt.Rows(0)(4)
+                Else
+                    tbCategory.SelectedIndex = -1
+                End If
             Catch ex As Exception
                 tbName.Text = "·« ÌÊÃœ ’‰›"
                 tbPrice.Text = ""
@@ -83,7 +88,16 @@ Public Class frmPriceChange
             Exit Sub
         End If
 
-        Dim Query As String = "UPDATE tblItems SET Name = N'" & tbName.Text & "', Price = '" & Val(tbPrice.Text) & "', [Minimum] = '" & Val(tbMinimum.Text) & "', EnglishName = N'" & tbEnglishName.Text & "' WHERE PrKey = '" & PrKey & "'"
+        Dim category As String = tbCategory.SelectedValue
+        If category = Nothing Then
+            category = "NULL"
+        End If
+
+
+        Dim Query As String = "UPDATE tblItems SET Name = N'" & tbName.Text _
+            & "', Price = '" & Val(tbPrice.Text) & "', [Minimum] = '" _
+            & Val(tbMinimum.Text) & "', EnglishName = N'" & tbEnglishName.Text & "', Category = " & category _
+            & " WHERE PrKey = '" & PrKey & "'"
         Using cmd = New SqlCommand(Query, myConn)
             If myConn.State = ConnectionState.Closed Then
                 myConn.Open()
@@ -100,15 +114,15 @@ Public Class frmPriceChange
         End Using
     End Sub
 
-    Private Sub tbEnglishName_EditValueChanged(sender As Object, e As EventArgs) Handles tbEnglishName.EditValueChanged
-
-    End Sub
-
     Private Sub tbEnglishName_GotFocus(sender As Object, e As EventArgs) Handles tbEnglishName.GotFocus
         InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(CultureInfo.GetCultureInfo("EN-US"))
     End Sub
 
     Private Sub tbEnglishName_LostFocus(sender As Object, e As EventArgs) Handles tbEnglishName.LostFocus
         InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(CultureInfo.GetCultureInfo("AR-EG"))
+    End Sub
+
+    Private Sub SimpleButton7_Click(sender As Object, e As EventArgs) Handles SimpleButton7.Click
+        frmCategory.ShowDialog()
     End Sub
 End Class

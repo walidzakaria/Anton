@@ -14,6 +14,68 @@ Public Class frmMain
     Dim counter As Integer = 0
     Dim ValidQnty As Boolean = False
 
+    Public Sub FillCategories()
+        'fill the items search
+        Dim FillQuery As String = "SELECT ID, Category FROM tblCategory ORDER BY Category;"
+
+        Using cmd = New SqlCommand(FillQuery, myConn)
+            If myConn.State = ConnectionState.Closed Then
+                myConn.Open()
+            End If
+            Dim adt As New SqlDataAdapter
+            Dim ds As New DataSet()
+            adt.SelectCommand = cmd
+            adt.Fill(ds)
+            adt.Dispose()
+
+            iiCategory.DataSource = ds.Tables(0)
+            iiCategory.DisplayMember = "Category"
+            iiCategory.ValueMember = "ID"
+            iiCategory.SelectedIndex = -1
+
+            osCategory.DataSource = ds.Tables(0)
+            osCategory.DisplayMember = "Category"
+            osCategory.ValueMember = "ID"
+            osCategory.SelectedIndex = -1
+
+            siCategory.DataSource = ds.Tables(0)
+            siCategory.DisplayMember = "Category"
+            siCategory.ValueMember = "ID"
+            siCategory.SelectedIndex = -1
+
+
+            frmPriceChange.tbCategory.DataSource = ds.Tables(0)
+            frmPriceChange.tbCategory.DisplayMember = "Category"
+            frmPriceChange.tbCategory.ValueMember = "ID"
+            frmPriceChange.tbCategory.SelectedIndex = -1
+
+            'nItemCategory.DataSource = ds.Tables(0)
+            'frmPriceChange.tbCategory.DataSource = ds.Tables(0)
+            'osCategory.DataSource = ds.Tables(0)
+            'siCategory.DataSource = ds.Tables(0)
+
+            'nItemCategory.DisplayMember = "Category"
+            'frmPriceChange.tbCategory.DisplayMember = "Category"
+            'osCategory.DisplayMember = "Category"
+            'siCategory.DisplayMember = "Category"
+
+            'nItemCategory.ValueMember = "ID"
+            'frmPriceChange.tbCategory.ValueMember = "ID"
+            'osCategory.ValueMember = "ID"
+            'siCategory.ValueMember = "ID"
+
+            'nItemCategory.SelectedIndex = -1
+            'frmPriceChange.tbCategory.SelectedIndex = -1
+            'osCategory.SelectedIndex = -1
+            'siCategory.SelectedIndex = -1
+
+            myConn.Close()
+
+        End Using
+
+    End Sub
+
+
     'to convert numbers to letters
     Public Function AmountInWords(ByVal nAmount As String, Optional ByVal wAmount _
                    As String = vbNullString, Optional ByVal nSet As Object = Nothing) As String
@@ -552,7 +614,8 @@ Public Class frmMain
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         KryptonDockableNavigator1.SelectedIndex = 0
-
+        FillCategories()
+        FitInGridColumns()
         Dim dddddddd As Date
         Using cmd = New SqlCommand("SELECT MAX([Date]) AS dt FROM tblOut1;", myConn)
             If myConn.State = ConnectionState.Closed Then
@@ -663,6 +726,14 @@ Public Class frmMain
 
         Call Authorize()
 
+    End Sub
+
+    Private Sub FitInGridColumns()
+        iDgv.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        iDgv.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        iDgv.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        iDgv.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        iDgv.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
     End Sub
 
     Private Sub KryptonRibbonGroupButton13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KryptonRibbonGroupButton13.Click
@@ -1035,7 +1106,7 @@ Public Class frmMain
     Private Sub KryptonDockableNavigator1_SelectedPageChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles KryptonDockableNavigator1.SelectedPageChanged
         Call RibbonClear()
         If KryptonDockableNavigator1.SelectedIndex = 0 Then
-
+            FillCategories()
             KryptonRibbonGroupButton1.Checked = True
             Using cmd = New SqlCommand("SELECT Sr, Name FROM tblVendors ORDER BY Name", myConn)
                 If myConn.State = ConnectionState.Closed Then
@@ -1149,6 +1220,7 @@ Public Class frmMain
             KryptonRibbonGroupButton3.Checked = True
 
         ElseIf KryptonDockableNavigator1.SelectedIndex = 3 Then
+            FillCategories()
             KryptonRibbonGroupButton4.Checked = True
 
             'fill the items search
@@ -1202,6 +1274,7 @@ Public Class frmMain
 
             End Using
         ElseIf KryptonDockableNavigator1.SelectedIndex = 6 Then
+            FillCategories()
             outReport.Checked = True
 
             Using cmd = New SqlCommand("SELECT ID, Customer FROM tblCustomers ORDER BY Customer", myConn)
@@ -2146,7 +2219,7 @@ record:
 
     Private Sub iDgv_CellValueChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles iDgv.CellValueChanged
         Try
-            If iDgv.CurrentCell.ColumnIndex = 2 OrElse iDgv.CurrentCell.ColumnIndex = 3 Then
+            If iDgv.CurrentCell IsNot Nothing AndAlso (iDgv.CurrentCell.ColumnIndex = 2 OrElse iDgv.CurrentCell.ColumnIndex = 3) Then
                 Dim result As Decimal = Val(iDgv.Rows(iDgv.CurrentCell.RowIndex).Cells(2).Value) * Val(iDgv.Rows(iDgv.CurrentCell.RowIndex).Cells(3).Value)
                 result = Math.Round(result, 2, MidpointRounding.AwayFromZero)
                 iDgv.Rows(iDgv.CurrentCell.RowIndex).Cells(4).Value = result
@@ -3415,10 +3488,14 @@ restart2:
 
 
                 ' Add new Item to tblItems
-                Dim Query As String = "INSERT INTO tblItems (Serial, Name, Price, [Minimum], PackageSerial, PackagePrice, PackageUnits, EnglishName)" _
+                Dim category As String = iiCategory.SelectedValue
+                If category = Nothing Then
+                    category = "NULL"
+                End If
+                Dim Query As String = "INSERT INTO tblItems (Serial, Name, Price, [Minimum], PackageSerial, PackagePrice, PackageUnits, EnglishName, Category)" _
                                       & " VALUES ('" & iiSerial.Text.ToUpper & "', N'" & iiItem.Text.ToUpper & "', '" _
                                       & Val(iiPrice.Text) & "', '" & Val(iiMinimumQnty.Text) & "', N'" & iiSerial2.Text & "', '" & iiGroupPrice.Text _
-                                      & "', '" & iiUnitNumber.Text & "', N'" & iiEnglishName.Text & "')"
+                                      & "', '" & iiUnitNumber.Text & "', N'" & iiEnglishName.Text & "', " & category & ")"
 
                 Using cmd = New SqlCommand(Query, myConn)
                     If myConn.State = ConnectionState.Closed Then
@@ -3442,6 +3519,7 @@ restart2:
                 iiUnitNumber.Text = Nothing
                 iiAlterCodes.Text = Nothing
                 iiEnglishName.Text = ""
+                iiCategory.SelectedIndex = -1
                 iiSerial.Focus()
                 'refill the items search
 
@@ -3594,9 +3672,14 @@ restart2:
 
 
                 ' Add new Item to tblItems
+                Dim category As String = iiCategory.SelectedValue
+                If category = Nothing Then
+                    category = "NULL"
+                End If
                 Dim Query As String = "UPDATE tblItems SET Serial = '" & iiSerial.Text & "', Name = N'" & iiItem.Text _
                                       & "', Price = " & iiPrice.Text & ", [Minimum] = " & Val(iiMinimumQnty.Text) _
                                       & ", PackageSerial= N'" & iiSerial2.Text & "', PackagePrice = " & Val(iiGroupPrice.Text) _
+                                      & ", Category = " & category _
                                       & ", PackageUnits = " & Val(iiUnitNumber.Text) & ", EnglishName = N'" & iiEnglishName.Text & "'" _
                                       & " WHERE PrKey IN (" _
                                       & " SELECT tblItems.PrKey FROM tblItems LEFT OUTER JOIN tblMultiCodes ON tblItems.PrKey = tblMultiCodes.Item" _
@@ -3630,6 +3713,7 @@ restart2:
                 iiUnitNumber.Text = Nothing
                 iiAlterCodes.Text = Nothing
                 iiEnglishName.Text = Nothing
+                iiCategory.SelectedIndex = -1
                 iiSearch.Focus()
                 iiSearch.SelectAll()
 
@@ -3695,6 +3779,7 @@ restart2:
                 iiUnitNumber.Text = Nothing
                 iiAlterCodes.Text = Nothing
                 iiEnglishName.Text = ""
+                iiCategory.SelectedIndex = -1
                 'fill the items search
                 Dim FillQuery As String = "SELECT PrKey, Serial, Name FROM tblItems" _
                                                           & " UNION ALL" _
@@ -3769,6 +3854,11 @@ restart2:
                     iiSerial.Text = dt.Rows(0)(1).ToString
                     iiItem.Text = dt.Rows(0)(2).ToString
                     iiPrice.Text = dt.Rows(0)(3).ToString
+                    If Not IsDBNull(dt.Rows(0)(4)) Then
+                        iiCategory.SelectedValue = dt.Rows(0)(4)
+                    Else
+                        iiCategory.SelectedIndex = -1
+                    End If
                     iiMinimumQnty.Text = dt.Rows(0)(5).ToString
                     iiSerial2.Text = dt.Rows(0)(6).ToString
                     iiGroupPrice.Text = dt.Rows(0)(7).ToString
@@ -3796,6 +3886,7 @@ restart2:
             iiUnitNumber.Text = Nothing
             iiAlterCodes.Text = Nothing
             iiEnglishName.Text = Nothing
+            iiCategory.SelectedIndex = -1
         End If
     End Sub
 
@@ -5269,14 +5360,31 @@ Restart:
             Vndr = " AND tblIn1.Vendor = '" & isVendor.SelectedValue & "'"
         End If
 
-        Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, SUM(tblIn2.Qnty) AS Qnty, AVG(tblIn2.UnitPrice) AS UnitAverage, SUM(tblIn2.[Value]) AS [Value]" _
-                              & " FROM tblItems INNER JOIN tblIn2 ON tblItems.PrKey = tblIn2.Item" _
-                              & " INNER JOIN tblIn1 ON tblIn1.PrKey = tblIn2.Serial" _
-                              & " WHERE (tblIn1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "')" _
-                              & Vndr _
-                              & " GROUP BY tblItems.Serial, tblItems.Name" _
-                              & " ORDER BY tblItems.Name"
+        'Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, SUM(tblIn2.Qnty) AS Qnty, AVG(tblIn2.UnitPrice) AS UnitAverage, SUM(tblIn2.[Value]) AS [Value]" _
+        '                      & " FROM tblItems INNER JOIN tblIn2 ON tblItems.PrKey = tblIn2.Item" _
+        '                      & " INNER JOIN tblIn1 ON tblIn1.PrKey = tblIn2.Serial" _
+        '                      & " WHERE (tblIn1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "')" _
+        '                      & Vndr _
+        '                      & " GROUP BY tblItems.Serial, tblItems.Name" _
+        '                      & " ORDER BY tblItems.Name"
 
+        Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, SUM(tblIn2.Qnty) AS Qnty,
+                                ItemCost.Cost AS UnitAverage, SUM(tblIn2.Qnty) * ItemCost.Cost AS Value
+
+                                FROM tblItems
+                                JOIN tblIn2 ON tblItems.PrKey = tblIn2.Item
+                                JOIN tblIn1 ON tblIn1.PrKey = tblIn2.Serial
+                                LEFT JOIN
+                                (
+                                SELECT tblIn2.Item, tblIn2.UnitPrice AS Cost, RANK() OVER (PARTITION BY tblIn2.Item ORDER BY tblIn1.[DATE] DESC, tblIn1.[Time] DESC) AS RankPrice
+                                FROM tblIn2
+                                JOIN tblIn1 ON tblIn2.Serial = tblIn1.PrKey
+                                ) ItemCost
+                                ON tblItems.PrKey = ItemCost.Item AND ItemCost.RankPrice = 1
+                                WHERE (tblIn1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "')" _
+                              & Vndr _
+                              & " GROUP BY tblItems.Serial, tblItems.Name, ItemCost.Cost" _
+                              & " ORDER BY tblItems.Name"
 
         Dim ds As New ReportsDS
         Dim da As New SqlDataAdapter(Query, myConn)
@@ -5311,6 +5419,81 @@ Restart:
         CrystalReportViewer2.Refresh()
         CrystalReportViewer2.Zoom(1)
 
+        'ExClass.Wait(True)
+        'Dim fDate, SDate As String
+        'If isDateFrom.Checked = True Then
+        '    fDate = isDateFrom.Value.ToString("MM/dd/yyyy")
+        'Else
+        '    fDate = "01/01/1999"
+        'End If
+        'If isDateTill.Checked = True Then
+        '    SDate = isDateTill.Value.ToString("MM/dd/yyyy")
+        'Else
+        '    SDate = "01/01/2500"
+        'End If
+
+        'Dim Vndr As String
+        'If isVendor.Text = "" Then
+        '    Vndr = ""
+        'Else
+        '    Vndr = " AND tblIn1.Vendor = '" & isVendor.SelectedValue & "'"
+        'End If
+
+        'Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, SUM(tblIn2.Qnty) AS Qnty,
+        '                        ItemCost.Cost AS UnitAverage, SUM(tblIn2.Qnty) * ItemCost.Cost AS Value
+
+        '                        FROM tblItems
+        '                        JOIN tblIn2 ON tblItems.PrKey = tblIn2.Item
+        '                        JOIN tblIn1 ON tblIn1.PrKey = tblIn2.Serial
+        '                        LEFT JOIN
+        '                        (
+        '                        SELECT tblIn2.Item, tblIn2.UnitPrice AS Cost, RANK() OVER (PARTITION BY tblIn2.Item ORDER BY tblIn1.[DATE] DESC, tblIn1.[Time] DESC) AS RankPrice
+        '                        FROM tblIn2
+        '                        JOIN tblIn1 ON tblIn2.Serial = tblIn1.PrKey
+        '                        ) ItemCost
+        '                        ON tblItems.PrKey = ItemCost.Item AND ItemCost.RankPrice = 1
+        '                        WHERE (tblIn1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "')" _
+        '                      & Vndr _
+        '                      & " GROUP BY tblItems.Serial, tblItems.Name, ItemCost.Cost" _
+        '                      & " ORDER BY tblItems.Name"
+
+
+        'Dim ds As New ReportsDS
+        'Dim da As New SqlDataAdapter(Query, myConn)
+        'da.Fill(ds.Tables("tblIn"))
+
+        'Dim Report As New XtraPurchase()
+
+        'Report.DataSource = ds
+        'Report.DataAdapter = da
+        'Report.DataMember = "tblIn"
+
+        'Try
+        '    Report.LoadLayout("XtraPurchase.repx")
+        'Catch ex As Exception
+
+        'End Try
+        'Report.XrTableCell3.Text = isVendor.Text
+        'If isDateFrom.Checked Then
+        '    Report.XrTableCell5.Text = isDateFrom.Value.ToString("dd/MM/yyyy")
+        'Else
+        '    Report.XrTableCell5.Text = ""
+        'End If
+        'If isDateTill.Checked Then
+        '    Report.XrTableCell7.Text = isDateTill.Value.ToString("dd/MM/yyyy")
+        'Else
+        '    Report.XrTableCell7.Text = ""
+        'End If
+
+
+
+        'Dim tool As ReportPrintTool = New ReportPrintTool(Report)
+
+        'Report.CreateDocument()
+        'myConn.Close()
+
+        'ExClass.Wait(False)
+        'Report.ShowRibbonPreview()
     End Sub
 
     Private Sub KryptonButton9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KryptonButton9.Click
@@ -5348,6 +5531,10 @@ Restart:
             itmm = ""
         End If
 
+        If osCategory.Text <> "" Then
+            itmm &= " AND tblCategory.Category LIKE N'%" & osCategory.Text & "%'"
+        End If
+
         Dim Query As String = "SELECT tblItems.Serial AS Code, tblItems.Name AS Item, QIn.UnitPrice, LIn.UnitPrice AS LastInPrice, AVG(tblOut2.UnitPrice) AS [Disc%], SUM(tblOut2.Qnty) AS Qnty, SUM(tblOut2.Price) AS [Value], (AVG(tblOut2.UnitPrice) - AVG(QIn.UnitPrice)) * SUM(tblOut2.Qnty) AS NetAVG, (AVG(tblOut2.UnitPrice) - AVG(LIn.UnitPrice)) * SUM(tblOut2.Qnty) AS Profit" _
                               & " FROM tblItems INNER Join" _
                               & " (" _
@@ -5369,6 +5556,7 @@ Restart:
                               & " ON tblItems.PrKey = LIn.Item" _
                               & " INNER JOIN tblOut2 ON tblItems.PrKey = tblOut2.Item" _
                               & " INNER JOIN tblOut1 ON tblOut2.Serial = tblOut1.Serial" _
+                              & " LEFT JOIN tblCategory ON tblItems.Category = tblCategory.ID" _
                               & " WHERE tblOut1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "'" _
                               & exp & Cust & itmm _
                               & " GROUP BY tblItems.Serial, tblItems.Name, QIn.UnitPrice, LIn.UnitPrice" _
@@ -5466,6 +5654,12 @@ Restart:
             Exit Sub
         End If
 
+        Dim category As String = ""
+        If Not siCategory.SelectedIndex = -1 Then
+            category = " AND tblItems.Category = " & siCategory.SelectedValue.ToString & " "
+        End If
+
+
         Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, TIn.PIn AS Price, tblItems.[Minimum], TIn.QIn AS T_In, COALESCE(TOut.QOut, 0) AS T_Out, TIn.QIn - COALESCE(TOut.QOut, 0) AS Net, (CASE WHEN ( TIn.QIn - COALESCE(TOut.QOut, 0)) < tblItems.[Minimum] THEN 1 ELSE 0 END) as [Needed]" _
                               & " FROM tblItems" _
                               & " INNER Join" _
@@ -5486,7 +5680,7 @@ Restart:
                               & " GROUP BY tblOut2.Item" _
                               & " ) TOut" _
                               & " ON TOut.Item = tblItems.PrKey WHERE 1=1 " _
-                              & quan & itm & needed _
+                              & quan & itm & needed & category _
                               & " ORDER BY tblItems.Name"
 
 
@@ -5513,8 +5707,8 @@ Restart:
             rep.SetParameterValue("ParDateTill", "")
         End If
         Cursor = Cursors.Default
-        'rep.SetParameterValue("parTitle", "IN REPORT")
-        ' rep.SetParameterValue("ParTitle", "IN")
+        rep.SetParameterValue("parTitle", "IN REPORT")
+        rep.SetParameterValue("ParTitle", "IN")
         CrystalReportViewer4.Refresh()
         CrystalReportViewer4.Zoom(1)
 
@@ -5528,19 +5722,19 @@ Restart:
             Cursor = Cursors.WaitCursor
             Dim Que As String
 
-            Que = "SELECT tblItems.Name AS ItemName, tblIn1.[Date], N'ÔÑÇÁ' AS [Type], CONVERT(NVARCHAR(5), tblIn1.[Time], 108) AS Time, tblIn2.Item, tblIn2.Qnty, tblIn2.UnitPrice, tblIn2.[Value]" _
-                & " FROM tblIn2 INNER JOIN tblIn1 ON tblIn2.Serial = tblIn1.PrKey" _
-                & " INNER JOIN tblItems ON tblItems.PrKey = tblIn2.Item" _
-                & " WHERE tblItems.Serial = N'" & monItem.Text & "'" _
-                & " AND  tblIn1.[Date] BETWEEN '" & monDateFrom.Value.ToString("MM/dd/yyyy") & "' AND '" & monDateTill.Value.ToString("MM/dd/yyyy") & "'" _
-                & " UNION ALL" _
-                & " SELECT tblItems.Name AS ItemName, tblOut1.[Date], N'ÈíÚ' AS [Type], CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time], tblOut2.Item, tblOut2.Qnty, tblOut2.UnitPrice, tblOut2.Price AS [Value]" _
-                & " FROM tblOut2 INNER JOIN tblOut1 ON tblOut2.Serial = tblOut1.Serial" _
-                & " INNER JOIN tblItems ON tblItems.PrKey = tblOut2.Item" _
-                & " WHERE tblItems.Serial = N'" & monItem.Text & "'" _
-                & " AND  tblOut1.[Date] BETWEEN '" & monDateFrom.Value.ToString("MM/dd/yyyy") & "' AND '" & monDateTill.Value.ToString("MM/dd/yyyy") & "'" _
-                & " ORDER BY [Date], [Time]"
-
+            Que = "SELECT tblItems.Name AS ItemName, tblIn1.[Date], N'ÔÑÇÁ' AS [Type], CONVERT(NVARCHAR(5), tblIn1.[Time], 108) AS Time, tblIn2.Item, tblIn2.Qnty, tblIn2.UnitPrice, tblIn2.[Value], tblVendors.Name AS Vendor
+                FROM tblIn2 INNER JOIN tblIn1 ON tblIn2.Serial = tblIn1.PrKey 
+                INNER JOIN tblItems ON tblItems.PrKey = tblIn2.Item
+                INNER JOIN tblVendors ON tblIn1.Vendor = tblVendors.Sr
+                WHERE tblItems.Serial = N'" & monItem.Text & "'
+                AND  tblIn1.[Date] BETWEEN '" & monDateFrom.Value.ToString("MM/dd/yyyy") & "' AND '" & monDateTill.Value.ToString("MM/dd/yyyy") & "'
+                UNION ALL 
+                SELECT tblItems.Name AS ItemName, tblOut1.[Date], N'ÈíÚ' AS [Type], CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time], tblOut2.Item, tblOut2.Qnty, tblOut2.UnitPrice, tblOut2.Price AS [Value], '' AS Vendor 
+                FROM tblOut2 INNER JOIN tblOut1 ON tblOut2.Serial = tblOut1.Serial 
+                INNER JOIN tblItems ON tblItems.PrKey = tblOut2.Item 
+                WHERE tblItems.Serial = N'" & monItem.Text & "' 
+                AND  tblOut1.[Date] BETWEEN '" & monDateFrom.Value.ToString("MM/dd/yyyy") & "' AND '" & monDateTill.Value.ToString("MM/dd/yyyy") & "'
+                ORDER BY [Date], [Time]"
 
 
             Dim ds As New ReportsDS
@@ -6423,5 +6617,27 @@ retry:
 
     Private Sub btnSellers_Click(sender As Object, e As EventArgs) Handles btnSellers.Click
         frmSellers.ShowDialog()
+    End Sub
+
+    Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
+        frmCategory.ShowDialog()
+    End Sub
+
+    Private Sub iSerial_GotFocus(sender As Object, e As EventArgs) Handles iSerial.GotFocus
+        If iSerial.Text = "" Then
+            Dim lastSerial As String
+
+            Dim query As String = "SELECT COALESCE(MAX(CAST(Serial AS float)), 0) + 1 FROM tblIn1 WHERE ISNUMERIC(Serial) = 1"
+
+            Using cmd = New SqlCommand(query, myConn)
+                If myConn.State = ConnectionState.Closed Then
+                    myConn.Open()
+                End If
+                lastSerial = cmd.ExecuteScalar()
+
+                myConn.Close()
+            End Using
+            iSerial.Text = lastSerial.ToString
+        End If
     End Sub
 End Class

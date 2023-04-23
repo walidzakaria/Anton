@@ -20,7 +20,7 @@ Partial Class frmCashier
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCashier))
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.KryptonPanel1 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
@@ -40,6 +40,7 @@ Partial Class frmCashier
         Me.KryptonPanel4 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.lblSeller = New DevExpress.XtraEditors.LabelControl()
         Me.al9 = New DevExpress.XtraEditors.LabelControl()
+        Me.PictureEdit2 = New DevExpress.XtraEditors.PictureEdit()
         Me.lblIndicateTotal = New DevExpress.XtraEditors.LabelControl()
         Me.al3 = New DevExpress.XtraEditors.LabelControl()
         Me.al2 = New DevExpress.XtraEditors.LabelControl()
@@ -55,7 +56,11 @@ Partial Class frmCashier
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
+        Me.KryptonButton8 = New DevExpress.XtraEditors.SimpleButton()
+        Me.oRemove = New DevExpress.XtraEditors.SimpleButton()
+        Me.oEdit = New DevExpress.XtraEditors.SimpleButton()
         Me.KryptonPanel2 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
+        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.ceDebit = New DevExpress.XtraEditors.CheckEdit()
         Me.lblDiscount = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl18 = New DevExpress.XtraEditors.LabelControl()
@@ -90,6 +95,10 @@ Partial Class frmCashier
         Me.oUser = New DevExpress.XtraEditors.LabelControl()
         Me.oTime = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl15 = New DevExpress.XtraEditors.LabelControl()
+        Me.krInvoiceShow = New DevExpress.XtraEditors.SimpleButton()
+        Me.KryptonButton5 = New DevExpress.XtraEditors.SimpleButton()
+        Me.krInvoicePrint = New DevExpress.XtraEditors.SimpleButton()
+        Me.KryptonButton4 = New DevExpress.XtraEditors.SimpleButton()
         Me.KryptonPanel5 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.al7 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
@@ -97,27 +106,6 @@ Partial Class frmCashier
         Me.oCustomer = New DevExpress.XtraEditors.GridLookUpEdit()
         Me.GridLookUpEdit1View = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.KryptonPanel6 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
-        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
-        Me.KryptonManager1 = New ComponentFactory.Krypton.Toolkit.KryptonManager(Me.components)
-        Me.StatusStrip2 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lbMonitor = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
-        Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
-        Me.PictureEdit2 = New DevExpress.XtraEditors.PictureEdit()
-        Me.KryptonButton8 = New DevExpress.XtraEditors.SimpleButton()
-        Me.oRemove = New DevExpress.XtraEditors.SimpleButton()
-        Me.oEdit = New DevExpress.XtraEditors.SimpleButton()
-        Me.krInvoiceShow = New DevExpress.XtraEditors.SimpleButton()
-        Me.KryptonButton5 = New DevExpress.XtraEditors.SimpleButton()
-        Me.krInvoicePrint = New DevExpress.XtraEditors.SimpleButton()
-        Me.KryptonButton4 = New DevExpress.XtraEditors.SimpleButton()
         Me.btnReport = New DevExpress.XtraEditors.SimpleButton()
         Me.btnReturn = New DevExpress.XtraEditors.SimpleButton()
         Me.btnCost = New DevExpress.XtraEditors.SimpleButton()
@@ -131,6 +119,20 @@ Partial Class frmCashier
         Me.btnSettings = New DevExpress.XtraEditors.SimpleButton()
         Me.btnChangePassword = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton11 = New DevExpress.XtraEditors.SimpleButton()
+        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
+        Me.KryptonManager1 = New ComponentFactory.Krypton.Toolkit.KryptonManager(Me.components)
+        Me.StatusStrip2 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.lbMonitor = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
+        Me.lblCostPrices = New DevExpress.XtraEditors.LabelControl()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
         CType(Me.KryptonPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -138,9 +140,12 @@ Partial Class frmCashier
         CType(Me.oDgv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonPanel4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel4.SuspendLayout()
+        CType(Me.PictureEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.oQnty.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KryptonPanel2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel2.SuspendLayout()
+        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ceDebit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTax2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTax1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -164,7 +169,6 @@ Partial Class frmCashier
         CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip2.SuspendLayout()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStripContainer1
@@ -202,12 +206,12 @@ Partial Class frmCashier
         Me.oDgv.AllowUserToAddRows = False
         Me.oDgv.AllowUserToDeleteRows = False
         Me.oDgv.AllowUserToResizeRows = False
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Teal
-        Me.oDgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Teal
+        Me.oDgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.oDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.oDgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.oDgv.ColumnHeadersHeight = 60
@@ -268,7 +272,6 @@ Partial Class frmCashier
         '
         Me.Column5.HeaderText = "”⁄—"
         Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
         '
         'Column6
         '
@@ -373,6 +376,19 @@ Partial Class frmCashier
         Me.al9.TabIndex = 99
         Me.al9.Text = "F8"
         Me.al9.Visible = False
+        '
+        'PictureEdit2
+        '
+        Me.PictureEdit2.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PictureEdit2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureEdit2.EditValue = CType(resources.GetObject("PictureEdit2.EditValue"), Object)
+        Me.PictureEdit2.Location = New System.Drawing.Point(0, 0)
+        Me.PictureEdit2.Name = "PictureEdit2"
+        Me.PictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.DarkGray
+        Me.PictureEdit2.Properties.Appearance.Options.UseBackColor = True
+        Me.PictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
+        Me.PictureEdit2.Size = New System.Drawing.Size(18, 235)
+        Me.PictureEdit2.TabIndex = 96
         '
         'lblIndicateTotal
         '
@@ -583,8 +599,45 @@ Partial Class frmCashier
         Me.LabelControl7.TabIndex = 87
         Me.LabelControl7.Text = "«·ﬂ„Ì…:"
         '
+        'KryptonButton8
+        '
+        Me.KryptonButton8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.KryptonButton8.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.KryptonButton8.Appearance.Options.UseFont = True
+        Me.KryptonButton8.ImageOptions.Image = CType(resources.GetObject("KryptonButton8.ImageOptions.Image"), System.Drawing.Image)
+        Me.KryptonButton8.Location = New System.Drawing.Point(24, 66)
+        Me.KryptonButton8.Name = "KryptonButton8"
+        Me.KryptonButton8.Size = New System.Drawing.Size(152, 45)
+        Me.KryptonButton8.TabIndex = 3
+        Me.KryptonButton8.Text = "≈÷‹‹‹‹‹«›…"
+        '
+        'oRemove
+        '
+        Me.oRemove.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.oRemove.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.oRemove.Appearance.Options.UseFont = True
+        Me.oRemove.ImageOptions.Image = CType(resources.GetObject("oRemove.ImageOptions.Image"), System.Drawing.Image)
+        Me.oRemove.Location = New System.Drawing.Point(24, 168)
+        Me.oRemove.Name = "oRemove"
+        Me.oRemove.Size = New System.Drawing.Size(152, 45)
+        Me.oRemove.TabIndex = 80
+        Me.oRemove.Text = "≈“«·‹‹‹‹‹‹‹…"
+        '
+        'oEdit
+        '
+        Me.oEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.oEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.oEdit.Appearance.Options.UseFont = True
+        Me.oEdit.ImageOptions.Image = CType(resources.GetObject("oEdit.ImageOptions.Image"), System.Drawing.Image)
+        Me.oEdit.Location = New System.Drawing.Point(24, 117)
+        Me.oEdit.Name = "oEdit"
+        Me.oEdit.Size = New System.Drawing.Size(152, 45)
+        Me.oEdit.TabIndex = 5
+        Me.oEdit.Text = " ’‹‹‹ÕÌÕ"
+        '
         'KryptonPanel2
         '
+        Me.KryptonPanel2.Controls.Add(Me.DateEdit1)
         Me.KryptonPanel2.Controls.Add(Me.ceDebit)
         Me.KryptonPanel2.Controls.Add(Me.lblDiscount)
         Me.KryptonPanel2.Controls.Add(Me.LabelControl18)
@@ -609,6 +662,18 @@ Partial Class frmCashier
         Me.KryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.FormCustom1
         Me.KryptonPanel2.Size = New System.Drawing.Size(380, 685)
         Me.KryptonPanel2.TabIndex = 1
+        '
+        'DateEdit1
+        '
+        Me.DateEdit1.EditValue = Nothing
+        Me.DateEdit1.Location = New System.Drawing.Point(63, 83)
+        Me.DateEdit1.Name = "DateEdit1"
+        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Size = New System.Drawing.Size(214, 32)
+        Me.DateEdit1.TabIndex = 110
         '
         'ceDebit
         '
@@ -649,6 +714,7 @@ Partial Class frmCashier
         Me.LabelControl18.Size = New System.Drawing.Size(21, 27)
         Me.LabelControl18.TabIndex = 107
         Me.LabelControl18.Text = "%"
+        Me.LabelControl18.Visible = False
         '
         'LabelControl17
         '
@@ -661,6 +727,7 @@ Partial Class frmCashier
         Me.LabelControl17.Size = New System.Drawing.Size(21, 27)
         Me.LabelControl17.TabIndex = 106
         Me.LabelControl17.Text = "%"
+        Me.LabelControl17.Visible = False
         '
         'LabelControl14
         '
@@ -673,6 +740,7 @@ Partial Class frmCashier
         Me.LabelControl14.Size = New System.Drawing.Size(21, 27)
         Me.LabelControl14.TabIndex = 105
         Me.LabelControl14.Text = "%"
+        Me.LabelControl14.Visible = False
         '
         'LabelControl3
         '
@@ -685,6 +753,7 @@ Partial Class frmCashier
         Me.LabelControl3.Size = New System.Drawing.Size(61, 27)
         Me.LabelControl3.TabIndex = 104
         Me.LabelControl3.Text = "÷—Ì»…:"
+        Me.LabelControl3.Visible = False
         '
         'LabelControl2
         '
@@ -697,6 +766,7 @@ Partial Class frmCashier
         Me.LabelControl2.Size = New System.Drawing.Size(54, 27)
         Me.LabelControl2.TabIndex = 103
         Me.LabelControl2.Text = "ﬁ.„.:"
+        Me.LabelControl2.Visible = False
         '
         'txtTax2
         '
@@ -709,6 +779,7 @@ Partial Class frmCashier
         Me.txtTax2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtTax2.Size = New System.Drawing.Size(117, 32)
         Me.txtTax2.TabIndex = 102
+        Me.txtTax2.Visible = False
         '
         'txtTax1
         '
@@ -721,6 +792,7 @@ Partial Class frmCashier
         Me.txtTax1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtTax1.Size = New System.Drawing.Size(117, 32)
         Me.txtTax1.TabIndex = 101
+        Me.txtTax1.Visible = False
         '
         'txtVAT
         '
@@ -733,6 +805,7 @@ Partial Class frmCashier
         Me.txtVAT.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.txtVAT.Size = New System.Drawing.Size(117, 32)
         Me.txtVAT.TabIndex = 100
+        Me.txtVAT.Visible = False
         '
         'KryptonPanel8
         '
@@ -1030,7 +1103,7 @@ Partial Class frmCashier
         Me.CheckEdit1.Location = New System.Drawing.Point(337, 79)
         Me.CheckEdit1.Name = "CheckEdit1"
         Me.CheckEdit1.Properties.Caption = ""
-        Me.CheckEdit1.Size = New System.Drawing.Size(23, 19)
+        Me.CheckEdit1.Size = New System.Drawing.Size(23, 20)
         Me.CheckEdit1.TabIndex = 96
         Me.CheckEdit1.ToolTip = "Õ›Ÿ Êÿ»«⁄…"
         '
@@ -1077,6 +1150,54 @@ Partial Class frmCashier
         Me.LabelControl15.TabIndex = 83
         Me.LabelControl15.Text = "«·„” Œœ„:"
         Me.LabelControl15.Visible = False
+        '
+        'krInvoiceShow
+        '
+        Me.krInvoiceShow.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.krInvoiceShow.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.krInvoiceShow.Appearance.Options.UseFont = True
+        Me.krInvoiceShow.ImageOptions.Image = CType(resources.GetObject("krInvoiceShow.ImageOptions.Image"), System.Drawing.Image)
+        Me.krInvoiceShow.Location = New System.Drawing.Point(16, 127)
+        Me.krInvoiceShow.Name = "krInvoiceShow"
+        Me.krInvoiceShow.Size = New System.Drawing.Size(113, 45)
+        Me.krInvoiceShow.TabIndex = 81
+        Me.krInvoiceShow.Text = "⁄—÷"
+        '
+        'KryptonButton5
+        '
+        Me.KryptonButton5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.KryptonButton5.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.KryptonButton5.Appearance.Options.UseFont = True
+        Me.KryptonButton5.ImageOptions.Image = CType(resources.GetObject("KryptonButton5.ImageOptions.Image"), System.Drawing.Image)
+        Me.KryptonButton5.Location = New System.Drawing.Point(16, 67)
+        Me.KryptonButton5.Name = "KryptonButton5"
+        Me.KryptonButton5.Size = New System.Drawing.Size(352, 45)
+        Me.KryptonButton5.TabIndex = 0
+        Me.KryptonButton5.Text = "Õ›‹‹‹‹Ÿ"
+        '
+        'krInvoicePrint
+        '
+        Me.krInvoicePrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.krInvoicePrint.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.krInvoicePrint.Appearance.Options.UseFont = True
+        Me.krInvoicePrint.ImageOptions.Image = CType(resources.GetObject("krInvoicePrint.ImageOptions.Image"), System.Drawing.Image)
+        Me.krInvoicePrint.Location = New System.Drawing.Point(255, 127)
+        Me.krInvoicePrint.Name = "krInvoicePrint"
+        Me.krInvoicePrint.Size = New System.Drawing.Size(113, 45)
+        Me.krInvoicePrint.TabIndex = 1
+        Me.krInvoicePrint.Text = "ÿ»‹‹«⁄…"
+        '
+        'KryptonButton4
+        '
+        Me.KryptonButton4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.KryptonButton4.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.KryptonButton4.Appearance.Options.UseFont = True
+        Me.KryptonButton4.ImageOptions.Image = CType(resources.GetObject("KryptonButton4.ImageOptions.Image"), System.Drawing.Image)
+        Me.KryptonButton4.Location = New System.Drawing.Point(136, 127)
+        Me.KryptonButton4.Name = "KryptonButton4"
+        Me.KryptonButton4.Size = New System.Drawing.Size(113, 45)
+        Me.KryptonButton4.TabIndex = 3
+        Me.KryptonButton4.Text = "≈·€‹‹‹‹«¡"
         '
         'KryptonPanel5
         '
@@ -1142,8 +1263,8 @@ Partial Class frmCashier
         Me.oCustomer.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
         Me.oCustomer.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.oCustomer.Properties.NullText = ""
+        Me.oCustomer.Properties.PopupView = Me.GridLookUpEdit1View
         Me.oCustomer.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.oCustomer.Properties.View = Me.GridLookUpEdit1View
         Me.oCustomer.Size = New System.Drawing.Size(214, 32)
         Me.oCustomer.TabIndex = 83
         '
@@ -1177,191 +1298,6 @@ Partial Class frmCashier
         Me.KryptonPanel6.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlRibbonAppMenu
         Me.KryptonPanel6.Size = New System.Drawing.Size(125, 685)
         Me.KryptonPanel6.TabIndex = 80
-        '
-        'CheckEdit2
-        '
-        Me.CheckEdit2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.CheckEdit2.Location = New System.Drawing.Point(0, 663)
-        Me.CheckEdit2.Name = "CheckEdit2"
-        Me.CheckEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.CheckEdit2.Properties.Appearance.Options.UseFont = True
-        Me.CheckEdit2.Properties.Caption = "Offline"
-        Me.CheckEdit2.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style15
-        Me.CheckEdit2.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.CheckEdit2.Size = New System.Drawing.Size(125, 22)
-        Me.CheckEdit2.TabIndex = 97
-        Me.CheckEdit2.ToolTip = "Õ›Ÿ Êÿ»«⁄…"
-        Me.CheckEdit2.Visible = False
-        '
-        'KryptonManager1
-        '
-        Me.KryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver
-        '
-        'StatusStrip2
-        '
-        Me.StatusStrip2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.StatusStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.lbMonitor})
-        Me.StatusStrip2.Location = New System.Drawing.Point(0, 710)
-        Me.StatusStrip2.Name = "StatusStrip2"
-        Me.StatusStrip2.Padding = New System.Windows.Forms.Padding(21, 0, 1, 0)
-        Me.StatusStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
-        Me.StatusStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.StatusStrip2.Size = New System.Drawing.Size(1266, 31)
-        Me.StatusStrip2.TabIndex = 0
-        Me.StatusStrip2.Text = "StatusStrip2"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(115, 26)
-        Me.ToolStripStatusLabel1.Text = "                                    "
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(73, 26)
-        Me.ToolStripStatusLabel2.Text = "«·„” Œœ„: "
-        '
-        'ToolStripStatusLabel3
-        '
-        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("Vladimir Script", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripStatusLabel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(64, 26)
-        Me.ToolStripStatusLabel3.Text = "Walid"
-        '
-        'ToolStripStatusLabel4
-        '
-        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(175, 26)
-        Me.ToolStripStatusLabel4.Text = "                                                        "
-        '
-        'lbMonitor
-        '
-        Me.lbMonitor.Font = New System.Drawing.Font("Eras Demi ITC", 15.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbMonitor.Name = "lbMonitor"
-        Me.lbMonitor.Size = New System.Drawing.Size(71, 26)
-        Me.lbMonitor.Text = "Status"
-        Me.lbMonitor.Visible = False
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 500
-        '
-        'Timer2
-        '
-        Me.Timer2.Enabled = True
-        Me.Timer2.Interval = 1000
-        '
-        'AlertControl1
-        '
-        Me.AlertControl1.AllowHtmlText = True
-        Me.AlertControl1.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.AlertControl1.AppearanceCaption.Options.UseFont = True
-        Me.AlertControl1.AppearanceHotTrackedText.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Underline)
-        Me.AlertControl1.AppearanceHotTrackedText.Options.UseFont = True
-        Me.AlertControl1.AppearanceText.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.AlertControl1.AppearanceText.Options.UseFont = True
-        Me.AlertControl1.AutoHeight = True
-        '
-        'PictureEdit2
-        '
-        Me.PictureEdit2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.PictureEdit2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureEdit2.EditValue = CType(resources.GetObject("PictureEdit2.EditValue"), Object)
-        Me.PictureEdit2.Location = New System.Drawing.Point(0, 0)
-        Me.PictureEdit2.Name = "PictureEdit2"
-        Me.PictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.DarkGray
-        Me.PictureEdit2.Properties.Appearance.Options.UseBackColor = True
-        Me.PictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
-        Me.PictureEdit2.Properties.ZoomAccelerationFactor = 1.0R
-        Me.PictureEdit2.Size = New System.Drawing.Size(18, 235)
-        Me.PictureEdit2.TabIndex = 96
-        '
-        'KryptonButton8
-        '
-        Me.KryptonButton8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.KryptonButton8.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.KryptonButton8.Appearance.Options.UseFont = True
-        Me.KryptonButton8.ImageOptions.Image = CType(resources.GetObject("KryptonButton8.ImageOptions.Image"), System.Drawing.Image)
-        Me.KryptonButton8.Location = New System.Drawing.Point(24, 66)
-        Me.KryptonButton8.Name = "KryptonButton8"
-        Me.KryptonButton8.Size = New System.Drawing.Size(152, 45)
-        Me.KryptonButton8.TabIndex = 3
-        Me.KryptonButton8.Text = "≈÷‹‹‹‹‹«›…"
-        '
-        'oRemove
-        '
-        Me.oRemove.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.oRemove.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.oRemove.Appearance.Options.UseFont = True
-        Me.oRemove.ImageOptions.Image = CType(resources.GetObject("oRemove.ImageOptions.Image"), System.Drawing.Image)
-        Me.oRemove.Location = New System.Drawing.Point(24, 168)
-        Me.oRemove.Name = "oRemove"
-        Me.oRemove.Size = New System.Drawing.Size(152, 45)
-        Me.oRemove.TabIndex = 80
-        Me.oRemove.Text = "≈“«·‹‹‹‹‹‹‹…"
-        '
-        'oEdit
-        '
-        Me.oEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.oEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.oEdit.Appearance.Options.UseFont = True
-        Me.oEdit.ImageOptions.Image = CType(resources.GetObject("oEdit.ImageOptions.Image"), System.Drawing.Image)
-        Me.oEdit.Location = New System.Drawing.Point(24, 117)
-        Me.oEdit.Name = "oEdit"
-        Me.oEdit.Size = New System.Drawing.Size(152, 45)
-        Me.oEdit.TabIndex = 5
-        Me.oEdit.Text = " ’‹‹‹ÕÌÕ"
-        '
-        'krInvoiceShow
-        '
-        Me.krInvoiceShow.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.krInvoiceShow.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.krInvoiceShow.Appearance.Options.UseFont = True
-        Me.krInvoiceShow.ImageOptions.Image = CType(resources.GetObject("krInvoiceShow.ImageOptions.Image"), System.Drawing.Image)
-        Me.krInvoiceShow.Location = New System.Drawing.Point(16, 127)
-        Me.krInvoiceShow.Name = "krInvoiceShow"
-        Me.krInvoiceShow.Size = New System.Drawing.Size(113, 45)
-        Me.krInvoiceShow.TabIndex = 81
-        Me.krInvoiceShow.Text = "⁄—÷"
-        '
-        'KryptonButton5
-        '
-        Me.KryptonButton5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.KryptonButton5.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.KryptonButton5.Appearance.Options.UseFont = True
-        Me.KryptonButton5.ImageOptions.Image = CType(resources.GetObject("KryptonButton5.ImageOptions.Image"), System.Drawing.Image)
-        Me.KryptonButton5.Location = New System.Drawing.Point(16, 67)
-        Me.KryptonButton5.Name = "KryptonButton5"
-        Me.KryptonButton5.Size = New System.Drawing.Size(352, 45)
-        Me.KryptonButton5.TabIndex = 0
-        Me.KryptonButton5.Text = "Õ›‹‹‹‹Ÿ"
-        '
-        'krInvoicePrint
-        '
-        Me.krInvoicePrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.krInvoicePrint.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.krInvoicePrint.Appearance.Options.UseFont = True
-        Me.krInvoicePrint.ImageOptions.Image = CType(resources.GetObject("krInvoicePrint.ImageOptions.Image"), System.Drawing.Image)
-        Me.krInvoicePrint.Location = New System.Drawing.Point(255, 127)
-        Me.krInvoicePrint.Name = "krInvoicePrint"
-        Me.krInvoicePrint.Size = New System.Drawing.Size(113, 45)
-        Me.krInvoicePrint.TabIndex = 1
-        Me.krInvoicePrint.Text = "ÿ»‹‹«⁄…"
-        '
-        'KryptonButton4
-        '
-        Me.KryptonButton4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.KryptonButton4.Appearance.Font = New System.Drawing.Font("Tahoma", 16.0!)
-        Me.KryptonButton4.Appearance.Options.UseFont = True
-        Me.KryptonButton4.ImageOptions.Image = CType(resources.GetObject("KryptonButton4.ImageOptions.Image"), System.Drawing.Image)
-        Me.KryptonButton4.Location = New System.Drawing.Point(136, 127)
-        Me.KryptonButton4.Name = "KryptonButton4"
-        Me.KryptonButton4.Size = New System.Drawing.Size(113, 45)
-        Me.KryptonButton4.TabIndex = 3
-        Me.KryptonButton4.Text = "≈·€‹‹‹‹«¡"
         '
         'btnReport
         '
@@ -1522,11 +1458,110 @@ Partial Class frmCashier
         Me.SimpleButton11.TabIndex = 98
         Me.SimpleButton11.Visible = False
         '
+        'CheckEdit2
+        '
+        Me.CheckEdit2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.CheckEdit2.Location = New System.Drawing.Point(0, 663)
+        Me.CheckEdit2.Name = "CheckEdit2"
+        Me.CheckEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.CheckEdit2.Properties.Appearance.Options.UseFont = True
+        Me.CheckEdit2.Properties.Caption = "Offline"
+        Me.CheckEdit2.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style15
+        Me.CheckEdit2.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.CheckEdit2.Size = New System.Drawing.Size(125, 22)
+        Me.CheckEdit2.TabIndex = 97
+        Me.CheckEdit2.ToolTip = "Õ›Ÿ Êÿ»«⁄…"
+        Me.CheckEdit2.Visible = False
+        '
+        'KryptonManager1
+        '
+        Me.KryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver
+        '
+        'StatusStrip2
+        '
+        Me.StatusStrip2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.StatusStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.lbMonitor})
+        Me.StatusStrip2.Location = New System.Drawing.Point(0, 710)
+        Me.StatusStrip2.Name = "StatusStrip2"
+        Me.StatusStrip2.Padding = New System.Windows.Forms.Padding(21, 0, 1, 0)
+        Me.StatusStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
+        Me.StatusStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.StatusStrip2.Size = New System.Drawing.Size(1266, 31)
+        Me.StatusStrip2.TabIndex = 0
+        Me.StatusStrip2.Text = "StatusStrip2"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(115, 26)
+        Me.ToolStripStatusLabel1.Text = "                                    "
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(73, 26)
+        Me.ToolStripStatusLabel2.Text = "«·„” Œœ„: "
+        '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("Vladimir Script", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripStatusLabel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(64, 26)
+        Me.ToolStripStatusLabel3.Text = "Walid"
+        '
+        'ToolStripStatusLabel4
+        '
+        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(175, 26)
+        Me.ToolStripStatusLabel4.Text = "                                                        "
+        '
+        'lbMonitor
+        '
+        Me.lbMonitor.Font = New System.Drawing.Font("Eras Demi ITC", 15.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbMonitor.Name = "lbMonitor"
+        Me.lbMonitor.Size = New System.Drawing.Size(71, 26)
+        Me.lbMonitor.Text = "Status"
+        Me.lbMonitor.Visible = False
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 500
+        '
+        'Timer2
+        '
+        Me.Timer2.Enabled = True
+        Me.Timer2.Interval = 1000
+        '
+        'AlertControl1
+        '
+        Me.AlertControl1.AllowHtmlText = True
+        Me.AlertControl1.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.AlertControl1.AppearanceCaption.Options.UseFont = True
+        Me.AlertControl1.AppearanceHotTrackedText.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Underline)
+        Me.AlertControl1.AppearanceHotTrackedText.Options.UseFont = True
+        Me.AlertControl1.AppearanceText.Font = New System.Drawing.Font("Tahoma", 9.0!)
+        Me.AlertControl1.AppearanceText.Options.UseFont = True
+        Me.AlertControl1.AutoHeight = True
+        '
+        'lblCostPrices
+        '
+        Me.lblCostPrices.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblCostPrices.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.lblCostPrices.Appearance.Options.UseFont = True
+        Me.lblCostPrices.Location = New System.Drawing.Point(45, 720)
+        Me.lblCostPrices.Name = "lblCostPrices"
+        Me.lblCostPrices.Size = New System.Drawing.Size(24, 13)
+        Me.lblCostPrices.TabIndex = 3
+        Me.lblCostPrices.Text = "0.00"
+        '
         'frmCashier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1266, 741)
+        Me.Controls.Add(Me.lblCostPrices)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Controls.Add(Me.StatusStrip2)
         Me.Font = New System.Drawing.Font("Tahoma", 12.0!)
@@ -1546,10 +1581,13 @@ Partial Class frmCashier
         CType(Me.KryptonPanel4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel4.ResumeLayout(False)
         Me.KryptonPanel4.PerformLayout()
+        CType(Me.PictureEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.oQnty.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.KryptonPanel2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel2.ResumeLayout(False)
         Me.KryptonPanel2.PerformLayout()
+        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ceDebit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTax2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTax1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1577,7 +1615,6 @@ Partial Class frmCashier
         Me.StatusStrip2.ResumeLayout(False)
         Me.StatusStrip2.PerformLayout()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1676,20 +1713,21 @@ Partial Class frmCashier
     Friend WithEvents LabelControl18 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl17 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblDiscount As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column11 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ceDebit As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblSeller As DevExpress.XtraEditors.LabelControl
     Friend WithEvents AlertControl1 As DevExpress.XtraBars.Alerter.AlertControl
-
+    Friend WithEvents DateEdit1 As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As DataGridViewTextBoxColumn
+    Friend WithEvents Column11 As DataGridViewTextBoxColumn
+    Friend WithEvents Column12 As DataGridViewTextBoxColumn
+    Friend WithEvents lblCostPrices As DevExpress.XtraEditors.LabelControl
 End Class
