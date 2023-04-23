@@ -20,9 +20,9 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.KryptonManager1 = New ComponentFactory.Krypton.Toolkit.KryptonManager(Me.components)
         Me.KryptonPanel1 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.KryptonDockableNavigator1 = New ComponentFactory.Krypton.Docking.KryptonDockableNavigator()
@@ -217,7 +217,6 @@ Partial Class frmMain
         Me.cIndication = New DevExpress.XtraEditors.MemoEdit()
         Me.KryptonPage5 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel13 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
-        Me.CrystalReportViewer2 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.KryptonPanel10 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.KryptonLabel36 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -233,7 +232,6 @@ Partial Class frmMain
         Me.isDateTill = New ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker()
         Me.KryptonPage6 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel11 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.KryptonPanel9 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.KryptonLabel24 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -254,7 +252,6 @@ Partial Class frmMain
         Me.KryptonCheckBox2 = New ComponentFactory.Krypton.Toolkit.KryptonCheckBox()
         Me.KryptonPage7 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel15 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
-        Me.CrystalReportViewer4 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.KryptonPanel14 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.KryptonLabel61 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -277,7 +274,6 @@ Partial Class frmMain
         Me.siCategory = New System.Windows.Forms.ComboBox()
         Me.KryptonPage8 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel16 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
-        Me.CrystalReportViewer3 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.KryptonPanel12 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.KryptonLabel68 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -292,7 +288,6 @@ Partial Class frmMain
         Me.KryptonLabel71 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonPage9 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel18 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
-        Me.CrystalReportViewer5 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.KryptonPanel17 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.TableLayoutPanel12 = New System.Windows.Forms.TableLayoutPanel()
         Me.KryptonLabel72 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
@@ -305,7 +300,6 @@ Partial Class frmMain
         Me.KryptonLabel74 = New ComponentFactory.Krypton.Toolkit.KryptonLabel()
         Me.KryptonPage10 = New ComponentFactory.Krypton.Navigator.KryptonPage()
         Me.KryptonPanel20 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
-        Me.CrystalReportViewer6 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.KryptonPanel19 = New ComponentFactory.Krypton.Toolkit.KryptonPanel()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.btnCurrency = New ComponentFactory.Krypton.Toolkit.KryptonButton()
@@ -461,7 +455,6 @@ Partial Class frmMain
         CType(Me.KryptonPage5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPage5.SuspendLayout()
         CType(Me.KryptonPanel13, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.KryptonPanel13.SuspendLayout()
         CType(Me.KryptonPanel10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel10.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -470,7 +463,6 @@ Partial Class frmMain
         CType(Me.KryptonPage6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPage6.SuspendLayout()
         CType(Me.KryptonPanel11, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.KryptonPanel11.SuspendLayout()
         CType(Me.KryptonPanel9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel9.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -479,7 +471,6 @@ Partial Class frmMain
         CType(Me.KryptonPage7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPage7.SuspendLayout()
         CType(Me.KryptonPanel15, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.KryptonPanel15.SuspendLayout()
         CType(Me.KryptonPanel14, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel14.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -489,7 +480,6 @@ Partial Class frmMain
         CType(Me.KryptonPage8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPage8.SuspendLayout()
         CType(Me.KryptonPanel16, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.KryptonPanel16.SuspendLayout()
         CType(Me.KryptonPanel12, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel12.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
@@ -497,7 +487,6 @@ Partial Class frmMain
         CType(Me.KryptonPage9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPage9.SuspendLayout()
         CType(Me.KryptonPanel18, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.KryptonPanel18.SuspendLayout()
         CType(Me.KryptonPanel17, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel17.SuspendLayout()
         Me.TableLayoutPanel12.SuspendLayout()
@@ -505,7 +494,6 @@ Partial Class frmMain
         CType(Me.KryptonPage10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPage10.SuspendLayout()
         CType(Me.KryptonPanel20, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.KryptonPanel20.SuspendLayout()
         CType(Me.KryptonPanel19, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.KryptonPanel19.SuspendLayout()
         Me.TableLayoutPanel5.SuspendLayout()
@@ -542,7 +530,7 @@ Partial Class frmMain
         Me.KryptonDockableNavigator1.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ContextMenuItemImage
         Me.KryptonDockableNavigator1.Pages.AddRange(New ComponentFactory.Krypton.Navigator.KryptonPage() {Me.KryptonPage1, Me.KryptonPage2, Me.KryptonPage3, Me.KryptonPage4, Me.KryptonPage11, Me.KryptonPage5, Me.KryptonPage6, Me.KryptonPage7, Me.KryptonPage8, Me.KryptonPage9, Me.KryptonPage10})
         Me.KryptonDockableNavigator1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.KryptonDockableNavigator1.SelectedIndex = 5
+        Me.KryptonDockableNavigator1.SelectedIndex = 10
         Me.KryptonDockableNavigator1.Size = New System.Drawing.Size(1100, 587)
         Me.KryptonDockableNavigator1.TabIndex = 0
         Me.KryptonDockableNavigator1.TabStop = False
@@ -577,12 +565,12 @@ Partial Class frmMain
         'iDgv
         '
         Me.iDgv.AllowUserToAddRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Teal
-        Me.iDgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle27.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle27.ForeColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Teal
+        Me.iDgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
         Me.iDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.iDgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.iDgv.ColumnHeadersHeight = 60
@@ -1409,12 +1397,12 @@ Partial Class frmMain
         Me.oDgv.AllowUserToAddRows = False
         Me.oDgv.AllowUserToDeleteRows = False
         Me.oDgv.AllowUserToResizeRows = False
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Teal
-        Me.oDgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle28.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Teal
+        Me.oDgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle28
         Me.oDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.oDgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.oDgv.ColumnHeadersHeight = 60
@@ -3179,29 +3167,12 @@ Partial Class frmMain
         '
         'KryptonPanel13
         '
-        Me.KryptonPanel13.Controls.Add(Me.CrystalReportViewer2)
         Me.KryptonPanel13.Dock = System.Windows.Forms.DockStyle.Fill
         Me.KryptonPanel13.Location = New System.Drawing.Point(0, 0)
         Me.KryptonPanel13.Name = "KryptonPanel13"
         Me.KryptonPanel13.Padding = New System.Windows.Forms.Padding(10, 14, 10, 10)
         Me.KryptonPanel13.Size = New System.Drawing.Size(783, 558)
-        Me.KryptonPanel13.TabIndex = 6
-        '
-        'CrystalReportViewer2
-        '
-        Me.CrystalReportViewer2.ActiveViewIndex = -1
-        Me.CrystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer2.Location = New System.Drawing.Point(10, 14)
-        Me.CrystalReportViewer2.Name = "CrystalReportViewer2"
-        Me.CrystalReportViewer2.ShowCloseButton = False
-        Me.CrystalReportViewer2.ShowGroupTreeButton = False
-        Me.CrystalReportViewer2.ShowParameterPanelButton = False
-        Me.CrystalReportViewer2.ShowRefreshButton = False
-        Me.CrystalReportViewer2.Size = New System.Drawing.Size(763, 534)
-        Me.CrystalReportViewer2.TabIndex = 0
-        Me.CrystalReportViewer2.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.KryptonPanel13.TabIndex = 8
         '
         'KryptonPanel10
         '
@@ -3387,29 +3358,12 @@ Partial Class frmMain
         '
         'KryptonPanel11
         '
-        Me.KryptonPanel11.Controls.Add(Me.CrystalReportViewer1)
         Me.KryptonPanel11.Dock = System.Windows.Forms.DockStyle.Fill
         Me.KryptonPanel11.Location = New System.Drawing.Point(0, 0)
         Me.KryptonPanel11.Name = "KryptonPanel11"
         Me.KryptonPanel11.Padding = New System.Windows.Forms.Padding(10, 14, 10, 10)
         Me.KryptonPanel11.Size = New System.Drawing.Size(778, 558)
         Me.KryptonPanel11.TabIndex = 7
-        '
-        'CrystalReportViewer1
-        '
-        Me.CrystalReportViewer1.ActiveViewIndex = -1
-        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(10, 14)
-        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.ShowCloseButton = False
-        Me.CrystalReportViewer1.ShowGroupTreeButton = False
-        Me.CrystalReportViewer1.ShowParameterPanelButton = False
-        Me.CrystalReportViewer1.ShowRefreshButton = False
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(758, 534)
-        Me.CrystalReportViewer1.TabIndex = 0
-        Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'KryptonPanel9
         '
@@ -3666,29 +3620,12 @@ Partial Class frmMain
         '
         'KryptonPanel15
         '
-        Me.KryptonPanel15.Controls.Add(Me.CrystalReportViewer4)
         Me.KryptonPanel15.Dock = System.Windows.Forms.DockStyle.Fill
         Me.KryptonPanel15.Location = New System.Drawing.Point(0, 0)
         Me.KryptonPanel15.Name = "KryptonPanel15"
         Me.KryptonPanel15.Padding = New System.Windows.Forms.Padding(10, 14, 10, 10)
         Me.KryptonPanel15.Size = New System.Drawing.Size(791, 558)
         Me.KryptonPanel15.TabIndex = 7
-        '
-        'CrystalReportViewer4
-        '
-        Me.CrystalReportViewer4.ActiveViewIndex = -1
-        Me.CrystalReportViewer4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer4.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer4.Location = New System.Drawing.Point(10, 14)
-        Me.CrystalReportViewer4.Name = "CrystalReportViewer4"
-        Me.CrystalReportViewer4.ShowCloseButton = False
-        Me.CrystalReportViewer4.ShowGroupTreeButton = False
-        Me.CrystalReportViewer4.ShowParameterPanelButton = False
-        Me.CrystalReportViewer4.ShowRefreshButton = False
-        Me.CrystalReportViewer4.Size = New System.Drawing.Size(771, 534)
-        Me.CrystalReportViewer4.TabIndex = 0
-        Me.CrystalReportViewer4.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'KryptonPanel14
         '
@@ -3959,29 +3896,12 @@ Partial Class frmMain
         '
         'KryptonPanel16
         '
-        Me.KryptonPanel16.Controls.Add(Me.CrystalReportViewer3)
         Me.KryptonPanel16.Dock = System.Windows.Forms.DockStyle.Fill
         Me.KryptonPanel16.Location = New System.Drawing.Point(0, 0)
         Me.KryptonPanel16.Name = "KryptonPanel16"
         Me.KryptonPanel16.Padding = New System.Windows.Forms.Padding(10, 14, 10, 10)
         Me.KryptonPanel16.Size = New System.Drawing.Size(809, 558)
         Me.KryptonPanel16.TabIndex = 7
-        '
-        'CrystalReportViewer3
-        '
-        Me.CrystalReportViewer3.ActiveViewIndex = -1
-        Me.CrystalReportViewer3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer3.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer3.Location = New System.Drawing.Point(10, 14)
-        Me.CrystalReportViewer3.Name = "CrystalReportViewer3"
-        Me.CrystalReportViewer3.ShowCloseButton = False
-        Me.CrystalReportViewer3.ShowGroupTreeButton = False
-        Me.CrystalReportViewer3.ShowParameterPanelButton = False
-        Me.CrystalReportViewer3.ShowRefreshButton = False
-        Me.CrystalReportViewer3.Size = New System.Drawing.Size(789, 534)
-        Me.CrystalReportViewer3.TabIndex = 0
-        Me.CrystalReportViewer3.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'KryptonPanel12
         '
@@ -4153,29 +4073,12 @@ Partial Class frmMain
         '
         'KryptonPanel18
         '
-        Me.KryptonPanel18.Controls.Add(Me.CrystalReportViewer5)
         Me.KryptonPanel18.Dock = System.Windows.Forms.DockStyle.Fill
         Me.KryptonPanel18.Location = New System.Drawing.Point(0, 0)
         Me.KryptonPanel18.Name = "KryptonPanel18"
         Me.KryptonPanel18.Padding = New System.Windows.Forms.Padding(10, 14, 10, 10)
         Me.KryptonPanel18.Size = New System.Drawing.Size(809, 558)
         Me.KryptonPanel18.TabIndex = 6
-        '
-        'CrystalReportViewer5
-        '
-        Me.CrystalReportViewer5.ActiveViewIndex = -1
-        Me.CrystalReportViewer5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer5.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer5.Location = New System.Drawing.Point(10, 14)
-        Me.CrystalReportViewer5.Name = "CrystalReportViewer5"
-        Me.CrystalReportViewer5.ShowCloseButton = False
-        Me.CrystalReportViewer5.ShowGroupTreeButton = False
-        Me.CrystalReportViewer5.ShowParameterPanelButton = False
-        Me.CrystalReportViewer5.ShowRefreshButton = False
-        Me.CrystalReportViewer5.Size = New System.Drawing.Size(789, 534)
-        Me.CrystalReportViewer5.TabIndex = 0
-        Me.CrystalReportViewer5.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'KryptonPanel17
         '
@@ -4320,29 +4223,12 @@ Partial Class frmMain
         '
         'KryptonPanel20
         '
-        Me.KryptonPanel20.Controls.Add(Me.CrystalReportViewer6)
         Me.KryptonPanel20.Dock = System.Windows.Forms.DockStyle.Fill
         Me.KryptonPanel20.Location = New System.Drawing.Point(0, 0)
         Me.KryptonPanel20.Name = "KryptonPanel20"
         Me.KryptonPanel20.Padding = New System.Windows.Forms.Padding(10, 14, 10, 10)
         Me.KryptonPanel20.Size = New System.Drawing.Size(809, 558)
         Me.KryptonPanel20.TabIndex = 7
-        '
-        'CrystalReportViewer6
-        '
-        Me.CrystalReportViewer6.ActiveViewIndex = -1
-        Me.CrystalReportViewer6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer6.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer6.Location = New System.Drawing.Point(10, 14)
-        Me.CrystalReportViewer6.Name = "CrystalReportViewer6"
-        Me.CrystalReportViewer6.ShowCloseButton = False
-        Me.CrystalReportViewer6.ShowGroupTreeButton = False
-        Me.CrystalReportViewer6.ShowParameterPanelButton = False
-        Me.CrystalReportViewer6.ShowRefreshButton = False
-        Me.CrystalReportViewer6.Size = New System.Drawing.Size(789, 534)
-        Me.CrystalReportViewer6.TabIndex = 0
-        Me.CrystalReportViewer6.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'KryptonPanel19
         '
@@ -5076,7 +4962,6 @@ Partial Class frmMain
         CType(Me.KryptonPage5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPage5.ResumeLayout(False)
         CType(Me.KryptonPanel13, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.KryptonPanel13.ResumeLayout(False)
         CType(Me.KryptonPanel10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel10.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
@@ -5086,7 +4971,6 @@ Partial Class frmMain
         CType(Me.KryptonPage6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPage6.ResumeLayout(False)
         CType(Me.KryptonPanel11, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.KryptonPanel11.ResumeLayout(False)
         CType(Me.KryptonPanel9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel9.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -5096,7 +4980,6 @@ Partial Class frmMain
         CType(Me.KryptonPage7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPage7.ResumeLayout(False)
         CType(Me.KryptonPanel15, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.KryptonPanel15.ResumeLayout(False)
         CType(Me.KryptonPanel14, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel14.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
@@ -5108,7 +4991,6 @@ Partial Class frmMain
         CType(Me.KryptonPage8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPage8.ResumeLayout(False)
         CType(Me.KryptonPanel16, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.KryptonPanel16.ResumeLayout(False)
         CType(Me.KryptonPanel12, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel12.ResumeLayout(False)
         Me.TableLayoutPanel4.ResumeLayout(False)
@@ -5117,7 +4999,6 @@ Partial Class frmMain
         CType(Me.KryptonPage9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPage9.ResumeLayout(False)
         CType(Me.KryptonPanel18, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.KryptonPanel18.ResumeLayout(False)
         CType(Me.KryptonPanel17, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel17.ResumeLayout(False)
         Me.TableLayoutPanel12.ResumeLayout(False)
@@ -5126,7 +5007,6 @@ Partial Class frmMain
         CType(Me.KryptonPage10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPage10.ResumeLayout(False)
         CType(Me.KryptonPanel20, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.KryptonPanel20.ResumeLayout(False)
         CType(Me.KryptonPanel19, System.ComponentModel.ISupportInitialize).EndInit()
         Me.KryptonPanel19.ResumeLayout(False)
         Me.TableLayoutPanel5.ResumeLayout(False)
@@ -5311,13 +5191,9 @@ Partial Class frmMain
     Friend WithEvents KryptonPage8 As ComponentFactory.Krypton.Navigator.KryptonPage
     Friend WithEvents KryptonPage9 As ComponentFactory.Krypton.Navigator.KryptonPage
     Friend WithEvents KryptonPage10 As ComponentFactory.Krypton.Navigator.KryptonPage
-    Private WithEvents KryptonPanel13 As ComponentFactory.Krypton.Toolkit.KryptonPanel
-    Friend WithEvents CrystalReportViewer2 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel11 As ComponentFactory.Krypton.Toolkit.KryptonPanel
-    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel9 As ComponentFactory.Krypton.Toolkit.KryptonPanel
     Private WithEvents KryptonPanel15 As ComponentFactory.Krypton.Toolkit.KryptonPanel
-    Friend WithEvents CrystalReportViewer4 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel14 As ComponentFactory.Krypton.Toolkit.KryptonPanel
     Private WithEvents TableLayoutPanel3 As System.Windows.Forms.TableLayoutPanel
     Private WithEvents FlowLayoutPanel8 As System.Windows.Forms.FlowLayoutPanel
@@ -5346,9 +5222,7 @@ Partial Class frmMain
     Friend WithEvents monItem As System.Windows.Forms.ComboBox
     Private WithEvents KryptonLabel71 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Private WithEvents KryptonPanel16 As ComponentFactory.Krypton.Toolkit.KryptonPanel
-    Friend WithEvents CrystalReportViewer3 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel18 As ComponentFactory.Krypton.Toolkit.KryptonPanel
-    Friend WithEvents CrystalReportViewer5 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel17 As ComponentFactory.Krypton.Toolkit.KryptonPanel
     Private WithEvents TableLayoutPanel12 As System.Windows.Forms.TableLayoutPanel
     Private WithEvents KryptonLabel72 As ComponentFactory.Krypton.Toolkit.KryptonLabel
@@ -5360,7 +5234,6 @@ Partial Class frmMain
     Private WithEvents KryptonLabel73 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Private WithEvents KryptonLabel74 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Private WithEvents KryptonPanel20 As ComponentFactory.Krypton.Toolkit.KryptonPanel
-    Friend WithEvents CrystalReportViewer6 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Private WithEvents KryptonPanel19 As ComponentFactory.Krypton.Toolkit.KryptonPanel
     Private WithEvents TableLayoutPanel5 As System.Windows.Forms.TableLayoutPanel
     Private WithEvents FlowLayoutPanel12 As System.Windows.Forms.FlowLayoutPanel
@@ -5514,4 +5387,5 @@ Partial Class frmMain
     Friend WithEvents KryptonCheckBox2 As ComponentFactory.Krypton.Toolkit.KryptonCheckBox
     Private WithEvents KryptonLabel66 As ComponentFactory.Krypton.Toolkit.KryptonLabel
     Public WithEvents siCategory As ComboBox
+    Private WithEvents KryptonPanel13 As ComponentFactory.Krypton.Toolkit.KryptonPanel
 End Class

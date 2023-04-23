@@ -1972,6 +1972,8 @@ Partial Public Class ReportsDS
         
         Private columnVendor As Global.System.Data.DataColumn
         
+        Private columnInvoice As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2088,6 +2090,14 @@ Partial Public Class ReportsDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property InvoiceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInvoice
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2124,9 +2134,9 @@ Partial Public Class ReportsDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddtblItemMonitorRow(ByVal _Date As Date, ByVal Type As String, ByVal Qnty As Decimal, ByVal UnitPrice As Decimal, ByVal Value As Decimal, ByVal _Disc_ As Decimal, ByVal Tax As Decimal, ByVal Net As Decimal, ByVal ItemName As String, ByVal Vendor As String) As tblItemMonitorRow
+        Public Overloads Function AddtblItemMonitorRow(ByVal _Date As Date, ByVal Type As String, ByVal Qnty As Decimal, ByVal UnitPrice As Decimal, ByVal Value As Decimal, ByVal _Disc_ As Decimal, ByVal Tax As Decimal, ByVal Net As Decimal, ByVal ItemName As String, ByVal Vendor As String, ByVal Invoice As String) As tblItemMonitorRow
             Dim rowtblItemMonitorRow As tblItemMonitorRow = CType(Me.NewRow,tblItemMonitorRow)
-            Dim columnValuesArray() As Object = New Object() {_Date, Type, Qnty, UnitPrice, Value, _Disc_, Tax, Net, ItemName, Vendor}
+            Dim columnValuesArray() As Object = New Object() {_Date, Type, Qnty, UnitPrice, Value, _Disc_, Tax, Net, ItemName, Vendor, Invoice}
             rowtblItemMonitorRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtblItemMonitorRow)
             Return rowtblItemMonitorRow
@@ -2159,6 +2169,7 @@ Partial Public Class ReportsDS
             Me.columnNet = MyBase.Columns("Net")
             Me.columnItemName = MyBase.Columns("ItemName")
             Me.columnVendor = MyBase.Columns("Vendor")
+            Me.columnInvoice = MyBase.Columns("Invoice")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2189,6 +2200,8 @@ Partial Public Class ReportsDS
             MyBase.Columns.Add(Me.columnItemName)
             Me.columnVendor = New Global.System.Data.DataColumn("Vendor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnVendor)
+            Me.columnInvoice = New Global.System.Data.DataColumn("Invoice", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInvoice)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6935,6 +6948,21 @@ Partial Public Class ReportsDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Invoice() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblItemMonitor.InvoiceColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Invoice' in table 'tblItemMonitor' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblItemMonitor.InvoiceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is_DateNull() As Boolean
             Return Me.IsNull(Me.tabletblItemMonitor.DateColumn)
         End Function
@@ -7051,6 +7079,18 @@ Partial Public Class ReportsDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetVendorNull()
             Me(Me.tabletblItemMonitor.VendorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsInvoiceNull() As Boolean
+            Return Me.IsNull(Me.tabletblItemMonitor.InvoiceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetInvoiceNull()
+            Me(Me.tabletblItemMonitor.InvoiceColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

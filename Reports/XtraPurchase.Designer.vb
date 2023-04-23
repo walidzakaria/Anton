@@ -22,11 +22,11 @@ Partial Public Class XtraPurchase
         Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-        Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
-        Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
+        Me.TopMarginBand1 = New DevExpress.XtraReports.UI.TopMarginBand()
+        Me.BottomMarginBand1 = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
         Me.GroupHeader1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
-        Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.DetailBand1 = New DevExpress.XtraReports.UI.DetailBand()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
         Me.pageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
         Me.pageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
@@ -76,18 +76,18 @@ Partial Public Class XtraPurchase
         CType(Me.table2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
-        'TopMargin
+        'TopMarginBand1
         '
-        Me.TopMargin.Dpi = 254.0!
-        Me.TopMargin.HeightF = 250.0!
-        Me.TopMargin.Name = "TopMargin"
+        Me.TopMarginBand1.Dpi = 254.0!
+        Me.TopMarginBand1.HeightF = 250.0!
+        Me.TopMarginBand1.Name = "TopMarginBand1"
         '
-        'BottomMargin
+        'BottomMarginBand1
         '
-        Me.BottomMargin.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.pageInfo1, Me.pageInfo2})
-        Me.BottomMargin.Dpi = 254.0!
-        Me.BottomMargin.HeightF = 150.0!
-        Me.BottomMargin.Name = "BottomMargin"
+        Me.BottomMarginBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.pageInfo1, Me.pageInfo2})
+        Me.BottomMarginBand1.Dpi = 254.0!
+        Me.BottomMarginBand1.HeightF = 150.0!
+        Me.BottomMarginBand1.Name = "BottomMarginBand1"
         '
         'ReportHeader
         '
@@ -104,13 +104,13 @@ Partial Public Class XtraPurchase
         Me.GroupHeader1.HeightF = 71.12!
         Me.GroupHeader1.Name = "GroupHeader1"
         '
-        'Detail
+        'DetailBand1
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.table2})
-        Me.Detail.Dpi = 254.0!
-        Me.Detail.HeightF = 63.42!
-        Me.Detail.HierarchyPrintOptions.Indent = 50.8!
-        Me.Detail.Name = "Detail"
+        Me.DetailBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.table2})
+        Me.DetailBand1.Dpi = 254.0!
+        Me.DetailBand1.HeightF = 63.42!
+        Me.DetailBand1.HierarchyPrintOptions.Indent = 50.8!
+        Me.DetailBand1.Name = "DetailBand1"
         '
         'ReportFooter
         '
@@ -304,7 +304,7 @@ Partial Public Class XtraPurchase
         Me.tableCell2.StyleName = "DetailCaption1"
         Me.tableCell2.StylePriority.UseFont = False
         Me.tableCell2.StylePriority.UseTextAlignment = False
-        Me.tableCell2.Text = "قيمة آخر سعر"
+        Me.tableCell2.Text = "معدل السعر"
         Me.tableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         Me.tableCell2.Weight = 0.15815096240721449R
         '
@@ -541,7 +541,7 @@ Partial Public Class XtraPurchase
         Me.DetailCaption1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
         Me.DetailCaption1.ForeColor = System.Drawing.Color.White
         Me.DetailCaption1.Name = "DetailCaption1"
-        Me.DetailCaption1.Padding = New DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100.0!)
+        Me.DetailCaption1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.DetailCaption1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'DetailData1
@@ -552,7 +552,7 @@ Partial Public Class XtraPurchase
         Me.DetailData1.Font = New System.Drawing.Font("Arial", 8.25!)
         Me.DetailData1.ForeColor = System.Drawing.Color.Black
         Me.DetailData1.Name = "DetailData1"
-        Me.DetailData1.Padding = New DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100.0!)
+        Me.DetailData1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.DetailData1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'DetailData3_Odd
@@ -564,7 +564,7 @@ Partial Public Class XtraPurchase
         Me.DetailData3_Odd.Font = New System.Drawing.Font("Arial", 8.25!)
         Me.DetailData3_Odd.ForeColor = System.Drawing.Color.Black
         Me.DetailData3_Odd.Name = "DetailData3_Odd"
-        Me.DetailData3_Odd.Padding = New DevExpress.XtraPrinting.PaddingInfo(6, 6, 0, 0, 100.0!)
+        Me.DetailData3_Odd.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.DetailData3_Odd.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'GrandTotalCaption1
@@ -573,7 +573,7 @@ Partial Public Class XtraPurchase
         Me.GrandTotalCaption1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
         Me.GrandTotalCaption1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(147, Byte), Integer))
         Me.GrandTotalCaption1.Name = "GrandTotalCaption1"
-        Me.GrandTotalCaption1.Padding = New DevExpress.XtraPrinting.PaddingInfo(6, 2, 0, 0, 100.0!)
+        Me.GrandTotalCaption1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 5, 0, 0, 254.0!)
         Me.GrandTotalCaption1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'GrandTotalData1
@@ -582,7 +582,7 @@ Partial Public Class XtraPurchase
         Me.GrandTotalData1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
         Me.GrandTotalData1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.GrandTotalData1.Name = "GrandTotalData1"
-        Me.GrandTotalData1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 6, 0, 0, 100.0!)
+        Me.GrandTotalData1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 15, 0, 0, 254.0!)
         Me.GrandTotalData1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'GrandTotalBackground1
@@ -598,11 +598,11 @@ Partial Public Class XtraPurchase
         Me.PageInfo.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
         Me.PageInfo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.PageInfo.Name = "PageInfo"
-        Me.PageInfo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.PageInfo.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         '
         'XtraPurchase
         '
-        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.ReportHeader, Me.GroupHeader1, Me.Detail, Me.ReportFooter})
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMarginBand1, Me.BottomMarginBand1, Me.ReportHeader, Me.GroupHeader1, Me.DetailBand1, Me.ReportFooter})
         Me.DataMember = "tblIn"
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
@@ -621,9 +621,11 @@ Partial Public Class XtraPurchase
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
-
+    Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
     Friend WithEvents TopMargin As DevExpress.XtraReports.UI.TopMarginBand
     Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
+    Friend WithEvents TopMarginBand1 As DevExpress.XtraReports.UI.TopMarginBand
+    Friend WithEvents BottomMarginBand1 As DevExpress.XtraReports.UI.BottomMarginBand
     Friend WithEvents pageInfo1 As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents pageInfo2 As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents ReportHeader As DevExpress.XtraReports.UI.ReportHeaderBand
@@ -648,7 +650,7 @@ Partial Public Class XtraPurchase
     Friend WithEvents tableCell4 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents tableCell5 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell1 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
+    Friend WithEvents DetailBand1 As DevExpress.XtraReports.UI.DetailBand
     Friend WithEvents table2 As DevExpress.XtraReports.UI.XRTable
     Friend WithEvents tableRow2 As DevExpress.XtraReports.UI.XRTableRow
     Friend WithEvents tableCell6 As DevExpress.XtraReports.UI.XRTableCell

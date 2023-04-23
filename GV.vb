@@ -19,7 +19,7 @@ Public Class GV
     'Public Shared myConn As String = "Data Source=192.168.1.10;Initial Catalog=MasterPro;Persist Security Info=True;User ID=sa;Password=Anton@21"
 
     ''Anton 1 local dummy
-    Public Shared myConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;"
+    'Public Shared myConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;"
 
 
     ''Anton2 server dummy
@@ -32,7 +32,7 @@ Public Class GV
     'Public Shared myConn As String = "Data Source=Server-PC\MASTER;Initial Catalog=MasterProSR;Persist Security Info=True;User ID=walid;Password=wwzzaa"
 
     ''Anton Smile real
-    'Public Shared myConn As String = "Data Source=Server-PC\MASTER;Initial Catalog=MasterPro;Persist Security Info=True;User ID=sa;Password=wwzzaa"
+    Public Shared myConn As String = "Data Source=Server-PC\MASTER;Initial Catalog=MasterPro;Persist Security Info=True;User ID=sa;Password=wwzzaa"
 
     ''Anton 3 Emad -> both real and fake and Saint Maria
     'Public Shared myConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;"
@@ -47,7 +47,7 @@ Public Class GV
     Public Shared dualBarcode As Boolean = True
     Public Shared OptionalDate As Boolean = False
     ''Adjust if Sheraton or Smile = True if not = False
-    Public Shared PrintCost As Boolean = False
+    Public Shared PrintCost As Boolean = True
 
     ''''to reset db
     ''    --dbcc checkident ('tblOut1', reseed)

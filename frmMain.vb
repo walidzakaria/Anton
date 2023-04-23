@@ -708,18 +708,6 @@ Public Class frmMain
 
         End Using
 
-        'loading a dummy report
-        Dim ds2 As New ReportsDS
-        Dim da2 As New SqlDataAdapter("SELECT ''", myConn)
-        da2.Fill(ds2.Tables("tblDummy"))
-
-        Dim rep As New crDummy
-        rep.SetDataSource(ds2.Tables("tblDummy"))
-        CrystalReportViewer1.ReportSource = rep
-
-        CrystalReportViewer1.ReportSource = Nothing
-        CrystalReportViewer1.Refresh()
-
         'load the virtual rate
         Call AutoRate(Today)
         RadioGroup1.SelectedIndex = 0
@@ -5360,13 +5348,6 @@ Restart:
             Vndr = " AND tblIn1.Vendor = '" & isVendor.SelectedValue & "'"
         End If
 
-        'Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, SUM(tblIn2.Qnty) AS Qnty, AVG(tblIn2.UnitPrice) AS UnitAverage, SUM(tblIn2.[Value]) AS [Value]" _
-        '                      & " FROM tblItems INNER JOIN tblIn2 ON tblItems.PrKey = tblIn2.Item" _
-        '                      & " INNER JOIN tblIn1 ON tblIn1.PrKey = tblIn2.Serial" _
-        '                      & " WHERE (tblIn1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "')" _
-        '                      & Vndr _
-        '                      & " GROUP BY tblItems.Serial, tblItems.Name" _
-        '                      & " ORDER BY tblItems.Name"
 
         Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, SUM(tblIn2.Qnty) AS Qnty,
                                 ItemCost.Cost AS UnitAverage, SUM(tblIn2.Qnty) * ItemCost.Cost AS Value
@@ -5390,110 +5371,41 @@ Restart:
         Dim da As New SqlDataAdapter(Query, myConn)
         da.Fill(ds.Tables("tblIn"))
 
-        Dim rep As New crIn
-        rep.SetDataSource(ds.Tables("tblIn"))
-        CrystalReportViewer2.ReportSource = rep
+        Dim myReport As New XtraPurchase With {
+            .DataSource = ds,
+            .DataAdapter = da,
+            .DataMember = "tblIn"
+        }
 
-        If isVendor.Text = "" Then
-            rep.SetParameterValue("ParVA", "")
-            rep.SetParameterValue("ParVendor", "")
+        Try
+            myReport.LoadLayout("XtraPurchase.repx")
+        Catch ex As Exception
+
+        End Try
+        myReport.XrTableCell3.Text = isVendor.Text
+
+        If isDateFrom.Checked Then
+            myReport.XrTableCell5.Text = isDateFrom.Value.ToString("dd/MM/yyyy")
         Else
-            rep.SetParameterValue("ParVA", ":«·„Ê“⁄")
-            rep.SetParameterValue("ParVendor", isVendor.Text.ToUpper)
+            myReport.XrTableCell5.Text = ""
+        End If
+        If isDateTill.Checked Then
+            myReport.XrTableCell7.Text = isDateTill.Value.ToString("dd/MM/yyyy")
+        Else
+            myReport.XrTableCell7.Text = ""
         End If
 
-        If isDateFrom.Checked = True Then
-            rep.SetParameterValue("ParDF", ":«·› —…")
-            rep.SetParameterValue("ParDateFrom", isDateFrom.Value.ToString("dd/MM/yyyy"))
-        Else
-            rep.SetParameterValue("ParDF", "")
-            rep.SetParameterValue("ParDateFrom", "")
-        End If
-        If isDateTill.Checked = True Then
-            rep.SetParameterValue("ParDF", ":«·› —…")
-            rep.SetParameterValue("ParDateTill", isDateTill.Value.ToString("dd/MM/yyyy"))
-        Else
-            rep.SetParameterValue("ParDateTill", "")
-        End If
+
+
+        Dim tool As New ReportPrintTool(myReport)
+
+        myReport.CreateDocument()
+        myConn.Close()
         Cursor = Cursors.Default
-        CrystalReportViewer2.Refresh()
-        CrystalReportViewer2.Zoom(1)
 
-        'ExClass.Wait(True)
-        'Dim fDate, SDate As String
-        'If isDateFrom.Checked = True Then
-        '    fDate = isDateFrom.Value.ToString("MM/dd/yyyy")
-        'Else
-        '    fDate = "01/01/1999"
-        'End If
-        'If isDateTill.Checked = True Then
-        '    SDate = isDateTill.Value.ToString("MM/dd/yyyy")
-        'Else
-        '    SDate = "01/01/2500"
-        'End If
+        ExClass.Wait(False)
+        myReport.ShowRibbonPreview()
 
-        'Dim Vndr As String
-        'If isVendor.Text = "" Then
-        '    Vndr = ""
-        'Else
-        '    Vndr = " AND tblIn1.Vendor = '" & isVendor.SelectedValue & "'"
-        'End If
-
-        'Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, SUM(tblIn2.Qnty) AS Qnty,
-        '                        ItemCost.Cost AS UnitAverage, SUM(tblIn2.Qnty) * ItemCost.Cost AS Value
-
-        '                        FROM tblItems
-        '                        JOIN tblIn2 ON tblItems.PrKey = tblIn2.Item
-        '                        JOIN tblIn1 ON tblIn1.PrKey = tblIn2.Serial
-        '                        LEFT JOIN
-        '                        (
-        '                        SELECT tblIn2.Item, tblIn2.UnitPrice AS Cost, RANK() OVER (PARTITION BY tblIn2.Item ORDER BY tblIn1.[DATE] DESC, tblIn1.[Time] DESC) AS RankPrice
-        '                        FROM tblIn2
-        '                        JOIN tblIn1 ON tblIn2.Serial = tblIn1.PrKey
-        '                        ) ItemCost
-        '                        ON tblItems.PrKey = ItemCost.Item AND ItemCost.RankPrice = 1
-        '                        WHERE (tblIn1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "')" _
-        '                      & Vndr _
-        '                      & " GROUP BY tblItems.Serial, tblItems.Name, ItemCost.Cost" _
-        '                      & " ORDER BY tblItems.Name"
-
-
-        'Dim ds As New ReportsDS
-        'Dim da As New SqlDataAdapter(Query, myConn)
-        'da.Fill(ds.Tables("tblIn"))
-
-        'Dim Report As New XtraPurchase()
-
-        'Report.DataSource = ds
-        'Report.DataAdapter = da
-        'Report.DataMember = "tblIn"
-
-        'Try
-        '    Report.LoadLayout("XtraPurchase.repx")
-        'Catch ex As Exception
-
-        'End Try
-        'Report.XrTableCell3.Text = isVendor.Text
-        'If isDateFrom.Checked Then
-        '    Report.XrTableCell5.Text = isDateFrom.Value.ToString("dd/MM/yyyy")
-        'Else
-        '    Report.XrTableCell5.Text = ""
-        'End If
-        'If isDateTill.Checked Then
-        '    Report.XrTableCell7.Text = isDateTill.Value.ToString("dd/MM/yyyy")
-        'Else
-        '    Report.XrTableCell7.Text = ""
-        'End If
-
-
-
-        'Dim tool As ReportPrintTool = New ReportPrintTool(Report)
-
-        'Report.CreateDocument()
-        'myConn.Close()
-
-        'ExClass.Wait(False)
-        'Report.ShowRibbonPreview()
     End Sub
 
     Private Sub KryptonButton9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KryptonButton9.Click
@@ -5535,7 +5447,7 @@ Restart:
             itmm &= " AND tblCategory.Category LIKE N'%" & osCategory.Text & "%'"
         End If
 
-        Dim Query As String = "SELECT tblItems.Serial AS Code, tblItems.Name AS Item, QIn.UnitPrice, LIn.UnitPrice AS LastInPrice, AVG(tblOut2.UnitPrice) AS [Disc%], SUM(tblOut2.Qnty) AS Qnty, SUM(tblOut2.Price) AS [Value], (AVG(tblOut2.UnitPrice) - AVG(QIn.UnitPrice)) * SUM(tblOut2.Qnty) AS NetAVG, (AVG(tblOut2.UnitPrice) - AVG(LIn.UnitPrice)) * SUM(tblOut2.Qnty) AS Profit" _
+        Dim Query As String = "SELECT tblItems.Serial AS Code, tblItems.Name AS Item, QIn.UnitPrice, LIn.UnitPrice AS LastInPrice, AVG(tblOut2.UnitPrice) AS SalesPrice, SUM(tblOut2.Qnty) AS Qnty, SUM(tblOut2.Price) AS [Value], (AVG(tblOut2.UnitPrice) - AVG(QIn.UnitPrice)) * SUM(tblOut2.Qnty) AS NetAVG, (AVG(tblOut2.UnitPrice) - AVG(LIn.UnitPrice)) * SUM(tblOut2.Qnty) AS Profit" _
                               & " FROM tblItems INNER Join" _
                               & " (" _
                               & " SELECT Item, AVG(UnitPrice) AS UnitPrice" _
@@ -5566,37 +5478,37 @@ Restart:
         Dim da As New SqlDataAdapter(Query, myConn)
         da.Fill(ds.Tables("tblOut"))
 
-        Dim rep As New crOut
-        rep.SetDataSource(ds.Tables("tblOut"))
-        CrystalReportViewer1.ReportSource = rep
+        Dim Report As New XtraSales()
 
+        Report.DataSource = ds
+        Report.DataAdapter = da
+        Report.DataMember = "tblOut"
 
-        If osCustomer.Text = Nothing Then
-            rep.SetParameterValue("PartCustomer", " ")
-            rep.SetParameterValue("ParCustomerName", " ")
-        Else
-            rep.SetParameterValue("PartCustomer", ":«·⁄„Ì·")
-            rep.SetParameterValue("ParCustomerName", osCustomer.Text.ToUpper)
-        End If
+        Try
+            Report.LoadLayout("XtraSales.repx")
+        Catch ex As Exception
+
+        End Try
 
         If osDateFrom.Checked = True Then
-            rep.SetParameterValue("ParDates", ":«·› —…")
-            rep.SetParameterValue("ParoDateFrom", osDateFrom.Value.ToString("dd/MM/yyyy"))
+            Report.XrTableCell5.Text = osDateFrom.Value.ToString("dd/MM/yyyy")
         Else
-            rep.SetParameterValue("ParDates", " ")
-            rep.SetParameterValue("ParoDateFrom", " ")
+            Report.XrTableCell5.Text = ""
         End If
         If osDateTill.Checked = True Then
-            rep.SetParameterValue("ParDates", ":«·› —…")
-            rep.SetParameterValue("ParoDateTill", osDateTill.Value.ToString("dd/MM/yyyy"))
+            Report.XrTableCell7.Text = osDateTill.Value.ToString("dd/MM/yyyy")
         Else
-            rep.SetParameterValue("ParoDateTill", " ")
+            Report.XrTableCell7.Text = ""
         End If
-        Cursor = Cursors.Default
 
-        ' rep.SetParameterValue("ParTitle", "IN")
-        CrystalReportViewer1.Refresh()
-        CrystalReportViewer1.Zoom(1)
+        Dim tool As ReportPrintTool = New ReportPrintTool(Report)
+
+        Report.CreateDocument()
+        myConn.Close()
+
+        ExClass.Wait(False)
+        Cursor = Cursors.Default
+        Report.ShowRibbonPreview()
 
     End Sub
 
@@ -5660,7 +5572,7 @@ Restart:
         End If
 
 
-        Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, TIn.PIn AS Price, tblItems.[Minimum], TIn.QIn AS T_In, COALESCE(TOut.QOut, 0) AS T_Out, TIn.QIn - COALESCE(TOut.QOut, 0) AS Net, (CASE WHEN ( TIn.QIn - COALESCE(TOut.QOut, 0)) < tblItems.[Minimum] THEN 1 ELSE 0 END) as [Needed]" _
+        Dim Query As String = "SELECT tblItems.Serial, tblItems.Name AS Item, ItemCost.UnitPrice AS Price, tblItems.[Minimum], TIn.QIn AS T_In, COALESCE(TOut.QOut, 0) AS T_Out, TIn.QIn - COALESCE(TOut.QOut, 0) AS Net, (CASE WHEN ( TIn.QIn - COALESCE(TOut.QOut, 0)) < tblItems.[Minimum] THEN 1 ELSE 0 END) as [Needed]" _
                               & " FROM tblItems" _
                               & " INNER Join" _
                               & " (" _
@@ -5671,11 +5583,17 @@ Restart:
                               & " GROUP BY tblIn2.Item" _
                               & " ) TIn" _
                               & " ON TIn.Item = tblItems.PrKey" _
+                              & " LEFT JOIN" _
+                              & " (" _
+                              & " Select tblIn2.Item, tblIn2.UnitPrice, RANK() OVER (PARTITION BY tblIn2.Item ORDER BY tblIn1.[DATE] DESC, tblIn1.[Time] DESC) As RankPrice" _
+                              & " From tblIn2" _
+                              & " Join tblIn1 On tblIn2.Serial = tblIn1.PrKey" _
+                              & " ) ItemCost On tblItems.PrKey = ItemCost.Item And ItemCost.RankPrice = 1" _
                               & " LEFT OUTER JOIN" _
                               & " (" _
-                              & " SELECT tblOut2.Item, SUM(tblOut2.Qnty) AS QOut" _
+                              & " Select tblOut2.Item, SUM(tblOut2.Qnty) As QOut" _
                               & " FROM tblOut2 INNER JOIN tblOut1" _
-                              & " ON tblOut2.Serial = tblOut1.Serial" _
+                              & " On tblOut2.Serial = tblOut1.Serial" _
                               & " WHERE tblOut1.[Date] BETWEEN '" & fDate & "' AND '" & SDate & "'" _
                               & " GROUP BY tblOut2.Item" _
                               & " ) TOut" _
@@ -5688,29 +5606,27 @@ Restart:
         Dim da As New SqlDataAdapter(Query, myConn)
         da.Fill(ds.Tables("tblItems"))
 
-        Dim rep As New crItems
-        rep.SetDataSource(ds.Tables("tblItems"))
-        CrystalReportViewer4.ReportSource = rep
+        Dim Report As New XtraInventory With {
+            .DataSource = ds,
+            .DataAdapter = da,
+            .DataMember = "tblItems"
+        }
 
 
-        If siDateFrom.Checked = True Then
-            rep.SetParameterValue("ParDF", ":«·› —…")
-            rep.SetParameterValue("ParDateFrom", siDateFrom.Value.ToString("dd/MM/yyyy"))
-        Else
-            rep.SetParameterValue("ParDF", "")
-            rep.SetParameterValue("ParDateFrom", "")
-        End If
-        If siDateTill.Checked = True Then
-            rep.SetParameterValue("ParDF", ":«·› —…")
-            rep.SetParameterValue("ParDateTill", siDateTill.Value.ToString("dd/MM/yyyy"))
-        Else
-            rep.SetParameterValue("ParDateTill", "")
-        End If
+        Try
+            Report.LoadLayout("XtraInventory.repx")
+        Catch ex As Exception
+
+        End Try
+
+        Dim tool As New ReportPrintTool(Report)
+
+        Report.CreateDocument()
+        myConn.Close()
+
+        ExClass.Wait(False)
         Cursor = Cursors.Default
-        rep.SetParameterValue("parTitle", "IN REPORT")
-        rep.SetParameterValue("ParTitle", "IN")
-        CrystalReportViewer4.Refresh()
-        CrystalReportViewer4.Zoom(1)
+        Report.ShowRibbonPreview()
 
     End Sub
 
@@ -5722,14 +5638,14 @@ Restart:
             Cursor = Cursors.WaitCursor
             Dim Que As String
 
-            Que = "SELECT tblItems.Name AS ItemName, tblIn1.[Date], N'‘—«¡' AS [Type], CONVERT(NVARCHAR(5), tblIn1.[Time], 108) AS Time, tblIn2.Item, tblIn2.Qnty, tblIn2.UnitPrice, tblIn2.[Value], tblVendors.Name AS Vendor
+            Que = "SELECT tblItems.Name AS ItemName, tblIn1.[Date], N'‘—«¡' AS [Type], tblIn1.Serial AS Invoice, CONVERT(NVARCHAR(5), tblIn1.[Time], 108) AS Time, tblIn2.Item, tblIn2.Qnty, tblIn2.UnitPrice, tblIn2.[Value], tblVendors.Name AS Vendor
                 FROM tblIn2 INNER JOIN tblIn1 ON tblIn2.Serial = tblIn1.PrKey 
                 INNER JOIN tblItems ON tblItems.PrKey = tblIn2.Item
                 INNER JOIN tblVendors ON tblIn1.Vendor = tblVendors.Sr
                 WHERE tblItems.Serial = N'" & monItem.Text & "'
                 AND  tblIn1.[Date] BETWEEN '" & monDateFrom.Value.ToString("MM/dd/yyyy") & "' AND '" & monDateTill.Value.ToString("MM/dd/yyyy") & "'
                 UNION ALL 
-                SELECT tblItems.Name AS ItemName, tblOut1.[Date], N'»Ì⁄' AS [Type], CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time], tblOut2.Item, tblOut2.Qnty, tblOut2.UnitPrice, tblOut2.Price AS [Value], '' AS Vendor 
+                SELECT tblItems.Name AS ItemName, tblOut1.[Date], N'»Ì⁄' AS [Type], tblOut1.Serial AS Invoice, CONVERT(NVARCHAR(5), tblOut1.[Time], 108) AS [Time], tblOut2.Item, tblOut2.Qnty, tblOut2.UnitPrice, tblOut2.Price AS [Value], '' AS Vendor 
                 FROM tblOut2 INNER JOIN tblOut1 ON tblOut2.Serial = tblOut1.Serial 
                 INNER JOIN tblItems ON tblItems.PrKey = tblOut2.Item 
                 WHERE tblItems.Serial = N'" & monItem.Text & "' 
@@ -5741,18 +5657,33 @@ Restart:
             Dim da As New SqlDataAdapter(Que, myConn)
             da.Fill(ds.Tables("tblItemMonitor"))
 
+            Dim report As New XtraItemMonitor() With {
+                .DataSource = ds,
+                .DataAdapter = da,
+                .DataMember = "tblItemMonitor"
+            }
 
-            Dim rep As New crItemMonitor
-            rep.SetDataSource(ds.Tables("tblItemMonitor"))
-            CrystalReportViewer3.ReportSource = rep
-            rep.SetParameterValue("parTitle", monItem.Text.ToUpper)
-            rep.SetParameterValue("ParoDateFrom", monDateFrom.Value.ToString("dd/MM/yyyy"))
-            rep.SetParameterValue("ParoDateTill", monDateTill.Value.ToString("dd/MM/yyyy"))
-            rep.SetParameterValue("ParDates", ":«·› —…")
-            Cursor = Cursors.Default
-            CrystalReportViewer3.Refresh()
-            CrystalReportViewer3.Zoom(1)
+
+            Try
+                report.LoadLayout("XtraItemMonitor.repx")
+            Catch ex As Exception
+
+            End Try
+
+            report.XrTableCell3.Text = monItem.Text
+            report.XrTableCell5.Text = monDateFrom.Value.ToString("yyyy/MM/dd")
+            report.XrTableCell7.Text = monDateTill.Value.ToString("yyyy/MM/dd")
+
+            Dim tool = New ReportPrintTool(report)
+
+            report.CreateDocument()
             myConn.Close()
+
+            ExClass.Wait(False)
+            myConn.Close()
+            Cursor = Cursors.Default
+            report.ShowRibbonPreview()
+
         End If
     End Sub
 
@@ -5798,20 +5729,20 @@ Restart:
 
 
 
-        Dim ds As New ReportsDS
-        Dim da As New SqlDataAdapter(Que, myConn)
-        da.Fill(ds.Tables("tblMonitor"))
+        'Dim ds As New ReportsDS
+        'Dim da As New SqlDataAdapter(Que, myConn)
+        'da.Fill(ds.Tables("tblMonitor"))
 
-        Dim rep As New crMonitor
-        rep.SetDataSource(ds.Tables("tblMonitor"))
-        rep.SetParameterValue("ParDF", ":«·› —…")
-        rep.SetParameterValue("ParDateFrom", MonFrom.Value.ToString("dd/MM/yyyy"))
-        rep.SetParameterValue("ParDateTill", MonTill.Value.ToString("dd/MM/yyyy"))
-        CrystalReportViewer5.ReportSource = rep
-        Cursor = Cursors.Default
-        CrystalReportViewer5.Refresh()
-        CrystalReportViewer5.Zoom(1)
-        'frmStatement.ShowDialog()
+        'Dim rep As New crMonitor
+        'rep.SetDataSource(ds.Tables("tblMonitor"))
+        'rep.SetParameterValue("ParDF", ":«·› —…")
+        'rep.SetParameterValue("ParDateFrom", MonFrom.Value.ToString("dd/MM/yyyy"))
+        'rep.SetParameterValue("ParDateTill", MonTill.Value.ToString("dd/MM/yyyy"))
+        'CrystalReportViewer5.ReportSource = rep
+        'Cursor = Cursors.Default
+        'CrystalReportViewer5.Refresh()
+        'CrystalReportViewer5.Zoom(1)
+        ''frmStatement.ShowDialog()
 
 
     End Sub
@@ -5830,7 +5761,7 @@ Restart:
         Debit = rgPayment.SelectedIndex
 
         Dim query As String
-        Dim ds As New ReportsDS
+
         If GlobalVariables.authority = "Cashier" Then
             query = "SELECT Sa.Invoice, Sa.cDate, Sa.Sales, Us.UserName, Se.Seller" _
                 & " FROM tblSales Sa" _
@@ -5861,30 +5792,31 @@ Restart:
                 & " WHERE (tblCash.[Date] + tblCash.[Time] BETWEEN '" & timFrom & "' AND '" & timTill & "')" & Cashier _
                 & " ) ORDER BY [Date], [Time]"
         End If
+        Dim ds As New ReportsDS
         Dim da As New SqlDataAdapter(query, myConn)
+        da.Fill(ds.Tables("tblDaily"))
 
-        If GlobalVariables.authority = "Cashier" Then
-            da.Fill(ds.Tables("tblSales"))
-            Dim rep As New crSales
-            rep.SetDataSource(ds.Tables("tblSales"))
-            rep.SetParameterValue("ParDates", ":«·› —…")
-            rep.SetParameterValue("ParoDateFrom", dailyDateFrom.Value.ToString("yyyy/MM/dd") & " " & tmFrom.Value.ToString("HH:mm"))
-            rep.SetParameterValue("ParoDateTill", dailyDateTill.Value.ToString("yyyy/MM/dd") & " " & tmTill.Value.ToString("HH:mm"))
-            CrystalReportViewer6.ReportSource = rep
-        Else
-            da.Fill(ds.Tables("tblDaily"))
-            Dim rep As New crDaily
-            rep.SetDataSource(ds.Tables("tblDaily"))
-            rep.SetParameterValue("ParDates", ":«·› —…")
-            rep.SetParameterValue("ParoDateFrom", dailyDateFrom.Value.ToString("yyyy/MM/dd") & " " & tmFrom.Value.ToString("HH:mm"))
-            rep.SetParameterValue("ParoDateTill", dailyDateTill.Value.ToString("yyyy/MM/dd") & " " & tmTill.Value.ToString("HH:mm"))
-            CrystalReportViewer6.ReportSource = rep
-        End If
+        Dim Report As New XtraDaily With {
+            .DataSource = ds,
+            .DataAdapter = da,
+            .DataMember = "tblDaily"
+        }
 
-        
+        Try
+            Report.LoadLayout("XtraDaily.repx")
+
+        Catch ex As Exception
+
+        End Try
+
+
+        Dim tool = New ReportPrintTool(Report)
+
+        Report.CreateDocument()
+        myConn.Close()
+        ExClass.Wait(False)
+        Report.ShowRibbonPreview()
         Cursor = Cursors.Default
-        CrystalReportViewer6.Refresh()
-        CrystalReportViewer6.Zoom(1)
 
     End Sub
 
